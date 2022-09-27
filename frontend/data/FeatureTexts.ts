@@ -4,8 +4,8 @@ const features: FeatureList[] = [
         url: 'https://auctions.makerdao.network/collateral',
         items: [
             {
-                text: `The tool shows explanatory texts on different Maker Protocol related topics (e.g.
-                What is the Maker Protocol, What are collateral auctions, Why a user should participate,
+                text: `The tool shows explanatory texts on different GSU Protocol related topics (e.g.
+                What is the GSU Protocol, What are collateral auctions, Why a user should participate,
                 What’s the catch of participation)`,
             },
             {
@@ -22,7 +22,7 @@ const features: FeatureList[] = [
                                 text: `Time till auction ends`,
                             },
                             {
-                                text: `Current auction price per collateral in DAI`,
+                                text: `Current auction price per collateral in GSUc`,
                             },
                             {
                                 text: `Time till the next price drop`,
@@ -31,7 +31,7 @@ const features: FeatureList[] = [
                                 text: `Estimated time till profitability`,
                             },
                             {
-                                text: `Current price on Uniswap per collateral in DAI`,
+                                text: `Current price on Uniswap per collateral in GSUc`,
                                 items: [
                                     {
                                         text: `The price on Uniswap per collateral is determined via the Uniswap v2 SDK / Uniswap v3 SDK`,
@@ -48,13 +48,13 @@ const features: FeatureList[] = [
                                 text: `Auction End (datetime)`,
                             },
                             {
-                                text: `Potential profit in DAI`,
+                                text: `Potential profit in GSUc`,
                             },
                             {
-                                text: `Indicator on transaction fees (in ETH and DAI)`,
+                                text: `Indicator on transaction fees (in ETH and GSUc)`,
                             },
                             {
-                                text: `Transaction outcome in DAI`,
+                                text: `Transaction outcome in GSUC`,
                             },
                         ],
                     },
@@ -126,7 +126,7 @@ const features: FeatureList[] = [
         items: [
             {
                 text: `The tool provides an overview on different services related to the three core auction
-                types (collateral auctions, surplus auctions, debt auctions) provided by the Maker protocol`,
+                types (collateral auctions, surplus auctions, debt auctions) provided by the GSU protocol`,
             },
             {
                 text: `The tool redirects the user to indicated services or github repos of indicated services`,

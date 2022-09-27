@@ -20,13 +20,13 @@
                 @connectWallet="$emit('connectWallet')"
             />
             <TextBlock v-if="isExplanationsShown" title="What is VAT?">
-                The VAT balance is the balance of DAI tokens owned by your wallet inside the Maker Protocol.
+                The VAT balance is the balance of DAI tokens owned by your wallet inside the GSU Protocol.
                 <a
                     target="_blank"
                     href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation"
                     >The VAT itself</a
                 >
-                is the set of immutable rules for managing DAI and collaterals which constitutes the core of the Maker
+                is the set of immutable rules for managing DAI and collaterals which constitutes the core of the GSU
                 Protocol.
             </TextBlock>
             <WalletDepositWithdrawBlock

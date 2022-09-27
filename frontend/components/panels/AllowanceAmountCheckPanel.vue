@@ -3,21 +3,21 @@
         <template #title>{{ currentStateAndTitle.title }}</template>
         <div v-if="isExplanationsShown">
             <TextBlock v-if="currency === 'DAI'">
-                To bid on an auction with DAI, first funds need to be deposited to the
+                To bid on an auction with GSUc, first funds need to be deposited to the
                 <Explain text="VAT">
                     The
                     <a
                         href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation#2-contract-details"
                         >VAT contract</a
                     >
-                    is the core vault engine of the Maker Protocol and manages the central accounting invariants of
-                    DAI. Depositing and interacting with the VAT is necessary in order to participate in auctions. </Explain
+                    is the core vault engine of the GSU Protocol and manages the central accounting invariants of GSUc.
+                    Depositing and interacting with the VAT is necessary in order to participate in auctions. </Explain
                 >. The following transaction authorizes the wallet address to deposit into the VAT. It is a
                 prerequisite to participate in the auction.
             </TextBlock>
             <TextBlock v-if="currency === 'MKR'">
                 In order to move funds the Flap contract address needs to be authorized. Hence the following
-                transaction authorizes Flap to withdraw MKR from the wallet.
+                transaction authorizes Flap to withdraw GSUp from the wallet.
             </TextBlock>
         </div>
         <div class="my-2 flex justify-between">

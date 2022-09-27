@@ -1,23 +1,23 @@
 <template>
     <div class="HeightFix flex flex-col w-full h-full items-center">
         <LandingBlock v-if="isExplanationsShown" class="LandingBlock">
-            <h1 class="text-gray-800 dark:text-gray-100">
-                Maker Protocol <br />
+            <h1 class="text-gray-800">
+                GSU Protocol <br />
                 Unified Auctions
             </h1>
         </LandingBlock>
         <div class="flex flex-col w-full items-center space-y-4 md:space-y-8 mt-4 md:mt-8 mb-4 px-4">
             <TextBlock v-if="isExplanationsShown" title="Different auction types" class="max-w-screen-sm">
                 There are three distinct auction types that help maintain
-                <Explain text="Maker Protocol’s">
+                <Explain text="GSU Protocol’s">
                     a <a href="https://changelog.makerdao.com/">set of smart contracts</a> running on the Ethereum
-                    blockchain with the purpose to keep the cryptoasset Dai approximately equal to USD
+                    blockchain with the purpose to keep the cryptoasset GSUc approximately equal to GSU exchange rate
                 </Explain>
                 solvency. They are taking effect in different situations like liquidation of single debt positions, to
                 cap accrued system surplus or to cover system’s debt.
             </TextBlock>
             <AuctionTypeFilter :is-explanations-shown="isExplanationsShown" @selected="applyFilter" />
-            <div class="w-full max-w-screen-sm items-center">
+            <div class="w-full max-w-screen-sm items-center pb-8">
                 <TextBlock
                     v-if="isExplanationsShown"
                     class="w-full mb-4"
@@ -76,9 +76,9 @@ export default Vue.extend({
                 {
                     title: 'Collateral auctions portal',
                     description:
-                        'Web tool that supports participation in collateral auctions without capital requirements or by bidding with own Dai',
+                        'Web tool that supports participation in collateral auctions without capital requirements or by bidding with own GSUc',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/collateral',
                     },
                     filters: ['collateral'],
@@ -86,9 +86,9 @@ export default Vue.extend({
                 {
                     title: 'Surplus auctions portal',
                     description:
-                        'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
+                        'Web tool that supports participation in surplus auctions by bidding on GSUc with own GSUp',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/surplus',
                     },
                     filters: ['surplus'],
@@ -96,115 +96,117 @@ export default Vue.extend({
                 {
                     title: 'Debt auctions portal',
                     description:
-                        'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
+                        'Web tool that supports participation in debt auctions by bidding on GSUp with own GSUc',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/debt',
                     },
                     filters: ['debt'],
                 },
-                {
-                    title: 'Liquidations platform',
-                    description: 'Web tool that support participation in collateral auctions by bidding with own Dai',
-                    links: {
-                        source: 'https://github.com/makerdao/liquidations-portal',
-                    },
-                    filters: ['collateral'],
-                },
-                {
-                    title: 'Maker Auction (surplus)',
-                    description:
-                        'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
-                    links: {
-                        source: 'https://github.com/makerdao/auctions-ui',
-                    },
-                    filters: ['surplus'],
-                },
-                {
-                    title: 'Maker Auction (debt)',
-                    description:
-                        'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
-                    links: {
-                        source: 'https://github.com/makerdao/auctions-ui',
-                    },
-                    filters: ['debt'],
-                },
-                {
-                    title: 'Auction Demo Keeper',
-                    description: `
-                    Node.js-based reference implementation for a keeper that
-                    participates in collateral auctions via swap transactions`,
-                    links: {
-                        source: 'https://github.com/makerdao/auction-demo-keeper',
-                    },
-                    filters: ['collateral'],
-                },
-                {
-                    title: 'Auction Keeper',
-                    description: `
-                    Python-based implementation of a bot that is capable to participate in
-                    all different auction types (collateral auction, surplus auctions, debt auctions)
-                    as well as as a bot to start auctions based on undercollateralized vaults`,
-                    links: {
-                        source: 'https://github.com/makerdao/auction-keeper',
-                    },
-                    filters: ['collateral', 'surplus', 'debt'],
-                },
-                {
-                    title: 'MakerBurn',
-                    description: `
-                    Shows various statistics on current state of the system like current Dai supply,
-                    as well as collateral parameters and information on past liquidations`,
-                    links: {
-                        analytics: 'https://makerburn.com/',
-                    },
-                    filters: ['collateral', 'surplus', 'debt'],
-                },
-                {
-                    title: 'Blockanalytica',
-                    description: 'Shows detailed information on auction activity including participation metrics',
-                    links: {
-                        analytics: 'https://maker.blockanalitica.com/auctions/',
-                    },
-                    filters: ['collateral'],
-                },
-                {
-                    title: 'Daiauctions',
-                    description: `
-                    Shows current auction parameters on general and collateral level as well as the status
-                    of auctions that have been started in the last few days`,
-                    links: {
-                        analytics: 'https://daiauctions.com/#',
-                    },
-                    filters: ['collateral'],
-                },
-                {
-                    title: 'Daistats',
-                    description: `
-                    Provides overview on different auction related parameters like number of surplus,
-                    debt and collateral auctions`,
-                    links: {
-                        analytics: 'https://daistats.com/#/auctions',
-                    },
-                    filters: ['collateral', 'surplus', 'debt'],
-                },
-                {
-                    title: 'MakerDai Twitter Bot',
-                    description:
-                        'Tweets about mints/burns, liquidations and other significant changes in the Maker Protocol',
-                    links: {
-                        profile: 'https://twitter.com/MakerDaiBot',
-                    },
-                    filters: [],
-                },
-                {
-                    title: 'SAS Collateral Auction Twitter Bot',
-                    description: `Tweets about collateral auctions and facilitates access to auction participation`,
-                    links: {
-                        profile: 'https://twitter.com/MakerDAO_SAS',
-                    },
-                    filters: ['collateral'],
-                },
+
+                // @GSUpro remove unsupported links
+                // {
+                //     title: 'Liquidations platform',
+                //     description: 'Web tool that support participation in collateral auctions by bidding with own Dai',
+                //     links: {
+                //         source: 'https://github.com/makerdao/liquidations-portal',
+                //     },
+                //     filters: ['collateral'],
+                // },
+                // {
+                //     title: 'Maker Auction (surplus)',
+                //     description:
+                //         'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
+                //     links: {
+                //         source: 'https://github.com/makerdao/auctions-ui',
+                //     },
+                //     filters: ['surplus'],
+                // },
+                // {
+                //     title: 'Maker Auction (debt)',
+                //     description:
+                //         'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
+                //     links: {
+                //         source: 'https://github.com/makerdao/auctions-ui',
+                //     },
+                //     filters: ['debt'],
+                // },
+                // {
+                //     title: 'Auction Demo Keeper',
+                //     description: `
+                //     Node.js-based reference implementation for a keeper that
+                //     participates in collateral auctions via swap transactions`,
+                //     links: {
+                //         source: 'https://github.com/makerdao/auction-demo-keeper',
+                //     },
+                //     filters: ['collateral'],
+                // },
+                // {
+                //     title: 'Auction Keeper',
+                //     description: `
+                //     Python-based implementation of a bot that is capable to participate in
+                //     all different auction types (collateral auction, surplus auctions, debt auctions)
+                //     as well as as a bot to start auctions based on undercollateralized vaults`,
+                //     links: {
+                //         source: 'https://github.com/makerdao/auction-keeper',
+                //     },
+                //     filters: ['collateral', 'surplus', 'debt'],
+                // },
+                // {
+                //     title: 'MakerBurn',
+                //     description: `
+                //     Shows various statistics on current state of the system like current Dai supply,
+                //     as well as collateral parameters and information on past liquidations`,
+                //     links: {
+                //         analytics: 'https://makerburn.com/',
+                //     },
+                //     filters: ['collateral', 'surplus', 'debt'],
+                // },
+                // {
+                //     title: 'Blockanalytica',
+                //     description: 'Shows detailed information on auction activity including participation metrics',
+                //     links: {
+                //         analytics: 'https://maker.blockanalitica.com/auctions/',
+                //     },
+                //     filters: ['collateral'],
+                // },
+                // {
+                //     title: 'Daiauctions',
+                //     description: `
+                //     Shows current auction parameters on general and collateral level as well as the status
+                //     of auctions that have been started in the last few days`,
+                //     links: {
+                //         analytics: 'https://daiauctions.com/#',
+                //     },
+                //     filters: ['collateral'],
+                // },
+                // {
+                //     title: 'Daistats',
+                //     description: `
+                //     Provides overview on different auction related parameters like number of surplus,
+                //     debt and collateral auctions`,
+                //     links: {
+                //         analytics: 'https://daistats.com/#/auctions',
+                //     },
+                //     filters: ['collateral', 'surplus', 'debt'],
+                // },
+                // {
+                //     title: 'MakerDai Twitter Bot',
+                //     description:
+                //         'Tweets about mints/burns, liquidations and other significant changes in the Maker Protocol',
+                //     links: {
+                //         profile: 'https://twitter.com/MakerDaiBot',
+                //     },
+                //     filters: [],
+                // },
+                // {
+                //     title: 'SAS Collateral Auction Twitter Bot',
+                //     description: `Tweets about collateral auctions and facilitates access to auction participation`,
+                //     links: {
+                //         profile: 'https://twitter.com/MakerDAO_SAS',
+                //     },
+                //     filters: ['collateral'],
+                // },
             ],
         };
     },

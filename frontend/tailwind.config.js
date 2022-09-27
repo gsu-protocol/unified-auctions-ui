@@ -12,9 +12,9 @@ module.exports = {
             colors: {
                 gray: colors.trueGray,
                 primary: {
-                    light: '#8dd7cf',
-                    DEFAULT: '#1AAB9B',
-                    dark: '#169184',
+                    light: '#e496ab',
+                    DEFAULT: '#d42f5d',
+                    dark: '#df567c',
                 },
                 dark: {
                     DEFAULT: '#111E1E',
