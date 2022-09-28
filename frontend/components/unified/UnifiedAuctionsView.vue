@@ -10,8 +10,8 @@
             <TextBlock v-if="isExplanationsShown" title="Different auction types" class="max-w-screen-sm">
                 There are three distinct auction types that help maintain
                 <Explain text="GSU Protocol’s">
-                    a <a href="#">set of smart contracts</a> running on the Ethereum blockchain with the purpose to
-                    keep the cryptoasset GSUc approximately equal to GSU exchange rate
+                    a set of smart contracts running on the Ethereum blockchain with the purpose to keep the
+                    cryptoasset GSUc approximately equal to GSU exchange rate
                 </Explain>
                 solvency. They are taking effect in different situations like liquidation of single debt positions, to
                 cap accrued system surplus or to cover system’s debt.
