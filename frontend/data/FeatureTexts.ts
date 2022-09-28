@@ -1,7 +1,7 @@
 const features: FeatureList[] = [
     {
         title: 'Collateral Auctions UI',
-        url: 'https://auctions.makerdao.network/collateral',
+        url: 'https://auctions.gsuprotocol.io/collateral',
         items: [
             {
                 text: `The tool shows explanatory texts on different GSU Protocol related topics (e.g.
@@ -32,15 +32,15 @@ const features: FeatureList[] = [
                             },
                             {
                                 text: `Current price on Uniswap per collateral in GSUc`,
-                                items: [
-                                    {
-                                        text: `The price on Uniswap per collateral is determined via the Uniswap v2 SDK / Uniswap v3 SDK`,
-                                    },
-                                ],
+                                // items: [
+                                //     {
+                                //         text: `The price on Uniswap per collateral is determined via the Uniswap v2 SDK / Uniswap v3 SDK`,
+                                //     },
+                                // ],
                             },
-                            {
-                                text: `Market difference between auction price and price on uniswap`,
-                            },
+                            // {
+                            //     text: `Market difference between auction price and price on uniswap`,
+                            // },
                             {
                                 text: `Auction price total`,
                             },
@@ -72,7 +72,7 @@ const features: FeatureList[] = [
                         text: `Prepare the restart of an expired auction`,
                     },
                     {
-                        text: `Prepare authorisation of DaiJoin contract`,
+                        text: `Prepare authorisation of GSUcJoin contract`,
                         items: [
                             {
                                 text: `This is an authorisation step needs to be executed before being able to participate in auctions`,
@@ -101,9 +101,9 @@ const features: FeatureList[] = [
                                 but facilitated through a smart contract not controlled by us (ie. exchange-callee contract)`,
                             },
                             {
-                                text: `High level explainer on flash lending: The auctioned collateral is swapped for DAI
-                                using a decentralized exchange, DAI is returned to the auction to cover the debt and spread
-                                in DAI is collected as a profit - all in one transaction. The transaction fees are the only
+                                text: `High level explainer on flash lending: The auctioned collateral is swapped for GSUc
+                                using a decentralized exchange, GSUc is returned to the auction to cover the debt and spread
+                                in GSUc is collected as a profit - all in one transaction. The transaction fees are the only
                                 capital requirement for the execution`,
                             },
                         ],
@@ -122,7 +122,7 @@ const features: FeatureList[] = [
     },
     {
         title: `Unified auctions portal`,
-        url: 'https://auctions.makerdao.network',
+        url: 'https://auctions.gsuprotocol.io',
         items: [
             {
                 text: `The tool provides an overview on different services related to the three core auction
@@ -135,14 +135,14 @@ const features: FeatureList[] = [
     },
     {
         title: `Collateral auctions - dashboard page`,
-        url: `https://auctions.makerdao.network/dashboard`,
+        url: `https://auctions.gsuprotocol.io/dashboard`,
         items: [
             {
                 text: `The tools shows a list of supported collateral types with auction related parameters`,
                 items: [
-                    {
-                        text: `Uniswap price`,
-                    },
+                    // {
+                    //     text: `Uniswap price`,
+                    // },
                     {
                         text: `step parameter`,
                     },
@@ -161,7 +161,7 @@ const features: FeatureList[] = [
     },
     {
         title: `Twitter Bot`,
-        url: `https://twitter.com/MakerDAO_SAS`,
+        url: undefined,
         items: [
             {
                 text: `The bot informs via a tweet about each new started collateral auction`,
