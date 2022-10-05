@@ -7,10 +7,9 @@
                 </h1>
                 <TextBlock>
                     <p>
-                        At Unified Auctions UI, accessible from
-                        <a href="https://auctions.gsuprotocol.io">auctions.gsuprotocol.network</a>, one of our main
-                        priorities is the privacy of our visitors. This Privacy Policy document contains types of
-                        information that is collected and recorded by Unified Auctions UI and how we use it.
+                        At Unified Auctions UI one of our main priorities is the privacy of our visitors. This Privacy
+                        Policy document contains types of information that is collected and recorded by Unified
+                        Auctions UI and how we use it.
                     </p>
                     <p>
                         If you have additional questions or require more information about our Privacy Policy, do not

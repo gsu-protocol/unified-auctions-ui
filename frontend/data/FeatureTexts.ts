@@ -1,7 +1,7 @@
 const features: FeatureList[] = [
     {
         title: 'Collateral Auctions UI',
-        url: 'https://auctions.gsuprotocol.io/collateral',
+        url: `${window?.location?.origin || ''}/collateral`,
         items: [
             {
                 text: `The tool shows explanatory texts on different GSU Protocol related topics (e.g.
@@ -122,7 +122,7 @@ const features: FeatureList[] = [
     },
     {
         title: `Unified auctions portal`,
-        url: 'https://auctions.gsuprotocol.io',
+        url: `${window?.location?.origin}`,
         items: [
             {
                 text: `The tool provides an overview on different services related to the three core auction
@@ -135,7 +135,7 @@ const features: FeatureList[] = [
     },
     {
         title: `Collateral auctions - dashboard page`,
-        url: `https://auctions.gsuprotocol.io/dashboard`,
+        url: `${window?.location?.origin || ''}/dashboard`,
         items: [
             {
                 text: `The tools shows a list of supported collateral types with auction related parameters`,

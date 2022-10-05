@@ -76,7 +76,8 @@
             <Explain text="healthy condition" placement="topRight">
                 Overall health of the system is predominantly defined by the surplus in collateral that is backing all
                 GSUc. This system health can be monitored on
-                <a href="https://gsustats.com/#/" target="_blank">gsustats</a>.
+                <Explain text="gsustats"> coming soon </Explain>
+                <!-- <a href="https://gsustats.com/#/" target="_blank">gsustats</a>. -->
             </Explain>
             get rewarded with higher profits. Most of the auctions will be cleared by players with bots bidding very
             quickly, whenever there is a slight market opportunity. However, in some occasions like bigger market

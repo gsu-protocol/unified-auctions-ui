@@ -196,7 +196,7 @@
                     There are two ways to participate in an auction:
                     <ul class="list-disc list-outside pl-5">
                         <li>
-                            Bid with DAI: This allows the participant to manually bid DAI on the auctioned collateral
+                            Bid with DAI: This allows the participant to manually bid GSUc on the auctioned collateral
                             and redeem the auctioned collateral. (In case you want to participate in this auction via
                             the old liquidation UI, you can use the
                             <a href="https://legacyliquidations.vercel.app/" target="_blank" class="inline-block">
@@ -205,18 +205,13 @@
                         </li>
                         <li>
                             Directly swap into profit: The auctioned collateral is bought and sold on an available
-                            marketplace in exchange for DAI in a single transaction. You will receive the resulting
-                            profit. In the Maker community this is known as a
+                            marketplace in exchange for GSUc in a single transaction. You will receive the resulting
+                            profit. In the GSU protocol community this is known as a
                             <Explain text="flash loan">
-                                <a
-                                    href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#flash-lending-of-collateral"
-                                    target="_blank"
-                                >
-                                    Flash lending of collateral
-                                </a>
-                                enables even a participant with zero DAI (and nothing to trade for DAI) to purchase
+                                <a href="/" target="_blank"> Flash lending of collateral </a>
+                                enables even a participant with zero GSUc (and nothing to trade for GSUc) to purchase
                                 from an auction by directing the sale of the auction's collateral into other protocols
-                                in exchange for DAI. </Explain
+                                in exchange for GSUc. </Explain
                             >.
                         </li>
                     </ul>
@@ -232,7 +227,7 @@
                                 class="w-60 mb-4"
                                 @click="$emit('purchase')"
                             >
-                                Bid with DAI
+                                Bid with GSUc
                             </Button>
                         </div>
                     </Tooltip>
