@@ -206,14 +206,9 @@
                         <li>
                             Directly swap into profit: The auctioned collateral is bought and sold on an available
                             marketplace in exchange for GSUc in a single transaction. You will receive the resulting
-                            profit. In the Maker community this is known as a
+                            profit. In the GSU protocol community this is known as a
                             <Explain text="flash loan">
-                                <a
-                                    href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#flash-lending-of-collateral"
-                                    target="_blank"
-                                >
-                                    Flash lending of collateral
-                                </a>
+                                <a href="/" target="_blank"> Flash lending of collateral </a>
                                 enables even a participant with zero GSUc (and nothing to trade for GSUc) to purchase
                                 from an auction by directing the sale of the auction's collateral into other protocols
                                 in exchange for GSUc. </Explain
