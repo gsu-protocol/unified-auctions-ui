@@ -11,9 +11,13 @@
             "
         >
             <li>
-                <NuxtLink class="FooterLink" :to="termsAndConditionsURL" target="_blank">
+                <a
+                    class="FooterLink"
+                    href="https://drive.google.com/file/d/12AIf4cBp7bmkgdyh6D25y4QnD9-3bJ8Y/view?usp=sharing"
+                    target="_blank"
+                >
                     Terms & Conditions
-                </NuxtLink>
+                </a>
             </li>
             <li>
                 <NuxtLink class="FooterLink" to="/privacy">Privacy</NuxtLink>
