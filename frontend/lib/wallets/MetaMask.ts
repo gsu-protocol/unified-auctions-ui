@@ -84,9 +84,9 @@ export default class MetaMask extends AbstractWallet {
         const signer = await this.getSigner();
         const chainId = formatToHexWithoutPad(await signer.getChainId());
         const networkType = getNetworkTypeByChainId(chainId);
-        if (networkType) {
-            setSigner(networkType, signer as any);
-        }
+        console.log('TODO: fixed so Metamask would connect with custom network.');
+        setSigner(networkType || 'custom', signer as any);
+        
         window.$nuxt.$store.dispatch('network/setWalletChainId', chainId);
     }
 
