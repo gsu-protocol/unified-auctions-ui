@@ -3,7 +3,7 @@ import BigNumber from './bignumber';
 import getContract from './contracts';
 import { WAD_NUMBER_OF_DIGITS } from './constants/UNITS';
 import { Contract } from 'ethers';
-import { MKR_NUMBER_OF_DIGITS, WAD } from './constants/UNITS';
+import { MKR_NUMBER_OF_DIGITS, WAD, RAD } from './constants/UNITS';
 import memoizee from 'memoizee';
 import getNetworkDate from './date';
 import { CompensationAuctionBase, DebtAuction, Notifier, CompensationAuctionTransactionFees } from './types';
@@ -173,7 +173,7 @@ export const fetchDebtAuctionByIndex = async (network: string, auctionIndex: num
     return {
         ...baseAuctionInfo,
         earliestEndDate,
-        bidAmountDai: new BigNumber(auctionData.bid._hex).div(WAD),
+        bidAmountDai: new BigNumber(auctionData.bid._hex).div(RAD),
         receiveAmountMKR: new BigNumber(auctionData.lot._hex).div(WAD),
         receiverAddress: auctionData.guy,
         auctionEndDate,
@@ -197,7 +197,9 @@ export const getActiveDebtAuctionOrUndefined = async (
 
 export const getMarketPriceDaiToMkr = async function (network: string, mkrAmount: BigNumber): Promise<BigNumber> {
     try {
-        return new BigNumber(1).div((await convertDaiToMkr(network, mkrAmount)).div(mkrAmount));
+        // return new BigNumber(1).div((await convertDaiToMkr(network, mkrAmount)).div(mkrAmount));
+        console.log("TODO: fix MKR price");
+        return new BigNumber(1).dividedBy(945);
     } catch (error) {
         return new BigNumber(NaN);
     }
@@ -207,7 +209,9 @@ export const getDebtAuctionTransactionFees = async function (
     network: string
 ): Promise<CompensationAuctionTransactionFees> {
     const gasPrice = await getGasPriceForUI(network);
-    const exchangeRate = await getMarketPrice(network, 'ETH');
+    // const exchangeRate = await getMarketPrice(network, 'ETH');
+    const exchangeRate = new BigNumber(1);
+    console.log("Fix exchangeRate", exchangeRate);
 
     // TODO: Adjust the gas prices when the simulation is available.
     const restartTransactionFeeEth = gasPrice.multipliedBy(80563);

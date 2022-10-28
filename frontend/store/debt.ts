@@ -140,7 +140,9 @@ export const actions = {
         try {
             commit('setAuctionsFetching', true);
             const auctions = await fetchActiveDebtAuctions(network);
+            console.log("auctions", JSON.stringify(auctions));
             const auctionsEnriched = await enrichDebtAuctions(network, auctions);
+            console.log("auctionsEnriched", JSON.stringify(auctionsEnriched));
             commit('addAuctionsToStorage', auctionsEnriched);
         } catch (error: any) {
             console.error('fetch surplus auction error', error);
