@@ -168,7 +168,9 @@ export const collectSurplusAuction = async function (network: string, auctionInd
 
 const getSurplusTransactionFees = async function (network: string): Promise<CompensationAuctionTransactionFees> {
     const gasPrice = await getGasPriceForUI(network);
-    const exchangeRate = await getMarketPrice(network, 'ETH');
+    // const exchangeRate = await getMarketPrice(network, 'ETH');
+    const exchangeRate = new BigNumber(1000);
+    console.log("TODO: fix exchangeRate", exchangeRate);
 
     const restartTransactionFeeEth = gasPrice.multipliedBy(80563);
     const allowanceTransactionFeeEth = gasPrice.multipliedBy(48373);
@@ -205,11 +207,12 @@ export const enrichSurplusAuction = async (
     network: string,
     auction: SurplusAuctionActive
 ): Promise<SurplusAuctionTransaction> => {
-    const nextMinimumBid = await getNextMinimumBid(network, auction);
+    let nextMinimumBid = await getNextMinimumBid(network, auction);
     const unitPrice = auction.bidAmountMKR.div(auction.receiveAmountDAI);
-    const marketUnitPrice = await getMarketPriceMkr(network, auction.bidAmountMKR);
+    let marketUnitPrice = await getMarketPriceMkr(network, auction.bidAmountMKR);
     const marketUnitPriceToUnitPriceRatio = unitPrice.minus(marketUnitPrice).dividedBy(marketUnitPrice);
     const fees = await getSurplusTransactionFees(network);
+    console.log("fees", fees);
     return {
         ...auction,
         ...fees,
