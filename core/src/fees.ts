@@ -1,13 +1,13 @@
 import type { Auction, AuctionTransaction, TransactionFees } from './types';
 import BigNumber from './bignumber';
-// import { getMarketPrice } from './calleeFunctions';
+import { getMarketPrice } from './calleeFunctions';
 import { getGasPriceForUI } from './gas';
 import getSigner from './signer';
 import { getCollateralAuthorizationStatus, getWalletAuthorizationStatus } from './authorizations';
 
 export const convertETHtoDAI = async function (network: string, eth: BigNumber): Promise<BigNumber> {
-    // const exchangeRate = await getMarketPrice(network, 'ETH');
-    let exchangeRate = new BigNumber(1);
+    const exchangeRate = await getMarketPrice(network, 'ETH');
+    // let exchangeRate = new BigNumber(1);
     console.log("TODO: Need to fix rate calculation", network);
     return eth.multipliedBy(exchangeRate);
 };
