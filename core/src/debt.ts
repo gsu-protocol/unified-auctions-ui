@@ -197,9 +197,7 @@ export const getActiveDebtAuctionOrUndefined = async (
 
 export const getMarketPriceDaiToMkr = async function (network: string, mkrAmount: BigNumber): Promise<BigNumber> {
     try {
-        // return new BigNumber(1).div((await convertDaiToMkr(network, mkrAmount)).div(mkrAmount));
-        console.log("TODO: fix MKR price");
-        return new BigNumber(1).dividedBy(945);
+        return new BigNumber(1).div((await convertDaiToMkr(network, mkrAmount)).div(mkrAmount));
     } catch (error) {
         return new BigNumber(NaN);
     }
@@ -209,9 +207,7 @@ export const getDebtAuctionTransactionFees = async function (
     network: string
 ): Promise<CompensationAuctionTransactionFees> {
     const gasPrice = await getGasPriceForUI(network);
-    // const exchangeRate = await getMarketPrice(network, 'ETH');
-    const exchangeRate = new BigNumber(1);
-    console.log("Fix exchangeRate", exchangeRate);
+    const exchangeRate = await getMarketPrice(network, 'ETH');
 
     // TODO: Adjust the gas prices when the simulation is available.
     const restartTransactionFeeEth = gasPrice.multipliedBy(80563);

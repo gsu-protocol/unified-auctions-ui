@@ -7,10 +7,8 @@ const GSU_RATES = process.env.GSU_RATES || 'https://goerli.gsu.io/Umbraco/Api/Ra
 type RatesAPIResponse = {
     price: string;
 }
-const fetchDaiRates = async function (
-    network: string,
-    symbol: string
-): Promise<BigNumber> {
+
+const fetchDaiRates = async function (network: string, symbol: string): Promise<BigNumber> {
     let rate = new BigNumber(1);
     console.log('asking for Dai rates', network, symbol, rate);
     try {
@@ -26,7 +24,7 @@ const fetchDaiRates = async function (
     } catch (error) {
         console.log('error message: ', error);
     } finally {
-        console.log('will return bad rate', rate);
+        console.log('will return rate', rate.toString());
         return rate;
     }
 };
