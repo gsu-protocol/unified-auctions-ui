@@ -47,7 +47,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'ETH',
         decimals: 18,
         exchange: {
-            callee: 'UniswapV3Callee',
+            callee: 'GSURatesCallee',
             route: [],
         },
     },
@@ -57,7 +57,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'ETH',
         decimals: 18,
         exchange: {
-            callee: 'UniswapV3Callee',
+            callee: 'GSURatesCallee',
             route: [],
         },
     },
@@ -67,7 +67,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'ETH',
         decimals: 18,
         exchange: {
-            callee: 'UniswapV3Callee',
+            callee: 'GSURatesCallee',
             route: [],
         },
     },
@@ -131,16 +131,16 @@ const COLLATERALS: Record<string, CollateralConfig> = {
     //         route: ['ETH'],
     //     },
     // },
-    'RENBTC-A': {
-        title: 'renBTC',
-        ilk: 'RENBTC-A',
-        symbol: 'RENBTC',
-        decimals: 8,
-        exchange: {
-            callee: 'UniswapV3Callee',
-            route: ['ETH'],
-        },
-    },
+    // 'RENBTC-A': {
+    //     title: 'renBTC',
+    //     ilk: 'RENBTC-A',
+    //     symbol: 'RENBTC',
+    //     decimals: 8,
+    //     exchange: {
+    //         callee: 'UniswapV3Callee',
+    //         route: ['ETH'],
+    //     },
+    // },
     // 'TUSD-A': {
     //     title: 'True USD',
     //     ilk: 'TUSD-A',
@@ -197,8 +197,8 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'WBTC',
         decimals: 8,
         exchange: {
-            callee: 'UniswapV3Callee',
-            route: ['ETH'],
+            callee: 'GSURatesCallee',
+            route: [],
         },
     },
     'WBTC-B': {
@@ -207,8 +207,8 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'WBTC',
         decimals: 8,
         exchange: {
-            callee: 'UniswapV3Callee',
-            route: ['ETH'],
+            callee: 'GSURatesCallee',
+            route: [],
         },
     },
     'WBTC-C': {
@@ -217,8 +217,8 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         symbol: 'WBTC',
         decimals: 8,
         exchange: {
-            callee: 'UniswapV3Callee',
-            route: ['ETH'],
+            callee: 'GSURatesCallee',
+            route: [],
         },
     },
     // 'YFI-A': {
@@ -251,26 +251,26 @@ const COLLATERALS: Record<string, CollateralConfig> = {
     //         route: ['ETH'],
     //     },
     // },
-    'WSTETH-A': {
-        title: 'Lido wstETH',
-        ilk: 'WSTETH-A',
-        symbol: 'WSTETH',
-        decimals: 18,
-        exchange: {
-            callee: 'WstETHCurveUniv3Callee',
-            route: [],
-        },
-    },
-    'WSTETH-B': {
-        title: 'Lido wstETH',
-        ilk: 'WSTETH-B',
-        symbol: 'WSTETH',
-        decimals: 18,
-        exchange: {
-            callee: 'WstETHCurveUniv3Callee',
-            route: [],
-        },
-    },
+    // 'WSTETH-A': {
+    //     title: 'Lido wstETH',
+    //     ilk: 'WSTETH-A',
+    //     symbol: 'WSTETH',
+    //     decimals: 18,
+    //     exchange: {
+    //         callee: 'WstETHCurveUniv3Callee',
+    //         route: [],
+    //     },
+    // },
+    // 'WSTETH-B': {
+    //     title: 'Lido wstETH',
+    //     ilk: 'WSTETH-B',
+    //     symbol: 'WSTETH',
+    //     decimals: 18,
+    //     exchange: {
+    //         callee: 'WstETHCurveUniv3Callee',
+    //         route: [],
+    //     },
+    // },
     // 'CRVV1ETHSTETH-A': {
     //     title: 'Curve stETH',
     //     ilk: 'CRVV1ETHSTETH-A',

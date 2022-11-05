@@ -6,7 +6,7 @@ import UniswapV2LpTokenCalleeDai from './UniswapV2LpTokenCalleeDai';
 import WstETHCurveUniv3Callee from './WstETHCurveUniv3Callee';
 import CurveLpTokenUniv3Callee from './CurveLpTokenUniv3Callee';
 import UniswapV3Callee from './UniswapV3Callee';
-import GSURatesCalleeDai from './GSURatesCallee';
+import GSURatesCallee from './GSURatesCallee';
 import { getCollateralConfigByType, getCollateralConfigBySymbol } from '../constants/COLLATERALS';
 
 const MARKET_PRICE_CACHE_MS = 10 * 1000;
@@ -17,6 +17,7 @@ const allCalleeFunctions: Record<CalleeNames, CalleeFunctions> = {
     WstETHCurveUniv3Callee,
     CurveLpTokenUniv3Callee,
     UniswapV3Callee,
+    GSURatesCallee,
 };
 
 export const getCalleeData = async function (
@@ -29,7 +30,7 @@ export const getCalleeData = async function (
     if (!calleeFuctions) {
         throw new Error(`Unsupported collateral type "${collateralType}"`);
     }
-    return await GSURatesCalleeDai.getCalleeData(network, collateral, profitAddress);
+    return await calleeFuctions.getCalleeData(network, collateral, profitAddress);
 };
 
 const _getMarketPrice = async function (
@@ -42,7 +43,7 @@ const _getMarketPrice = async function (
     if (!calleeFuctions) {
         throw new Error(`Unsupported collateral symbol "${collateralSymbol}"`);
     }
-    return await GSURatesCalleeDai.getMarketPrice(network, collateral, amount);
+    return await calleeFuctions.getMarketPrice(network, collateral, amount);
 };
 
 export const getMarketPrice = memoizee(_getMarketPrice, {

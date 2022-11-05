@@ -168,10 +168,7 @@ export const collectSurplusAuction = async function (network: string, auctionInd
 
 const getSurplusTransactionFees = async function (network: string): Promise<CompensationAuctionTransactionFees> {
     const gasPrice = await getGasPriceForUI(network);
-    // const exchangeRate = await getMarketPrice(network, 'ETH');
-    const exchangeRate = new BigNumber(1000);
-    console.log("TODO: fix exchangeRate", exchangeRate);
-
+    const exchangeRate = await getMarketPrice(network, 'ETH');
     const restartTransactionFeeEth = gasPrice.multipliedBy(80563);
     const allowanceTransactionFeeEth = gasPrice.multipliedBy(48373);
     const bidTransactionFeeEth = gasPrice.multipliedBy(85181);
