@@ -11,7 +11,9 @@ export default {
 
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-
+    server: {
+        port: 9080,
+    },
     env: {
         RPC_URL: process.env.RPC_URL,
         DEMO_MODE: process.env.DEMO_MODE || false,
