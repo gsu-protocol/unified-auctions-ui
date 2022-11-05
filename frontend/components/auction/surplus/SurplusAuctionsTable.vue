@@ -65,7 +65,7 @@
                 >
                     <span v-if="record.state === 'collected'"> See details </span>
                     <span v-else-if="record.state === 'requires-restart'"> Restart </span>
-                    <span v-else-if="record.state === 'ready-for-collection'"> Collect DAI </span>
+                    <span v-else-if="record.state === 'ready-for-collection'"> Collect GSUc </span>
                     <span v-else> Participate </span>
                 </nuxt-link>
             </div>

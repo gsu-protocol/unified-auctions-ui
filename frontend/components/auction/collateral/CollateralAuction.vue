@@ -196,7 +196,7 @@
                     There are two ways to participate in an auction:
                     <ul class="list-disc list-outside pl-5">
                         <li>
-                            Bid with DAI: This allows the participant to manually bid GSUc on the auctioned collateral
+                            Bid with GSUc: This allows the participant to manually bid GSUc on the auctioned collateral
                             and redeem the auctioned collateral. (In case you want to participate in this auction via
                             the old liquidation UI, you can use the
                             <a href="https://legacyliquidations.vercel.app/" target="_blank" class="inline-block">
@@ -233,12 +233,7 @@
                     </Tooltip>
                     <Tooltip :title="swapTransactionError" placement="bottom">
                         <div>
-                            <Button
-                                :disabled="!!swapTransactionError"
-                                type="primary"
-                                class="w-60 ml-4"
-                                @click="$emit('swap')"
-                            >
+                            <Button :disabled="true" type="primary" class="w-60 ml-4" @click="$emit('swap')">
                                 Directly swap into profit
                             </Button>
                         </div>

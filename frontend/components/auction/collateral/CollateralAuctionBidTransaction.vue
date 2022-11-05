@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TextBlock title="Bid with DAI transaction" />
+        <TextBlock title="Bid with GSUc transaction" />
         <Alert
             v-if="!auctionTransaction.isActive"
             message="This auction is inactive and must be restarted"

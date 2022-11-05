@@ -23,7 +23,7 @@ export const setupDebtKeeper = async function (network: string) {
         return;
     }
     console.info(
-        `debt keeper: setup complete, looking for minimum net profit of "${KEEPER_DEBT_MINIMUM_NET_PROFIT_DAI}" DAI`
+        `debt keeper: setup complete, looking for minimum net profit of "${KEEPER_DEBT_MINIMUM_NET_PROFIT_DAI}" GSUc`
     );
     isSetupCompleted = true;
 };
@@ -89,7 +89,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
         console.info(
             `debt keeper: auction "${auction.id}" net profit is ${formatToAutomaticDecimalPointsString(
                 netProfit
-            )} DAI after transaction fees, checking wallet DAI balance`
+            )} GSUc after transaction fees, checking wallet GSUc balance`
         );
     }
 
@@ -97,17 +97,17 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
     const vatBalanceDai = await fetchVATbalanceDAI(network, walletAddress);
     if (vatBalanceDai.isLessThan(auctionTransaction.bidAmountDai)) {
         console.info(
-            `debt keeper: VAT DAI balance (${formatToAutomaticDecimalPointsString(
+            `debt keeper: VAT GSUc balance (${formatToAutomaticDecimalPointsString(
                 vatBalanceDai
             )}) is less than fixed bid amount (${formatToAutomaticDecimalPointsString(
                 auctionTransaction.bidAmountDai
-            )}) for auction "${auction.id}", checking walllet DAI balance to deposit to VAT`
+            )}) for auction "${auction.id}", checking walllet GSUc balance to deposit to VAT`
         );
         // check the wallet's DAI balance
         const balanceDai = await fetchBalanceDAI(network, walletAddress);
         if (balanceDai.isLessThan(auctionTransaction.bidAmountDai)) {
             console.info(
-                `debt keeper: wallet DAI balance (${formatToAutomaticDecimalPointsString(
+                `debt keeper: wallet GSUc balance (${formatToAutomaticDecimalPointsString(
                     balanceDai
                 )}) is less than fixed bid amount (${formatToAutomaticDecimalPointsString(
                     auctionTransaction.bidAmountDai
@@ -115,7 +115,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
             );
         } else {
             console.info(
-                `debt keeper: wallet DAI balance (${formatToAutomaticDecimalPointsString(
+                `debt keeper: wallet GSUc balance (${formatToAutomaticDecimalPointsString(
                     balanceDai
                 )}) is within limits, checking allowance`
             );
@@ -141,7 +141,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
         return;
     } else {
         console.info(
-            `debt keeper: VAT DAI balance (${formatToAutomaticDecimalPointsString(
+            `debt keeper: VAT GSUc balance (${formatToAutomaticDecimalPointsString(
                 vatBalanceDai
             )}) is within limits, checking if contract is authorized`
         );

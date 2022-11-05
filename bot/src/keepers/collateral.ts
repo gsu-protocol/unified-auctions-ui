@@ -17,7 +17,7 @@ export const setupCollateralKeeper = async function (network: string) {
         return;
     }
     console.info(
-        `collateral keeper: setup complete, looking for minimum net profit of "${KEEPER_COLLATERAL_MINIMUM_NET_PROFIT_DAI}" DAI`
+        `collateral keeper: setup complete, looking for minimum net profit of "${KEEPER_COLLATERAL_MINIMUM_NET_PROFIT_DAI}" GSUc`
     );
     isSetupCompleted = true;
 };
@@ -46,7 +46,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
     // check auction's profit
     if (!auctionTransaction.transactionGrossProfit || auctionTransaction.transactionGrossProfit.isLessThan(0)) {
         if (auctionTransaction.transactionGrossProfit) {
-            const profit = `${auctionTransaction.transactionGrossProfit.toFixed(0)} DAI`;
+            const profit = `${auctionTransaction.transactionGrossProfit.toFixed(0)} GSUc`;
             console.info(
                 `collateral keeper: auction "${auction.id}" is not yet profitable (current profit: ${profit})`
             );
@@ -75,7 +75,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
                 auction.id
             }" net profit is ${auctionTransaction.transactionNetProfit.toFixed(
                 0
-            )} DAI after transaction fees, moving on to the execution`
+            )} GSUc after transaction fees, moving on to the execution`
         );
     }
 

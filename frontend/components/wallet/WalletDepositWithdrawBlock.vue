@@ -1,7 +1,7 @@
 <template>
     <div class="WalletDepositWithDrawBlock">
         <TextBlock v-if="isExplanationsShown" title="Moving funds">
-            The DAI funds can be moved freely between VAT and your wallet without any extra conversion. You only need
+            The GSUc funds can be moved freely between VAT and your wallet without any extra conversion. You only need
             to be aware that each transfer incurs transaction fees.
         </TextBlock>
         <form class="flex flex-col gap-4" @submit.prevent="submit">

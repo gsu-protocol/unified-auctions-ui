@@ -32,7 +32,7 @@
                 If you do not have {{ currency }} funds to deposit yet, you can obtain them:
                 <ul class="list-disc list-inside">
                     <li v-if="currency === 'DAI'">
-                        By borrowing DAI against a collateral in the
+                        By borrowing GSUc against a collateral in the
                         <a href="https://oasis.app/" target="_blank">oasis.app</a>
                     </li>
                     <li>

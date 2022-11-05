@@ -3,11 +3,11 @@
         <template #title>{{ currentStateAndTitle.title }}</template>
         <TextBlock>
             <div class="flex justify-between">
-                <span>DAI amount in the wallet</span>
+                <span>GSUc amount in the wallet</span>
                 <format-currency v-if="walletDai" :value="walletDai" currency="DAI" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
             <div class="flex justify-between">
@@ -15,7 +15,7 @@
                 <format-currency v-if="walletVatDai" :value="walletVatDai" currency="DAI" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
             <div class="flex justify-between">
@@ -23,7 +23,7 @@
                 <format-currency v-if="minimumDepositDai" :value="minimumDepositDai" currency="DAI" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
         </TextBlock>
@@ -39,7 +39,7 @@
                 :is-loading="isLoading"
                 @click="$emit('manageVat')"
             >
-                Manage DAI in VAT
+                Manage GSUc in VAT
             </BaseButton>
         </div>
     </BasePanel>

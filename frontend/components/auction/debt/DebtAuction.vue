@@ -134,7 +134,7 @@
                     <Tooltip :title="auctionError && auctionError.error" placement="top">
                         <div>
                             <Button :disabled="!!auctionError" type="primary" class="w-60 mb-4" @click="$emit('bid')">
-                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using DAI' }}
+                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using GSUc' }}
                             </Button>
                         </div>
                     </Tooltip>
