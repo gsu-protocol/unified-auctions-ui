@@ -11,9 +11,6 @@ export default {
 
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-    server: {
-        port: 9080,
-    },
     env: {
         RPC_URL: process.env.RPC_URL,
         DEMO_MODE: process.env.DEMO_MODE || false,
@@ -23,7 +20,6 @@ export default {
         STAGING_BANNER_URL: process.env.STAGING_BANNER_URL || undefined,
         HEAPIO_ID: process.env.HEAPIO_ID || undefined,
     },
-
     publicRuntimeConfig: {
         TERMS_AND_CONDITIONS_URL: '/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
     },
