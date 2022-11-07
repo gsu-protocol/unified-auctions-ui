@@ -19,6 +19,7 @@ export default {
         GITHUB_URL: pkg.repository.url,
         STAGING_BANNER_URL: process.env.STAGING_BANNER_URL || undefined,
         HEAPIO_ID: process.env.HEAPIO_ID || undefined,
+        CHAINLOG_ADDRESS: process.env.CHAINLOG_ADDRESS,
     },
     publicRuntimeConfig: {
         TERMS_AND_CONDITIONS_URL: '/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
