@@ -2,7 +2,7 @@
     <BasePanel :current-state="currentStateAndTitle.name" class="WalletDaiDepositCheckPanel">
         <template #title>{{ currentStateAndTitle.title }}</template>
         <div v-if="isExplanationsShown">
-            <TextBlock v-if="currency === 'DAI'">
+            <TextBlock v-if="currency === 'GSUc'">
                 To bid on an auction with GSUc, first funds need to be deposited to the
                 <Explain text="VAT">
                     The
@@ -15,7 +15,7 @@
                 >. The following transaction authorizes the wallet address to deposit into the VAT. It is a
                 prerequisite to participate in the auction.
             </TextBlock>
-            <TextBlock v-if="currency === 'MKR'">
+            <TextBlock v-if="currency === 'GSUp'">
                 In order to move funds the Flap contract address needs to be authorized. Hence the following
                 transaction authorizes Flap to withdraw GSUp from the wallet.
             </TextBlock>
@@ -90,7 +90,7 @@ export default Vue.extend({
         },
         currency: {
             type: String,
-            default: 'DAI',
+            default: 'GSUc',
         },
     },
     computed: {

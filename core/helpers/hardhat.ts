@@ -100,5 +100,5 @@ export const addMkrToBalance = async (mkrAmount: BigNumber, walletAddress: strin
     await overwriteUintMapping('MCD_GOV', '0x1', walletAddress, mkrAmount.shiftedBy(MKR_NUMBER_OF_DIGITS));
     const mkrBalanceHex = await mkrContract.balanceOf(walletAddress);
     const mkrBalance = new BigNumber(mkrBalanceHex._hex).shiftedBy(-MKR_NUMBER_OF_DIGITS);
-    console.info(`New MKR balance: ${mkrBalance}`);
+    console.info(`New GSUp balance: ${mkrBalance}`);
 };

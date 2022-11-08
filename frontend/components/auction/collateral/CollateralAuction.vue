@@ -37,7 +37,7 @@
                             <td>Auction Price</td>
                             <td>
                                 <template v-if="auction.isActive">
-                                    <format-currency :value="auction.approximateUnitPrice" currency="DAI" />
+                                    <format-currency :value="auction.approximateUnitPrice" currency="GSUc" />
                                     per
                                     <format-currency :currency="auction.collateralSymbol" />
                                     <PriceDropAnimation :auction="auction" />
@@ -49,7 +49,7 @@
                             <td>Price On Uniswap</td>
                             <td>
                                 <template v-if="auction.isActive && auction.marketUnitPrice">
-                                    <format-currency :value="auction.marketUnitPrice" currency="DAI" /> per
+                                    <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per
                                     <format-currency :currency="auction.collateralSymbol" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
@@ -102,7 +102,7 @@
                             <tr class="bg-gray-100 dark:bg-gray-800">
                                 <td>Auction Debt</td>
                                 <td>
-                                    <format-currency :value="auction.debtDAI" currency="DAI" />
+                                    <format-currency :value="auction.debtDAI" currency="GSUc" />
                                 </td>
                             </tr>
                             <tr class="bg-gray-100 dark:bg-gray-800">
@@ -172,8 +172,8 @@
                         <format-address type="address" :value="auction.vaultAddress" shorten disable /> contains
                         <format-currency :value="auction.collateralAmount" :currency="auction.collateralSymbol" />.
                         <span v-if="auction.isActive || auction.isFinished">
-                            Currently, it is sold for <format-currency :value="auction.totalPrice" currency="DAI" />.
-                            This equals <format-currency :value="auction.approximateUnitPrice" currency="DAI" /> per
+                            Currently, it is sold for <format-currency :value="auction.totalPrice" currency="GSUc" />.
+                            This equals <format-currency :value="auction.approximateUnitPrice" currency="GSUc" /> per
                             <format-currency :currency="auction.collateralSymbol" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> than if you buy
                             <format-currency :currency="auction.collateralSymbol" /> on another exchange platform such
@@ -185,8 +185,8 @@
                     </template>
                     <template v-else>
                         This auction was finished at {{ auction.endDate.toUTCString() }} at a closing auction price of
-                        <format-currency :value="auction.approximateUnitPrice" currency="DAI" /> (meaning
-                        <format-currency :value="auction.approximateUnitPrice" currency="DAI" />
+                        <format-currency :value="auction.approximateUnitPrice" currency="GSUc" /> (meaning
+                        <format-currency :value="auction.approximateUnitPrice" currency="GSUc" />
                         per <format-currency :currency="auction.collateralSymbol" /> on average) after
                         <time-till :date="auction.endDate" />.
                     </template>

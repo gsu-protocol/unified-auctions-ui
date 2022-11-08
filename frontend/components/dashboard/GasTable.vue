@@ -4,7 +4,7 @@
             <tr>
                 <th class="Heading">Fee Parameter</th>
                 <th class="Heading">Value</th>
-                <th class="Heading">Value in DAI</th>
+                <th class="Heading">Value in GSUc</th>
             </tr>
             <tbody>
                 <tr>
@@ -83,7 +83,7 @@
                         <FormatCurrency
                             v-if="transactionFees"
                             :value="transactionFees.swapTransactionFeeDAI"
-                            currency="DAI"
+                            currency="GSUc"
                         />
                         <span v-else class="UnknownValue"> Unknown </span>
                     </td>
@@ -104,7 +104,7 @@
                         <FormatCurrency
                             v-if="transactionFees"
                             :value="transactionFees.authTransactionFeeDAI"
-                            currency="DAI"
+                            currency="GSUc"
                         />
                         <span v-else class="UnknownValue"> Unknown </span>
                     </td>
@@ -125,7 +125,7 @@
                         <FormatCurrency
                             v-if="transactionFees"
                             :value="transactionFees.restartTransactionFeeDAI"
-                            currency="DAI"
+                            currency="GSUc"
                         />
                         <span v-else class="UnknownValue"> Unknown </span>
                     </td>

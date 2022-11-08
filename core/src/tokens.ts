@@ -4,10 +4,10 @@ import { fetchContractAddressByNetwork } from './addresses';
 
 export const getTokenAddressByNetworkAndSymbol = async function (network: string, symbol: string): Promise<string> {
     let tokenName = symbol.toUpperCase();
-    if (tokenName === 'DAI') {
+    if (tokenName === 'DAI' || tokenName === 'GSUc') {
         tokenName = 'MCD_DAI';
     }
-    if (tokenName === 'MKR') {
+    if (tokenName === 'MKR' || tokenName === 'GSUp') {
         tokenName = 'MCD_GOV';
     }
     const address = await fetchContractAddressByNetwork(network, tokenName);
@@ -19,10 +19,10 @@ export const getTokenAddressByNetworkAndSymbol = async function (network: string
 
 export const getTokenDecimalsBySymbol = function (symbol: string): number {
     const tokenName = symbol.toUpperCase();
-    if (tokenName === 'DAI') {
+    if (tokenName === 'DAI' || tokenName === 'GSUc') {
         return DAI_NUMBER_OF_DIGITS;
     }
-    if (tokenName === 'MKR') {
+    if (tokenName === 'MKR' || tokenName === 'GSUp') {
         return MKR_NUMBER_OF_DIGITS;
     }
     const collateral = getCollateralConfigBySymbol(tokenName);

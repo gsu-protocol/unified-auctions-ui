@@ -25,7 +25,7 @@
                     <tr>
                         <td>GSUc amount in wallet</td>
                         <td>
-                            <FormatCurrency v-if="walletBalances" :value="walletBalances.walletDAI" currency="DAI" />
+                            <FormatCurrency v-if="walletBalances" :value="walletBalances.walletDAI" currency="GSUc" />
                             <span v-else class="opacity-50">Unknown</span>
                         </td>
                     </tr>
@@ -35,7 +35,7 @@
                             <FormatCurrency
                                 v-if="walletBalances"
                                 :value="walletBalances.walletVatDAI"
-                                currency="DAI"
+                                currency="GSUc"
                             />
                             <span v-else class="opacity-50">Unknown</span>
                         </td>

@@ -116,7 +116,7 @@ export default Vue.extend({
                 // {
                 //     title: 'Maker Auction (surplus)',
                 //     description:
-                //         'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
+                //         'Web tool that supports participation in surplus auctions by bidding on Dai with own GSUp',
                 //     links: {
                 //         source: 'https://github.com/makerdao/auctions-ui',
                 //     },
@@ -125,7 +125,7 @@ export default Vue.extend({
                 // {
                 //     title: 'Maker Auction (debt)',
                 //     description:
-                //         'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
+                //         'Web tool that supports participation in debt auctions by bidding on GSUp with own Dai',
                 //     links: {
                 //         source: 'https://github.com/makerdao/auctions-ui',
                 //     },

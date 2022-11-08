@@ -17,7 +17,7 @@
             <div>Auction Price</div>
             <div class="RightInfo">
                 <PriceDropAnimation :auction="auctionTransaction" class="mr-1" />
-                <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="DAI" /> per
+                <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="GSUc" /> per
                 <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div>Price On Uniswap</div>
             <div class="RightInfo">
                 <template v-if="auctionTransaction.isActive && auctionTransaction.marketUnitPrice">
-                    <FormatCurrency :value="auctionTransaction.marketUnitPrice" currency="DAI" /> per
+                    <FormatCurrency :value="auctionTransaction.marketUnitPrice" currency="GSUc" /> per
                     <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
@@ -53,7 +53,7 @@
                     v-if="auctionTransaction.transactionGrossProfit"
                     show-sign
                     :value="auctionTransaction.transactionGrossProfit"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -75,7 +75,7 @@
                 <FormatCurrency
                     v-if="auctionTransaction.combinedSwapFeesDAI"
                     :value="auctionTransaction.combinedSwapFeesDAI * -1"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -87,7 +87,7 @@
                     v-if="auctionTransaction.transactionNetProfit"
                     show-sign
                     :value="auctionTransaction.transactionNetProfit"
-                    currency="DAI"
+                    currency="GSUc"
                     class="font-extrabold"
                 />
                 <span v-else class="opacity-50">Unknown</span>

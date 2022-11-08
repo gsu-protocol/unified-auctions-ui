@@ -40,13 +40,13 @@
                         <tr>
                             <td>Auction Amount</td>
                             <td>
-                                <format-currency :value="auction.receiveAmountDAI" currency="DAI" />
+                                <format-currency :value="auction.receiveAmountDAI" currency="GSUc" />
                             </td>
                         </tr>
                         <tr>
                             <td>Highest Bid</td>
                             <td v-if="withBids">
-                                <format-currency :value="auction.bidAmountMKR" currency="MKR" />
+                                <format-currency :value="auction.bidAmountMKR" currency="GSUp" />
                             </td>
                             <td v-else>
                                 <span class="opacity-50">No bids yet</span>
@@ -56,8 +56,8 @@
                             <td>Auction Price</td>
                             <td>
                                 <template v-if="withBids">
-                                    <format-currency :value="auction.unitPrice" :decimal-places="6" currency="MKR" />
-                                    per <format-currency currency="DAI" />
+                                    <format-currency :value="auction.unitPrice" :decimal-places="6" currency="GSUp" />
+                                    per <format-currency currency="GSUc" />
                                 </template>
                                 <span v-else class="opacity-50">No bids yet</span>
                             </td>
@@ -69,10 +69,10 @@
                                     <format-currency
                                         :value="auction.marketUnitPrice"
                                         :decimal-places="6"
-                                        currency="MKR"
+                                        currency="GSUp"
                                     />
                                     per
-                                    <format-currency currency="DAI" />
+                                    <format-currency currency="GSUc" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
@@ -111,17 +111,17 @@
                 <TextBlock class="mt-4">
                     <template v-if="error !== 'This auction is finished'">
                         The auctioned surplus auction contains
-                        <format-currency :value="auction.receiveAmountDAI" currency="DAI" />.
+                        <format-currency :value="auction.receiveAmountDAI" currency="GSUc" />.
                         <span v-if="requiresRestart">
                             This auction requires to be restarted in order to determine prices properly.
                         </span>
                         <span v-else>
                             The highest bid for it is
-                            <format-currency :value="auction.bidAmountMKR" currency="MKR" />. This equals
-                            <format-currency :value="auction.unitPrice" currency="MKR" />
-                            per <format-currency currency="DAI" />, or approximately
+                            <format-currency :value="auction.bidAmountMKR" currency="GSUp" />. This equals
+                            <format-currency :value="auction.unitPrice" currency="GSUp" />
+                            per <format-currency currency="GSUc" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> than if you
-                            exchange <format-currency currency="MKR" /> to <format-currency currency="DAI" /> on an
+                            exchange <format-currency currency="GSUp" /> to <format-currency currency="GSUc" /> on an
                             exchange platform such as Uniswap.
                         </span>
                     </template>
@@ -133,7 +133,7 @@
                     <Tooltip :title="auctionError && auctionError.error" placement="top">
                         <div>
                             <Button :disabled="!!auctionError" type="primary" class="w-60 mb-4" @click="$emit('bid')">
-                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using MKR' }}
+                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using GSUp' }}
                             </Button>
                         </div>
                     </Tooltip>

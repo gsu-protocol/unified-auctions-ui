@@ -13,18 +13,18 @@
             class="AuctionsTable relative overflow-visible"
         >
             <div slot="auctionAmount" slot-scope="receiveAmountDAI">
-                <format-currency v-if="receiveAmountDAI" :value="receiveAmountDAI" currency="DAI" />
+                <format-currency v-if="receiveAmountDAI" :value="receiveAmountDAI" currency="GSUc" />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
             <div slot="bidAmountMKR" slot-scope="bidAmountMKR">
                 <template v-if="bidAmountMKR && !bidAmountMKR.isEqualTo(0)">
-                    <format-currency :value="bidAmountMKR" currency="MKR" />
+                    <format-currency :value="bidAmountMKR" currency="GSUp" />
                 </template>
                 <span v-else class="opacity-50">No bids yet</span>
             </div>
             <div slot="unitPrice" slot-scope="unitPrice">
                 <template v-if="unitPrice && !unitPrice.isEqualTo(0)">
-                    <format-currency :value="unitPrice" currency="MKR" /> per <format-currency currency="DAI" />
+                    <format-currency :value="unitPrice" currency="GSUp" /> per <format-currency currency="GSUc" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
             </div>

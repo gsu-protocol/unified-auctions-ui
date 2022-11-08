@@ -209,7 +209,6 @@ export const enrichSurplusAuction = async (
     let marketUnitPrice = await getMarketPriceMkr(network, auction.bidAmountMKR);
     const marketUnitPriceToUnitPriceRatio = unitPrice.minus(marketUnitPrice).dividedBy(marketUnitPrice);
     const fees = await getSurplusTransactionFees(network);
-    console.log("fees", fees);
     return {
         ...auction,
         ...fees,

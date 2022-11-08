@@ -31,7 +31,7 @@
             <TextBlock v-if="isExplanationsShown">
                 If you do not have {{ currency }} funds to deposit yet, you can obtain them:
                 <ul class="list-disc list-inside">
-                    <li v-if="currency === 'DAI'">
+                    <li v-if="currency === 'GSUc'">
                         By borrowing GSUc against a collateral in the
                         <a href="https://oasis.app/" target="_blank">oasis.app</a>
                     </li>
@@ -93,7 +93,7 @@ export default Vue.extend({
         },
         currency: {
             type: String,
-            default: 'DAI',
+            default: 'GSUc',
         },
         disabled: {
             type: Boolean,

@@ -26,7 +26,7 @@
                 @click="$emit('withdrawAllDaiFromVat')"
             >
                 <span v-if="hasDaiToWithdraw">
-                    Withdraw <FormatCurrency :value="daiVatBalance" currency="DAI" /> from VAT
+                    Withdraw <FormatCurrency :value="daiVatBalance" currency="GSUc" /> from VAT
                 </span>
                 <span v-else> Nothing to withdraw yet </span>
             </BaseButton>

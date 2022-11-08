@@ -48,7 +48,7 @@ export default Vue.extend({
         },
         currency: {
             type: String,
-            default: 'DAI',
+            default: 'GSUc',
         },
         fallbackValue: {
             type: Object as Vue.PropType<BigNumber>,

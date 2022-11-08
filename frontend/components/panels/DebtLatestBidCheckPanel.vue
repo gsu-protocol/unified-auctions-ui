@@ -15,7 +15,7 @@
                 asked for
             </span>
             <span v-if="!wasThereAnyBids" class="text-gray-400"> Unknown </span>
-            <FormatCurrency v-else :value="auction.receiveAmountMKR" currency="MKR" />
+            <FormatCurrency v-else :value="auction.receiveAmountMKR" currency="GSUp" />
         </div>
 
         <div class="flex justify-end gap-5">
@@ -29,8 +29,8 @@
                 <span v-if="isBidding"> Bidding... </span>
                 <span v-else-if="isLoading"> Loading... </span>
                 <span v-else-if="auction"
-                    >Bid <FormatCurrency :value="auction.bidAmountDai" currency="DAI" /> for
-                    <FormatCurrency :value="desiredMkrAmount" currency="MKR"
+                    >Bid <FormatCurrency :value="auction.bidAmountDai" currency="GSUc" /> for
+                    <FormatCurrency :value="desiredMkrAmount" currency="GSUp"
                 /></span>
                 <span v-else>Unknown</span>
             </BaseButton>

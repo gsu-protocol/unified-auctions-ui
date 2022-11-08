@@ -9,14 +9,14 @@
         <div class="flex justify-between">
             <div>Auction fixed bid</div>
             <div>
-                <FormatCurrency v-if="auction.bidAmountDai" :value="auction.bidAmountDai" currency="DAI" />
+                <FormatCurrency v-if="auction.bidAmountDai" :value="auction.bidAmountDai" currency="GSUc" />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
         </div>
         <div class="flex justify-between">
             <div>Current compensation</div>
             <div>
-                <FormatCurrency v-if="auction.receiveAmountMKR" :value="auction.receiveAmountMKR" currency="MKR" />
+                <FormatCurrency v-if="auction.receiveAmountMKR" :value="auction.receiveAmountMKR" currency="GSUp" />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 :disabled="!isActive"
                 @click="setInputBidAmount(undefined)"
             >
-                <FormatCurrency :value="auction.nextMaximumLotReceived" currency="MKR" />
+                <FormatCurrency :value="auction.nextMaximumLotReceived" currency="GSUp" />
             </button>
             <span v-else class="opacity-50">Unknown</span>
         </div>
@@ -40,7 +40,7 @@
                         :input-bid-amount.sync="desiredMkrAmount"
                         :min-value="auction.nextMaximumLotReceived"
                         :fallback-value="auction.nextMaximumLotReceived"
-                        currency="MKR"
+                        currency="GSUp"
                         :disabled="!isActive"
                         :validator="validator"
                     />
@@ -50,7 +50,11 @@
         <div class="flex justify-between">
             <div>Combined Transaction Fees</div>
             <div>
-                <FormatCurrency v-if="auction.combinedBidFeesDai" :value="auction.combinedBidFeesDai" currency="DAI" />
+                <FormatCurrency
+                    v-if="auction.combinedBidFeesDai"
+                    :value="auction.combinedBidFeesDai"
+                    currency="GSUc"
+                />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
         </div>
@@ -58,7 +62,7 @@
             <div>Price on Uniswap</div>
             <div>
                 <span v-if="isActive && auction.marketUnitPrice">
-                    <format-currency :value="auction.marketUnitPrice" currency="DAI" /> per MKR
+                    <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per GSUp
                 </span>
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -67,7 +71,7 @@
             <div>Current price</div>
             <div>
                 <span v-if="isActive && currentPrice">
-                    <format-currency :value="currentPrice" currency="DAI" /> per MKR
+                    <format-currency :value="currentPrice" currency="GSUc" /> per GSUp
                 </span>
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -76,7 +80,7 @@
             <div>Price after the bid</div>
             <div>
                 <span v-if="unitPriceAfterBid && isActive && !isDesiredMkrAmountNaN">
-                    <format-currency :value="unitPriceAfterBid" currency="DAI" /> per MKR
+                    <format-currency :value="unitPriceAfterBid" currency="GSUc" /> per GSUp
                 </span>
                 <span v-else class="opacity-50">Unknown</span>
             </div>
