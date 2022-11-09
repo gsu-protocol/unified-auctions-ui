@@ -7,7 +7,7 @@ interface State {
 
 export const state = (): State => ({
     isExplanationsShown: true,
-    isDarkMode: undefined,
+    isDarkMode: false,
 });
 
 export const getters = {

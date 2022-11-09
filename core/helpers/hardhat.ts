@@ -92,7 +92,7 @@ export const addDaiToBalance = async (daiAmount: BigNumber, walletAddress: strin
     await overwriteUintMapping('MCD_DAI', '0x2', walletAddress, daiAmount.shiftedBy(DAI_NUMBER_OF_DIGITS));
     const daiBalanceHex = await daiContract.balanceOf(walletAddress);
     const daiBalance = new BigNumber(daiBalanceHex._hex).shiftedBy(-DAI_NUMBER_OF_DIGITS);
-    console.info(`New DAI balance: ${daiBalance}`);
+    console.info(`New GSUc balance: ${daiBalance}`);
 };
 
 export const addMkrToBalance = async (mkrAmount: BigNumber, walletAddress: string) => {
@@ -100,5 +100,5 @@ export const addMkrToBalance = async (mkrAmount: BigNumber, walletAddress: strin
     await overwriteUintMapping('MCD_GOV', '0x1', walletAddress, mkrAmount.shiftedBy(MKR_NUMBER_OF_DIGITS));
     const mkrBalanceHex = await mkrContract.balanceOf(walletAddress);
     const mkrBalance = new BigNumber(mkrBalanceHex._hex).shiftedBy(-MKR_NUMBER_OF_DIGITS);
-    console.info(`New MKR balance: ${mkrBalance}`);
+    console.info(`New GSUp balance: ${mkrBalance}`);
 };

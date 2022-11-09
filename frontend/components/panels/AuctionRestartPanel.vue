@@ -17,7 +17,7 @@
                 consist of two positions:
                 <ul class="list-inside list-decimal">
                     <li class="my-2">
-                        An on a per-collateral type basis, constant amount of DAI →
+                        An on a per-collateral type basis, constant amount of GSUc →
                         <a
                             href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
                             target="_blank"
@@ -26,7 +26,8 @@
                         </a>
                     </li>
                     <li class="my-2">
-                        An amount of DAI that scales linearly with the amount of debt associated with the liquidation →
+                        An amount of GSUc that scales linearly with the amount of debt associated with the liquidation
+                        →
                         <a
                             href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
                             target="_blank"

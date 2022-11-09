@@ -11,9 +11,13 @@
             "
         >
             <li>
-                <NuxtLink class="FooterLink" :to="termsAndConditionsURL" target="_blank">
+                <a
+                    class="FooterLink"
+                    href="https://drive.google.com/file/d/12AIf4cBp7bmkgdyh6D25y4QnD9-3bJ8Y/view?usp=sharing"
+                    target="_blank"
+                >
                     Terms & Conditions
-                </NuxtLink>
+                </a>
             </li>
             <li>
                 <NuxtLink class="FooterLink" to="/privacy">Privacy</NuxtLink>
@@ -27,7 +31,7 @@
                 >
             </li>
             <li>
-                <a class="FooterLink" href="https://github.com/makerdao-sas/Roadmap" target="_blank"> Roadmap </a>
+                <a class="FooterLink" href=""> Roadmap </a>
             </li>
             <li>
                 <NuxtLink class="FooterLink" :to="`/dashboard?network=${pageNetwork}`">Dashboard</NuxtLink>
@@ -38,10 +42,12 @@
             <li class="flex items-center space-x-4">
                 <span class="FooterLink">Keep in touch:</span>
                 <a :href="githubURL" target="_blank"><icon type="github" class="text-xl" /></a>
-                <a href="https://twitter.com/MakerDAO_SAS" target="_blank"><icon type="twitter" class="text-xl" /></a>
-                <a href="https://forum.makerdao.com/c/core-units/sidestream-core-unit/58" target="_blank">
+                <a href="https://twitter.com/GSUcoin" target="_blank"><icon type="twitter" class="text-xl" /></a>
+                <!--
+                    //@GSUpro remove chat link
+                     <a href="https://forum.makerdao.com/c/core-units/sidestream-core-unit/58" target="_blank">
                     <DiscourseIcon class="w-5 h-5 mt-1" />
-                </a>
+                </a> -->
             </li>
         </ul>
     </footer>
@@ -50,11 +56,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Icon } from 'ant-design-vue';
-import DiscourseIcon from '~/assets/icons/discourse.svg';
+// import DiscourseIcon from '~/assets/icons/discourse.svg';
 
 export default Vue.extend({
     name: 'Footer',
-    components: { Icon, DiscourseIcon },
+    components: {
+        Icon,
+        // DiscourseIcon
+    },
     props: {
         type: {
             type: String,

@@ -2,8 +2,8 @@
     <BasePanel :current-state="currentStateAndTitle.name">
         <template #title>{{ currentStateAndTitle.title }}</template>
         <TextBlock v-if="isExplanationsShown">
-            After the auction is collected, DAI will end up in the highest bidder's VAT account. One more transaction
-            is required to move DAI from VAT to the wallet.
+            After the auction is collected, GSUc will end up in the highest bidder's VAT account. One more transaction
+            is required to move GSUc from VAT to the wallet.
         </TextBlock>
         <div class="my-4">
             <WalletAuthorizationCheckPanel
@@ -17,7 +17,7 @@
         </div>
         <div class="flex justify-end mt-2 gap-5">
             <BaseButton :disabled="isWithdrawing" :is-loading="isRefreshing" @click="$emit('refreshWallet')">
-                Refresh DAI balance in VAT
+                Refresh GSUc balance in VAT
             </BaseButton>
             <BaseButton
                 type="primary"
@@ -26,7 +26,7 @@
                 @click="$emit('withdrawAllDaiFromVat')"
             >
                 <span v-if="hasDaiToWithdraw">
-                    Withdraw <FormatCurrency :value="daiVatBalance" currency="DAI" /> from VAT
+                    Withdraw <FormatCurrency :value="daiVatBalance" currency="GSUc" /> from VAT
                 </span>
                 <span v-else> Nothing to withdraw yet </span>
             </BaseButton>
@@ -92,18 +92,18 @@ export default Vue.extend({
             if (!this.hasDaiToWithdraw) {
                 return {
                     name: 'inactive',
-                    title: `No DAI to withdraw yet`,
+                    title: `No GSUc to withdraw yet`,
                 };
             }
             if (this.hasDaiToWithdraw && this.auctionState !== 'collected') {
                 return {
                     name: 'correct',
-                    title: `There is DAI to collect from VAT`,
+                    title: `There is GSUc to collect from VAT`,
                 };
             }
             return {
                 name: 'notice',
-                title: `Withdraw DAI from VAT`,
+                title: `Withdraw GSUc from VAT`,
             };
         },
         isWalletConnected(): boolean {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <StagingBanner v-if="stagingBannerUrl" :url="stagingBannerUrl" />
-        <header class="bg-primary dark:bg-primary-dark">
+        <header class="bg-white">
             <nav class="flex items-center py-2 px-4 md:px-10">
                 <HeaderLogo :network="network" :page-name="pageName" />
 
@@ -41,7 +41,7 @@
                             @openManageCollateralModal="$emit('openManageCollateralModal')"
                         />
 
-                        <ThemeSwitcher :dark-mode="darkMode" @update="$emit('update:darkMode', $event)" />
+                        <!-- <ThemeSwitcher :dark-mode="darkMode" @update="$emit('update:darkMode', $event)" /> -->
                     </div>
                 </div>
             </nav>
@@ -57,14 +57,14 @@ import HeaderLogo from './HeaderLogo.vue';
 import BaseSwitch from '~/components/common/inputs/BaseSwitch.vue';
 import NetworkSelector from '~/components/layout/NetworkSelector.vue';
 import WalletSelector from '~/components/layout/WalletSelector.vue';
-import ThemeSwitcher from '~/components/layout/ThemeSwitcher.vue';
+// import ThemeSwitcher from '~/components/layout/ThemeSwitcher.vue';
 
 export default Vue.extend({
     name: 'Header',
     components: {
         HeaderLogo,
         StagingBanner,
-        ThemeSwitcher,
+        // ThemeSwitcher,
         BaseSwitch,
         NetworkSelector,
         WalletSelector,

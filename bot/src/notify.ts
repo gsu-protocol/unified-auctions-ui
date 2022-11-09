@@ -13,16 +13,16 @@ const generateNotificationTextSurplus = function (auction: SurplusAuctionActive)
     const url = `${process.env.FRONTEND_ORIGIN}/surplus/?network=${auction.network}&auction=${auction.id}`;
     return `Surplus auction with ${formatToAutomaticDecimalPointsString(
         auction.receiveAmountDAI
-    )} DAI just started. Follow the link to participate: ${url}`;
+    )} GSUc just started. Follow the link to participate: ${url}`;
 };
 
 const generateNotificationTextDebt = function (auction: DebtAuctionActive): string {
     const url = `${process.env.FRONTEND_ORIGIN}/debt/?network=${auction.network}&auction=${auction.id}`;
     return `Debt auction with fixed bid amount of ${formatToAutomaticDecimalPointsString(
         auction.bidAmountDai
-    )} DAI and current compensation of ${formatToAutomaticDecimalPointsString(
+    )} GSUc and current compensation of ${formatToAutomaticDecimalPointsString(
         auction.receiveAmountMKR
-    )} MKR just started. Follow the link to participate: ${url}`;
+    )} GSUp just started. Follow the link to participate: ${url}`;
 };
 
 export const notifyCollateral = async function (auction: AuctionInitialInfo) {

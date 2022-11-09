@@ -20,7 +20,7 @@ export const setupSurplusKeeper = async function (network: string) {
         return;
     }
     console.info(
-        `surplus keeper: setup complete, looking for minimum net profit of "${KEEPER_SURPLUS_MINIMUM_NET_PROFIT_DAI}" DAI`
+        `surplus keeper: setup complete, looking for minimum net profit of "${KEEPER_SURPLUS_MINIMUM_NET_PROFIT_DAI}" GSUc`
     );
     isSetupCompleted = true;
 };
@@ -77,15 +77,15 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
         console.info(
             `surplus keeper: auction "${auction.id}" net profit is ${formatToAutomaticDecimalPointsString(
                 netProfit
-            )} DAI after transaction fees, checking wallet MKR balance`
+            )} GSUc after transaction fees, checking wallet GSUp balance`
         );
     }
 
-    // check the wallet's MKR balance
+    // check the wallet's GSUp balance
     const balanceMkr = await fetchBalanceMKR(network, walletAddress);
     if (balanceMkr.isLessThan(auctionTransaction.nextMinimumBid)) {
         console.info(
-            `surplus keeper: wallet MKR balance (${formatToAutomaticDecimalPointsString(
+            `surplus keeper: wallet GSUp balance (${formatToAutomaticDecimalPointsString(
                 balanceMkr
             )}) is less than min bid amount (${formatToAutomaticDecimalPointsString(
                 auctionTransaction.nextMinimumBid
@@ -93,24 +93,24 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
         );
         return;
     } else {
-        console.info('surplus keeper: wallet MKR balance is within limits, checking wallet MKR allowance');
+        console.info('surplus keeper: wallet GSUp balance is within limits, checking wallet GSUp allowance');
     }
 
-    // check the wallet's MKR allowance
+    // check the wallet's GSUp allowance
     const allowanceMkr = await fetchAllowanceAmountMKR(network, walletAddress);
     if (allowanceMkr.isLessThan(auctionTransaction.nextMinimumBid)) {
         console.info(
-            `surplus keeper: wallet MKR allowance (${formatToAutomaticDecimalPointsString(
+            `surplus keeper: wallet GSUp allowance (${formatToAutomaticDecimalPointsString(
                 allowanceMkr
             )}) is less than desired bid amount (${formatToAutomaticDecimalPointsString(
                 auctionTransaction.nextMinimumBid
-            )}), increasing wallet MKR allowance`
+            )}), increasing wallet GSUp allowance`
         );
         await setAllowanceAmountMKR(network, walletAddress, auctionTransaction.nextMinimumBid);
         await checkAndParticipateIfPossible(network, auction);
         return;
     } else {
-        console.info('surplus keeper: wallet MKR allowance is within limits, moving on to execution');
+        console.info('surplus keeper: wallet GSUp allowance is within limits, moving on to execution');
     }
 
     // bid on the Auction

@@ -45,7 +45,7 @@
                 :disabled="!isWalletConnected || !isActive || isHighestBidder"
                 :allowance-amount="allowanceMKR"
                 :desired-amount="inputBidAmount || auction.nextMinimumBid"
-                currency="MKR"
+                currency="GSUp"
                 :is-loading="isSettingAllowance"
                 :is-correct.sync="isAllowanceAmountCheckPassed"
                 @setAllowanceAmount="$emit('setAllowanceAmount', $event)"

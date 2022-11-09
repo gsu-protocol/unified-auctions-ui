@@ -2,8 +2,8 @@ import pkg from './package.json';
 
 const PREVIEW_IMAGE = (process.env.FRONTEND_ORIGIN || '') + '/preview.jpeg';
 const SITE_TITLE = 'Unified Auctions';
-const SITE_DESCRIPTION = `The "${SITE_TITLE}" is the portal to all Maker Auctions related services. Easily interact with the Maker Protocol through streamlined interfaces, inform yourself about how the protocol works and receive updates on current auctions.`;
-const TWITTER_HANDLE = '@MakerDAO_SAS';
+const SITE_DESCRIPTION = `The "${SITE_TITLE}" is the portal to all GSU protocol Auctions related services. Easily interact with the GSU Protocol through streamlined interfaces, inform yourself about how the protocol works and receive updates on current auctions.`;
+const TWITTER_HANDLE = '@GSUcoin';
 
 export default {
     // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -11,7 +11,6 @@ export default {
 
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-
     env: {
         RPC_URL: process.env.RPC_URL,
         DEMO_MODE: process.env.DEMO_MODE || false,
@@ -20,8 +19,8 @@ export default {
         GITHUB_URL: pkg.repository.url,
         STAGING_BANNER_URL: process.env.STAGING_BANNER_URL || undefined,
         HEAPIO_ID: process.env.HEAPIO_ID || undefined,
+        CHAINLOG_ADDRESS: process.env.CHAINLOG_ADDRESS,
     },
-
     publicRuntimeConfig: {
         TERMS_AND_CONDITIONS_URL: '/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
     },
@@ -40,7 +39,7 @@ export default {
             { property: 'og:type', content: 'website' },
             { property: 'og:description', content: SITE_DESCRIPTION },
             { property: 'og:image', content: PREVIEW_IMAGE },
-            { name: 'theme-color', content: '#1aab9b' },
+            { name: 'theme-color', content: '#d42f5d' },
             { name: 'twitter:card', content: 'app' },
             { name: 'twitter:site', content: TWITTER_HANDLE },
             { name: 'twitter:title', content: SITE_TITLE },

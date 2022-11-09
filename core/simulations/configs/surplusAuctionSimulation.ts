@@ -16,7 +16,7 @@ const simulation: Simulation = {
             },
         },
         {
-            title: 'Add DAI and MKR to the wallet',
+            title: 'Add GSUc and GSUp to the wallet',
             entry: async () => {
                 await addDaiToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);
                 await addMkrToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);

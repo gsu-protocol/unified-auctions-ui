@@ -3,7 +3,7 @@ import BigNumber from './bignumber';
 import getContract from './contracts';
 import { WAD_NUMBER_OF_DIGITS } from './constants/UNITS';
 import { Contract } from 'ethers';
-import { MKR_NUMBER_OF_DIGITS, WAD } from './constants/UNITS';
+import { MKR_NUMBER_OF_DIGITS, WAD, RAD } from './constants/UNITS';
 import memoizee from 'memoizee';
 import getNetworkDate from './date';
 import { CompensationAuctionBase, DebtAuction, Notifier, CompensationAuctionTransactionFees } from './types';
@@ -173,7 +173,7 @@ export const fetchDebtAuctionByIndex = async (network: string, auctionIndex: num
     return {
         ...baseAuctionInfo,
         earliestEndDate,
-        bidAmountDai: new BigNumber(auctionData.bid._hex).div(WAD),
+        bidAmountDai: new BigNumber(auctionData.bid._hex).div(RAD),
         receiveAmountMKR: new BigNumber(auctionData.lot._hex).div(WAD),
         receiverAddress: auctionData.guy,
         auctionEndDate,

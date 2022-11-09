@@ -17,7 +17,7 @@
                 @click="$emit('bidWithDai')"
             >
                 <span>
-                    Bid <format-currency :value="transactionBidAmount" currency="DAI" /> for
+                    Bid <format-currency :value="transactionBidAmount" currency="GSUc" /> for
                     <format-currency
                         :value="amountToReceive || auctionTransaction.collateralAmount"
                         :currency="auctionTransaction.collateralSymbol"

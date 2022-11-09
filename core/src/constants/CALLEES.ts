@@ -9,11 +9,13 @@ const CALLEES: Record<string, CalleeAddresses | undefined> = {
         WstETHCurveUniv3Callee: '0xC2D837173592194131827775a6Cd88322a98C825',
         CurveLpTokenUniv3Callee: '0x71f2198849F3B1372EA90c079BD634928583f2d2',
         UniswapV3Callee: '0xdB9C76109d102d2A1E645dCa3a7E671EBfd8e11A',
+        GSURatesCallee: '',
     },
     '0x5': {
         UniswapV2CalleeDai: '0x6d9139ac89ad2263f138633de20e47bcae253938',
         UniswapV2LpTokenCalleeDai: '0x13eba3f2dd908e3624e9fb721ea9bd2f5d46f2c0',
         UniswapV3Callee: '0x323533Ad6355Ade4eCFA97E49DE7cBa27DfF1208',
+        GSURatesCallee: '',
     },
     '0x2a': {
         UniswapV2CalleeDai: '0x5A40F810754f725DA93e2362775a0600468f7a83',

@@ -20,7 +20,7 @@
             class="Element"
             :class="{ Loading: isLoading(record) }"
         >
-            <FormatCurrency v-if="isValidBigNumber(marketUnitPrice)" :value="marketUnitPrice" currency="DAI" />
+            <FormatCurrency v-if="isValidBigNumber(marketUnitPrice)" :value="marketUnitPrice" currency="GSUc" />
             <div v-else>
                 <Popover placement="topLeft" :content="marketUnitPrice" trigger="hover">
                     <p class="inline-block w-48 text-red-500 truncate">

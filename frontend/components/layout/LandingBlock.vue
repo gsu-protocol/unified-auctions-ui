@@ -17,7 +17,7 @@
             </div>
         </div>
         <div
-            class="absolute inset-0 select-none bg-center bg-cover filter dark:invert"
+            class="absolute inset-0 select-none bg-center bg-cover filter"
             :style="{ backgroundImage: `url(${backgroundImage})` }"
         />
     </div>

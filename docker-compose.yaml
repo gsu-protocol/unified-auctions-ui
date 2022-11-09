@@ -14,10 +14,8 @@ services:
 
     frontend:
         restart: unless-stopped
-        expose:
-            - 3000
         env_file:
-            - './frontend/.env'
+            - ./frontend/.env
         build:
             context: .
             dockerfile: ./frontend/Dockerfile
@@ -27,7 +25,8 @@ services:
                 - PRODUCTION_DOMAIN
                 - CONTACT_EMAIL
                 - HEAPIO_ID
-
+        network_mode: host
+        command: sh -c "npm run generate && npm run start"
     reverse-proxy:
         image: nginx:stable-alpine
         ports:

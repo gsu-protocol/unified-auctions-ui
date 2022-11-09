@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center">
         <LandingBlock v-if="isExplanationsShown" class="LandingBlock">
             <h1 class="text-gray-800 dark:text-gray-100">
-                Maker Protocol <br />
+                GSU Protocol <br />
                 Auctions Dashboard
             </h1>
         </LandingBlock>
@@ -22,8 +22,8 @@
         </div>
         <div class="Block space-y-4 md:space-y-8 max-w-screen-sm">
             <TextBlock v-if="isExplanationsShown" title="Exchange Callee Contracts">
-                Exchange callee contracts are smart contracts that facilitate the interaction with the Maker Protocol
-                and decentralized exchanges. They are used in order to enable flash loan based auction participation.
+                Exchange callee contracts are smart contracts that facilitate the interaction with the GSU Protocol and
+                decentralized exchanges. They are used in order to enable flash loan based auction participation.
             </TextBlock>
             <CalleeTable :callees="callees" />
         </div>

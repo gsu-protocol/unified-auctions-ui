@@ -76,9 +76,7 @@ export default class MetaMask extends AbstractWallet {
     public async networkChangedHandler() {
         const networkType = getNetworkTypeByChainId(window.ethereum.chainId);
         const signer = await this.getSigner();
-        if (networkType) {
-            await setSigner(networkType, signer as any);
-        }
+        await setSigner(networkType || 'custom', signer as any);
         window.$nuxt.$store.dispatch('network/setWalletChainId', window.ethereum.chainId);
     }
 
