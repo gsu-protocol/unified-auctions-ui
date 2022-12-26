@@ -84,7 +84,8 @@ export declare interface RegularCalleeConfig {
         | 'WstETHCurveUniv3Callee'
         | 'CurveLpTokenUniv3Callee'
         | 'UniswapV3Callee'
-        | 'rETHCurveUniv3Callee';
+        | 'rETHCurveUniv3Callee'
+        | 'GSURatesCallee';
     route: string[];
 }
 
@@ -179,6 +180,7 @@ export declare interface CalleeAddresses {
     CurveLpTokenUniv3Callee?: string;
     UniswapV3Callee?: string;
     rETHCurveUniv3Callee?: string;
+    GSURatesCallee: string;
 }
 
 export type CalleeNames = keyof CalleeAddresses;

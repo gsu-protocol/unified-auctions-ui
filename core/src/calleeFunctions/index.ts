@@ -17,6 +17,7 @@ import WstETHCurveUniv3Callee from './WstETHCurveUniv3Callee';
 import CurveLpTokenUniv3Callee from './CurveLpTokenUniv3Callee';
 import UniswapV3Callee from './UniswapV3Callee';
 import rETHCurveUniv3Callee from './rETHCurveUniv3Callee';
+import GSURatesCallee from './GSURatesCallee';
 import { getCollateralConfigByType, getCollateralConfigBySymbol } from '../constants/COLLATERALS';
 import { routeToPool } from './helpers/pools';
 import { fetchAutoRouteInformation } from './helpers/uniswapAutoRouter';
@@ -30,6 +31,7 @@ const allCalleeFunctions: Record<CalleeNames, CalleeFunctions> = {
     CurveLpTokenUniv3Callee,
     UniswapV3Callee,
     rETHCurveUniv3Callee,
+    GSURatesCallee,
 };
 
 export const getCalleeData = async function (
