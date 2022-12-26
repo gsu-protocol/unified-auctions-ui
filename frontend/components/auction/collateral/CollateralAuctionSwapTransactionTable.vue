@@ -17,7 +17,7 @@
             <div>Auction Price</div>
             <div class="RightInfo">
                 <PriceDropAnimation :auction="auctionTransaction" class="mr-1" />
-                <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="DAI" /> per
+                <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="GSUc" /> per
                 <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     v-if="transactionGrossProfit"
                     show-sign
                     :value="transactionGrossProfit"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -71,7 +71,7 @@
                 <FormatCurrency
                     v-if="auctionTransaction.combinedSwapFeesDAI"
                     :value="auctionTransaction.combinedSwapFeesDAI * -1"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -83,7 +83,7 @@
                     v-if="transactionNetProfit"
                     show-sign
                     :value="transactionNetProfit"
-                    currency="DAI"
+                    currency="GSUc"
                     class="font-extrabold"
                 />
                 <span v-else class="opacity-50">Unknown</span>

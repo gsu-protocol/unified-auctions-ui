@@ -3,33 +3,33 @@
         <template #title>{{ currentStateAndTitle.title }}</template>
         <TextBlock>
             <div class="flex justify-between">
-                <span>DAI amount in the wallet</span>
-                <format-currency v-if="walletDai" :value="walletDai" currency="DAI" />
+                <span>GSUc amount in the wallet</span>
+                <format-currency v-if="walletDai" :value="walletDai" currency="GSUc" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
             <div class="flex justify-between">
                 <span>Currently deposited in VAT</span>
-                <format-currency v-if="walletVatDai" :value="walletVatDai" currency="DAI" />
+                <format-currency v-if="walletVatDai" :value="walletVatDai" currency="GSUc" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
             <div class="flex justify-between">
                 <span>Minimum to deposit</span>
-                <format-currency v-if="minimumDepositDai" :value="minimumDepositDai" currency="DAI" />
+                <format-currency v-if="minimumDepositDai" :value="minimumDepositDai" currency="GSUc" />
                 <div v-else>
                     <span class="opacity-75">Unknown</span>
-                    <span>DAI</span>
+                    <span>GSUc</span>
                 </div>
             </div>
         </TextBlock>
         <TextBlock v-if="isExplanationsShown && currentStateAndTitle.name === 'incorrect'" class="mt-2">
-            The amount of <format-currency :value="transactionBidAmount" currency="DAI" /> is not present in the VAT
-            and at least <format-currency :value="minimumDepositDai" currency="DAI" /> needs to be deposited before the
+            The amount of <format-currency :value="transactionBidAmount" currency="GSUc" /> is not present in the VAT
+            and at least <format-currency :value="minimumDepositDai" currency="GSUc" /> needs to be deposited before the
             transaction can happen.
         </TextBlock>
         <div class="flex justify-end mt-2">
@@ -39,7 +39,7 @@
                 :is-loading="isLoading"
                 @click="$emit('manageVat')"
             >
-                Manage DAI in VAT
+                Manage GSUc in VAT
             </BaseButton>
         </div>
     </BasePanel>

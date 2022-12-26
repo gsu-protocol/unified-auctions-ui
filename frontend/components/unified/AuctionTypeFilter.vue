@@ -26,8 +26,8 @@
         <div v-show="isExplanationsShown && selectedType" class="max-w-screen-sm mt-4 md:mt-8">
             <TextBlock v-show="selectedType == 'collateral'" title="Collateral auctions">
                 The Maker Protocol allows users to borrow
-                <Explain text="DAI">
-                    <a href="https://makerdao.com/en/whitepaper#the-dai-stablecoin">The DAI Stablecoin</a> is a
+                <Explain text="GSUc">
+                    <a href="https://makerdao.com/en/whitepaper#the-dai-stablecoin">The GSUc Stablecoin</a> is a
                     decentralized, unbiased, collateral-backed cryptocurrency soft-pegged to the US Dollar
                 </Explain>
                 through locking up crypto assets as collateral in a vault. If the value of this collateral (in USD)
@@ -36,7 +36,7 @@
                 debt and a penalty fee.
             </TextBlock>
             <TextBlock v-show="selectedType == 'surplus'" title="System surplus auctions">
-                If the Maker Protocol is successfully governed, surplus DAI is accrued. Once this surplus hits a
+                If the Maker Protocol is successfully governed, surplus GSUc is accrued. Once this surplus hits a
                 certain threshold the Protocol will discharge it by buying and burning
                 <Explain text="Maker tokens (MKR)">
                     <a href="https://makerdao.com/en/whitepaper/#the-maker-protocol">MKR</a> is a token on the Ethereum
@@ -47,7 +47,7 @@
             <TextBlock v-show="selectedType == 'debt'" title="System debt auctions">
                 If liquidations are not adequate in order to maintain Maker Protocol’s solvency meaning that overall
                 debt hits a certain threshold and cannot be covered by accrued surplus, the Protocol will reduce its
-                debt position by minting and selling MKR for DAI. This process is facilitated by debt auctions.
+                debt position by minting and selling MKR for GSUc. This process is facilitated by debt auctions.
             </TextBlock>
         </div>
     </div>

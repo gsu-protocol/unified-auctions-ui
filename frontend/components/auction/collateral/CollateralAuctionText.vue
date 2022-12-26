@@ -15,7 +15,7 @@
                     protocol.</Explain
                 >?
             </template>
-            To get DAI, people need to lock up some other cryptocurrency (e.g., ETH) in a vault. With time, if the
+            To get GSUc, people need to lock up some other cryptocurrency (e.g., ETH) in a vault. With time, if the
             price of the cryptocurrency in the vault drops below the
             <Explain text="predefined ratio">
                 <a
@@ -27,8 +27,8 @@
                 is the minimum required collateralization level for each Vault type before it is considered
                 undercollateralized and subject to liquidation
             </Explain>
-            (e.g. 145% for ETH-A), owners of the vault have to add more collateral or return their DAI. If they fail to
-            do so, their vault can be liquidated by the Maker protocol and other people can buy it at a discount.
+            (e.g. 145% for ETH-A), owners of the vault have to add more collateral or return their GSUc. If they fail
+            to do so, their vault can be liquidated by the Maker protocol and other people can buy it at a discount.
         </TextBlock>
         <template v-if="isExplanationsShown">
             <TextBlock title="Why should I participate?" class="TextBlock">
@@ -78,10 +78,10 @@
             </Explain>
             for it. In a decentralised system like this, anyone can become such a player. But as execution can
             sometimes end up in a loss of transaction fee, those operations are made to be profitable by the protocol
-            itself. Players who risk to make DAI more stable and keep the protocol in a
+            itself. Players who risk to make GSUc more stable and keep the protocol in a
             <Explain text="healthy condition" placement="topRight">
                 Overall health of the system is predominantly defined by the surplus in collateral that is backing all
-                DAI. This system health can be monitored on
+                GSUc. This system health can be monitored on
                 <a href="https://daistats.com/#/" target="_blank">daistats</a>.
             </Explain>
             get rewarded with higher profits. Most of the auctions will be cleared by players with bots bidding very

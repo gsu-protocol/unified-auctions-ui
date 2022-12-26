@@ -2,8 +2,8 @@
     <BasePanel :current-state="currentStateAndTitle.name" class="WalletDaiDepositCheckPanel">
         <template #title>{{ currentStateAndTitle.title }}</template>
         <div v-if="isExplanationsShown">
-            <TextBlock v-if="currency === 'DAI'">
-                To bid on an auction with DAI, first funds need to be deposited to the
+            <TextBlock v-if="currency === 'GSUc'">
+                To bid on an auction with GSUc, first funds need to be deposited to the
                 <Explain text="VAT">
                     The
                     <a
@@ -11,7 +11,7 @@
                         >VAT contract</a
                     >
                     is the core vault engine of the Maker Protocol and manages the central accounting invariants of
-                    DAI. Depositing and interacting with the VAT is necessary in order to participate in auctions. </Explain
+                    GSUc. Depositing and interacting with the VAT is necessary in order to participate in auctions. </Explain
                 >. The following transaction authorizes the wallet address to deposit into the VAT. It is a
                 prerequisite to participate in the auction.
             </TextBlock>
@@ -90,7 +90,7 @@ export default Vue.extend({
         },
         currency: {
             type: String,
-            default: 'DAI',
+            default: 'GSUc',
         },
     },
     computed: {

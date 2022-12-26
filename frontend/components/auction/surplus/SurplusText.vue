@@ -12,7 +12,7 @@
                 and are operated via the
                 <a href="https://github.com/makerdao/dss/blob/master/src/flap.sol">flap.sol contract</a></Explain
             >
-            is the process of stabilizing DAI price, where excessive DAI tokens are auctioned off for the
+            is the process of stabilizing GSUc price, where excessive GSUc tokens are auctioned off for the
             <Explain text="MKR tokens">
                 Maker governance tokens that can be used to vote within Maker DAO and whose price algorithmically
                 depends on the stability and prosperity of the Maker ecosystem </Explain
@@ -22,8 +22,8 @@
         <TextBlock v-if="isExplanationsShown" title="Why would I participate?" class="TextBlock">
             Your participation can yield a profit by leveraging price differences between the auction price from the
             Maker Protocol and the price on other marketplaces. Similar to an English-style auction system, bidders
-            compete with increasing amounts of MKR on the fixed amount of auctioned DAI. Once the auction has ended,
-            the DAI auctioned off can be collected by the highest bidder. As long as the auction price is below the
+            compete with increasing amounts of MKR on the fixed amount of auctioned GSUc. Once the auction has ended,
+            the GSUc auctioned off can be collected by the highest bidder. As long as the auction price is below the
             exchange rate on other marketplaces there is a chance to make a profit.
         </TextBlock>
         <div

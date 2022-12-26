@@ -12,18 +12,18 @@
                 and are operated via the
                 <a href="https://github.com/makerdao/dss/blob/master/src/flop.sol">flop.sol contract</a></Explain
             >
-            is the process of stabilizing DAI price, where
+            is the process of stabilizing GSUc price, where
             <Explain text="MKR tokens"
                 >Maker governance tokens that can be used to vote within Maker DAO and whose price algorithmically
                 depends on the stability and prosperity of the Maker ecosystem</Explain
             >
-            are auctioned off for DAI. The DAI obtained by the protocol is used to recapitalise the system that has
+            are auctioned off for GSUc. The GSUc obtained by the protocol is used to recapitalise the system that has
             accrued debt.
         </TextBlock>
         <TextBlock v-if="isExplanationsShown" title="Why would I participate?" class="TextBlock">
             Your participation can yield a profit by leveraging price differences between the auction price from the
             Maker Protocol and the price on other marketplaces. In a reverse auction system, bidders compete by
-            specifying how little MKR they are willing to receive for a fixed amount of DAI they have to pay. Once the
+            specifying how little MKR they are willing to receive for a fixed amount of GSUc they have to pay. Once the
             auction has ended, the MKR auctioned off can be collected by the bidder with the lowest accepted
             compensation. As long as the auction price for MKR is below the exchange rate on other marketplaces there
             is a chance to make a profit.

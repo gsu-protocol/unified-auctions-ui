@@ -7,10 +7,10 @@
                 The particular smart contract is called DaiJoin and its technical specification can be found
                 <a href="https://github.com/makerdao/dss/blob/master/src/join.sol#L106-L142" target="_blank">here</a>
             </Explain>
-            to modify your internal DAI
+            to modify your internal GSUc
             <Explain text="balance">
                 The core vault engine of the Maker Protocol is called VAT and manages the central accounting invariants
-                of DAI. More information on the VAT can be found
+                of GSUc. More information on the VAT can be found
                 <a
                     href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation#2-contract-details"
                     target="_blank"
@@ -27,7 +27,7 @@
                 @click="$emit('authorizeWallet')"
             >
                 <span v-if="isLoading">Authorizing...</span>
-                <span v-else-if="!isWalletAuthorized">Authorize DAI Transactions</span>
+                <span v-else-if="!isWalletAuthorized">Authorize GSUc Transactions</span>
                 <span v-else>Already authorized</span>
             </BaseButton>
         </div>
@@ -75,18 +75,18 @@ export default Vue.extend({
             if (!this.walletAddress) {
                 return {
                     name: 'inactive',
-                    title: 'The DAI authorization is unknown until a wallet is connected',
+                    title: 'The GSUc authorization is unknown until a wallet is connected',
                 };
             }
             if (!this.isWalletAuthorized) {
                 return {
                     name: this.disabled ? 'inactive' : 'incorrect',
-                    title: 'The wallet is not yet authorized to execute DAI transactions',
+                    title: 'The wallet is not yet authorized to execute GSUc transactions',
                 };
             }
             return {
                 name: 'correct',
-                title: 'The wallet is authorized to execute DAI transactions',
+                title: 'The wallet is authorized to execute GSUc transactions',
             };
         },
     },

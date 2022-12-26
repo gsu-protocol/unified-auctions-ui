@@ -40,7 +40,7 @@
                 :is-correct.sync="isWalletDAICheckPassed"
                 :is-explanations-shown="isExplanationsShown"
                 :is-loading="isRefreshingWallet || isSettingAllowance || isDepositing"
-                currency="DAI"
+                currency="GSUc"
                 :disabled="isHighestBidder"
                 @refresh="$emit('refreshWallet')"
                 @setAllowanceAmount="$emit('setAllowanceAmount', $event)"

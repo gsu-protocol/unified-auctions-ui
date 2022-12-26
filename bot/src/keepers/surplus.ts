@@ -20,7 +20,7 @@ export const setupSurplusKeeper = async function (network: string) {
         return;
     }
     console.info(
-        `surplus keeper: setup complete, looking for minimum net profit of "${KEEPER_SURPLUS_MINIMUM_NET_PROFIT_DAI}" DAI`
+        `surplus keeper: setup complete, looking for minimum net profit of "${KEEPER_SURPLUS_MINIMUM_NET_PROFIT_DAI}" GSUc`
     );
     isSetupCompleted = true;
 };
@@ -77,7 +77,7 @@ const checkAndParticipateIfPossible = async function (network: string, auction: 
         console.info(
             `surplus keeper: auction "${auction.id}" net profit is ${formatToAutomaticDecimalPointsString(
                 netProfit
-            )} DAI after transaction fees, checking wallet MKR balance`
+            )} GSUc after transaction fees, checking wallet MKR balance`
         );
     }
 

@@ -29,7 +29,7 @@
                 <span v-else-if="isLoading"> Loading... </span>
                 <span v-else-if="auction"
                     >Bid <FormatCurrency :value="bidAmount" currency="MKR" /> on
-                    <FormatCurrency :value="auction.receiveAmountDAI" currency="DAI"
+                    <FormatCurrency :value="auction.receiveAmountDAI" currency="GSUc"
                 /></span>
                 <span v-else>Unknown</span>
             </BaseButton>

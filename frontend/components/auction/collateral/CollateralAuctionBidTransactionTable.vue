@@ -20,7 +20,7 @@
             <div>
                 <template v-if="auctionTransaction.isActive">
                     <PriceDropAnimation :auction="auctionTransaction" class="mr-1" />
-                    <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="DAI" /> per
+                    <FormatCurrency :value="auctionTransaction.approximateUnitPrice" currency="GSUc" /> per
                     <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
@@ -44,7 +44,7 @@
                 <FormatCurrency
                     v-if="auctionTransaction.combinedBidFeesDAI"
                     :value="auctionTransaction.combinedBidFeesDAI * -1"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -52,8 +52,8 @@
         <div v-if="auctionTransaction.minimumBidDai" class="flex justify-between">
             <div>Minimum leftover</div>
             <div>
-                <format-currency :value="auctionTransaction.minimumBidDai" currency="DAI" />
-                And <format-currency :value="auctionTransaction.debtDAI" currency="DAI" />
+                <format-currency :value="auctionTransaction.minimumBidDai" currency="GSUc" />
+                And <format-currency :value="auctionTransaction.debtDAI" currency="GSUc" />
             </div>
         </div>
         <div class="flex justify-between">
@@ -67,7 +67,7 @@
                 <format-currency
                     v-if="auctionTransaction.debtDAI && isActive"
                     :value="auctionTransaction.debtDAI"
-                    currency="DAI"
+                    currency="GSUc"
                 />
                 <span v-else class="opacity-50">Unknown</span>
             </button>

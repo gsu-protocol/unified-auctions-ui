@@ -8,7 +8,7 @@
                 <span class="text-gray-300">({{ suggestionOrSelection }})</span>
             </button>
             <div v-show="!isExpanded">
-                <FormatCurrency :value="marketUnitPrice" currency="DAI" /> per
+                <FormatCurrency :value="marketUnitPrice" currency="GSUc" /> per
                 <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                         <span v-else class="text-green-500">Select</span>
                                     </button>
                                     <span class="pl-1">
-                                        <FormatCurrency :value="marketData.marketUnitPrice" currency="DAI" /> per
+                                        <FormatCurrency :value="marketData.marketUnitPrice" currency="GSUc" /> per
                                         <span class="uppercase">{{ auctionTransaction.collateralSymbol }}</span>
                                     </span>
                                 </div>
@@ -135,7 +135,7 @@ export default Vue.extend({
             if (!pools || !pools?.length) {
                 return '';
             }
-            const fullRoute = [...pools.map(pool => pool.routes[0]), 'DAI'];
+            const fullRoute = [...pools.map(pool => pool.routes[0]), 'GSUc'];
             return fullRoute.join(' → ');
         },
     },

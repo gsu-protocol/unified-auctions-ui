@@ -63,7 +63,7 @@
                     :decimal-places="6"
                     currency="MKR"
                 />
-                <span v-else class="opacity-50">Unknown</span> per DAI
+                <span v-else class="opacity-50">Unknown</span> per GSUc
             </div>
         </div>
         <div class="flex justify-between font-bold">
@@ -75,7 +75,7 @@
                     :decimal-places="6"
                     currency="MKR"
                 />
-                <span v-else class="opacity-50">Unknown</span> per DAI
+                <span v-else class="opacity-50">Unknown</span> per GSUc
             </div>
         </div>
     </div>

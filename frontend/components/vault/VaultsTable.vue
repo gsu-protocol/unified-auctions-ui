@@ -30,7 +30,7 @@
             </div>
             <div slot="grossProfitDai" slot-scope="grossProfitDai">
                 <template v-if="grossProfitDai">
-                    <format-currency :value="grossProfitDai" currency="DAI" />
+                    <format-currency :value="grossProfitDai" currency="GSUc" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
             </div>

@@ -15,7 +15,7 @@
             class="AuctionsTable relative overflow-visible"
         >
             <div slot="bidAmountDai" slot-scope="bidAmountDai">
-                <format-currency v-if="bidAmountDai" :value="bidAmountDai" currency="DAI" />
+                <format-currency v-if="bidAmountDai" :value="bidAmountDai" currency="GSUc" />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
             <div slot="receiveAmountMKR" slot-scope="receiveAmountMKR">
@@ -26,7 +26,7 @@
             </div>
             <div slot="unitPrice" slot-scope="unitPrice">
                 <template v-if="unitPrice && !unitPrice.isEqualTo(0)">
-                    <format-currency :value="unitPrice" currency="DAI" /> per <format-currency currency="MKR" />
+                    <format-currency :value="unitPrice" currency="GSUc" /> per <format-currency currency="MKR" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
             </div>

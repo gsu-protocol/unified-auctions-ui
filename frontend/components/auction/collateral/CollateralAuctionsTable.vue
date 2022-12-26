@@ -20,7 +20,7 @@
             </div>
             <div slot="approximateUnitPrice" slot-scope="approximateUnitPrice, record">
                 <template v-if="record.isActive && !record.isFinished">
-                    <format-currency :value="approximateUnitPrice" currency="DAI" /> per
+                    <format-currency :value="approximateUnitPrice" currency="GSUc" /> per
                     <format-currency :currency="record.collateralSymbol" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>

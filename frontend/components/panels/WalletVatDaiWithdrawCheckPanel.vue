@@ -2,7 +2,7 @@
     <BasePanel :current-state="currentStateAndTitle.name" class="WalletVatDaiWithdrawCheckPanel">
         <template #title>{{ currentStateAndTitle.title }}</template>
         <TextBlock v-if="isExplanationsShown">
-            If you do not have enough DAI funds in the VAT, you will need to deposit them, before you can continue.
+            If you do not have enough GSUc funds in the VAT, you will need to deposit them, before you can continue.
         </TextBlock>
         <div class="flex justify-end mt-2">
             <BaseButton :disabled="disabled" :is-loading="isLoading" @click="$emit('refresh')"

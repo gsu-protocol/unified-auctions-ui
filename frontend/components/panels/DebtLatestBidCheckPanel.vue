@@ -3,7 +3,7 @@
         <template #title> {{ currentStateAndTitle.title }} </template>
         <TextBlock v-if="isExplanationsShown">
             In order to win the auction, participants can bid on the auction. In case someone else puts the bid with a
-            lower compensation, you receive your DAI back, only loosing the transaction fee.
+            lower compensation, you receive your GSUc back, only loosing the transaction fee.
         </TextBlock>
 
         <div class="flex justify-between my-3">
@@ -29,7 +29,7 @@
                 <span v-if="isBidding"> Bidding... </span>
                 <span v-else-if="isLoading"> Loading... </span>
                 <span v-else-if="auction"
-                    >Bid <FormatCurrency :value="auction.bidAmountDai" currency="DAI" /> for
+                    >Bid <FormatCurrency :value="auction.bidAmountDai" currency="GSUc" /> for
                     <FormatCurrency :value="desiredMkrAmount" currency="MKR"
                 /></span>
                 <span v-else>Unknown</span>

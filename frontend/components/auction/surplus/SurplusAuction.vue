@@ -33,7 +33,7 @@
                         <tr>
                             <td>Auction Amount</td>
                             <td>
-                                <format-currency :value="auction.receiveAmountDAI" currency="DAI" />
+                                <format-currency :value="auction.receiveAmountDAI" currency="GSUc" />
                             </td>
                         </tr>
                         <tr>
@@ -50,7 +50,7 @@
                             <td>
                                 <template v-if="withBids">
                                     <format-currency :value="auction.unitPrice" :decimal-places="6" currency="MKR" />
-                                    per <format-currency currency="DAI" />
+                                    per <format-currency currency="GSUc" />
                                 </template>
                                 <span v-else class="opacity-50">No bids yet</span>
                             </td>
@@ -65,7 +65,7 @@
                                         currency="MKR"
                                     />
                                     per
-                                    <format-currency currency="DAI" />
+                                    <format-currency currency="GSUc" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
@@ -104,7 +104,7 @@
                 <TextBlock class="mt-4">
                     <template v-if="error !== 'This auction is finished'">
                         The auctioned surplus auction contains
-                        <format-currency :value="auction.receiveAmountDAI" currency="DAI" />.
+                        <format-currency :value="auction.receiveAmountDAI" currency="GSUc" />.
                         <span v-if="requiresRestart">
                             This auction requires to be restarted in order to determine prices properly.
                         </span>
@@ -112,9 +112,9 @@
                             The highest bid for it is
                             <format-currency :value="auction.bidAmountMKR" currency="MKR" />. This equals
                             <format-currency :value="auction.unitPrice" currency="MKR" />
-                            per <format-currency currency="DAI" />, or approximately
+                            per <format-currency currency="GSUc" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> than if you
-                            exchange <format-currency currency="MKR" /> to <format-currency currency="DAI" /> on an
+                            exchange <format-currency currency="MKR" /> to <format-currency currency="GSUc" /> on an
                             exchange platform such as Uniswap.
                         </span>
                     </template>

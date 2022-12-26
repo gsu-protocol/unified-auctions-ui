@@ -3,18 +3,18 @@
         <WhatIsMakerProtocol v-if="isExplanationsShown" class="TextBlock"></WhatIsMakerProtocol>
         <template v-if="isExplanationsShown">
             <TextBlock title="What are vaults?" class="TextBlock">
-                A vault is a main source of DAI in the MakerDAO protocol: anyone is able to deposit supported
+                A vault is a main source of GSUc in the MakerDAO protocol: anyone is able to deposit supported
                 collateral into the system to get stablecoin in return and has to pay stability fees associated with
                 the collateral type. The place where the collateral is deposited is called the vault and is solely
                 managed by the person who deposited it, unless the deposited collateral amount no longer covers the
-                withdrawn DAI.</TextBlock
+                withdrawn GSUc.</TextBlock
             >
             <TextBlock title="When are vaults at risk?" class="TextBlock">
                 Vaults become at risk when true value of the collateral in the vault is getting too close to the value
-                of DAI withdrawn from the vault and hence the vault is no longer over collateralised enough. When
+                of GSUc withdrawn from the vault and hence the vault is no longer over collateralised enough. When
                 market conditions change and the value of a deposited token decreases, users have to either return part
-                of the withdrawn DAI or add collateral. If the original owner of the vault doesn't act in this
-                situation, the vault can be liquidated by anyone to cover the missing DAI.
+                of the withdrawn GSUc or add collateral. If the original owner of the vault doesn't act in this
+                situation, the vault can be liquidated by anyone to cover the missing GSUc.
             </TextBlock>
             <TextBlock title="Why should I participate?" class="TextBlock">
                 The user who liquidates a vault gets rewarded by two incentives: one is dependent on the collateral
