@@ -9,7 +9,7 @@
             </Explain>
             to modify your internal GSUc
             <Explain text="balance">
-                The core vault engine of the Maker Protocol is called VAT and manages the central accounting invariants
+                The core vault engine of the GSU Protocol is called VAT and manages the central accounting invariants
                 of GSUc. More information on the VAT can be found
                 <a
                     href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation#2-contract-details"

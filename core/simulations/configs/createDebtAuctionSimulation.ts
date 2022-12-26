@@ -19,7 +19,7 @@ const simulation: Simulation = {
             },
         },
         {
-            title: 'Add GSUc and MKR to the wallet',
+            title: 'Add GSUc and GSUp to the wallet',
             entry: async () => {
                 await addDaiToBalance();
                 await addMkrToBalance();

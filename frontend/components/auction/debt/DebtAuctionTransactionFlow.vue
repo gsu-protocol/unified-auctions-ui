@@ -68,7 +68,7 @@
                 :auction="auction"
                 :wallet-address="walletAddress"
                 :is-collecting="auctionActionState === 'collecting'"
-                currency="MKR"
+                currency="GSUp"
                 @collect="$emit('collect')"
             />
         </div>

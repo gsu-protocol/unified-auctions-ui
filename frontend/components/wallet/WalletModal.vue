@@ -20,7 +20,7 @@
                 @connectWallet="$emit('connectWallet')"
             />
             <TextBlock v-if="isExplanationsShown" title="What is VAT?">
-                The VAT balance is the balance of GSUc tokens owned by your wallet inside the Maker Protocol.
+                The VAT balance is the balance of GSUc tokens owned by your wallet inside the GSU Protocol.
                 <a
                     target="_blank"
                     href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation"

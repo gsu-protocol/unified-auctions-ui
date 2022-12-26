@@ -4,8 +4,8 @@ const features: FeatureList[] = [
         url: 'https://auctions.makerdao.network/collateral',
         items: [
             {
-                text: `The tool shows explanatory texts on different Maker Protocol related topics (e.g.
-                What is the Maker Protocol, What are collateral auctions, Why a user should participate,
+                text: `The tool shows explanatory texts on different GSU Protocol related topics (e.g.
+                What is the GSU Protocol, What are collateral auctions, Why a user should participate,
                 What’s the catch of participation)`,
             },
             {

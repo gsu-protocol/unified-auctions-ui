@@ -33,7 +33,7 @@
         <template v-if="isExplanationsShown">
             <TextBlock title="Why should I participate?" class="TextBlock">
                 Your participation can yield a profit by leveraging price differences between the auction price from
-                Maker Protocol and the price on other marketplaces. Similar to a Dutch-style auction system, the
+                GSU Protocol and the price on other marketplaces. Similar to a Dutch-style auction system, the
                 auction price starts above the real market price and drops by a defined ratio in defined time
                 intervals. For example, ETH-A auctions start 30% above the market price and drop by
                 <format-percentage :value="params.priceDropRatio" /> every

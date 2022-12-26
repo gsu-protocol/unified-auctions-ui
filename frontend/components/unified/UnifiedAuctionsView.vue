@@ -2,14 +2,14 @@
     <div class="HeightFix flex flex-col w-full h-full items-center">
         <LandingBlock v-if="isExplanationsShown" class="LandingBlock">
             <h1 class="text-gray-800 dark:text-gray-100">
-                Maker Protocol <br />
+                GSU Protocol <br />
                 Unified Auctions
             </h1>
         </LandingBlock>
         <div class="flex flex-col w-full items-center space-y-4 md:space-y-8 mt-4 md:mt-8 mb-4 px-4">
             <TextBlock v-if="isExplanationsShown" title="Different auction types" class="max-w-screen-sm">
                 There are three distinct auction types that help maintain
-                <Explain text="Maker Protocol’s">
+                <Explain text="GSU Protocol’s">
                     a <a href="https://changelog.makerdao.com/">set of smart contracts</a> running on the Ethereum
                     blockchain with the purpose to keep the cryptoasset Dai approximately equal to USD
                 </Explain>
@@ -86,9 +86,9 @@ export default Vue.extend({
                 {
                     title: 'Surplus auctions portal',
                     description:
-                        'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
+                        'Web tool that supports participation in surplus auctions by bidding on Dai with own GSUp',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/surplus',
                     },
                     filters: ['surplus'],
@@ -96,9 +96,9 @@ export default Vue.extend({
                 {
                     title: 'Debt auctions portal',
                     description:
-                        'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
+                        'Web tool that supports participation in debt auctions by bidding on GSUp with own Dai',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/debt',
                     },
                     filters: ['debt'],
@@ -108,7 +108,7 @@ export default Vue.extend({
                     description:
                         'Web tool that supports liquidation of vaults that are no longer collaterlised enough',
                     links: {
-                        source: 'https://github.com/sidestream-tech/unified-auctions-ui',
+                        source: 'https://github.com/gsu-protocol/unified-auctions-ui',
                         participate: '/vaults',
                     },
                     filters: ['collateral'],
@@ -124,7 +124,7 @@ export default Vue.extend({
                 {
                     title: 'Maker Auction (surplus)',
                     description:
-                        'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
+                        'Web tool that supports participation in surplus auctions by bidding on Dai with own GSUp',
                     links: {
                         source: 'https://github.com/makerdao/auctions-ui',
                     },
@@ -133,7 +133,7 @@ export default Vue.extend({
                 {
                     title: 'Maker Auction (debt)',
                     description:
-                        'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
+                        'Web tool that supports participation in debt auctions by bidding on GSUp with own Dai',
                     links: {
                         source: 'https://github.com/makerdao/auctions-ui',
                     },
@@ -201,7 +201,7 @@ export default Vue.extend({
                 {
                     title: 'MakerDai Twitter Bot',
                     description:
-                        'Tweets about mints/burns, liquidations and other significant changes in the Maker Protocol',
+                        'Tweets about mints/burns, liquidations and other significant changes in the GSU Protocol',
                     links: {
                         profile: 'https://twitter.com/MakerDaiBot',
                     },

@@ -1,7 +1,7 @@
 <template>
     <TextBlock>
         <TextBlock v-if="isExplanationsShown" class="mb-2">
-            This is a list of collaterals supported by the Maker Protocol. Each row provides the possibility to
+            This is a list of collaterals supported by the GSU Protocol. Each row provides the possibility to
             withdraw collateral from the VAT (if there is any) and to pre-authorize VAT transactions.
         </TextBlock>
         <table class="Table">

@@ -20,13 +20,13 @@
             </div>
             <div slot="receiveAmountMKR" slot-scope="receiveAmountMKR">
                 <template v-if="receiveAmountMKR && !receiveAmountMKR.isEqualTo(0)">
-                    <format-currency :value="receiveAmountMKR" currency="MKR" />
+                    <format-currency :value="receiveAmountMKR" currency="GSUp" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
             </div>
             <div slot="unitPrice" slot-scope="unitPrice">
                 <template v-if="unitPrice && !unitPrice.isEqualTo(0)">
-                    <format-currency :value="unitPrice" currency="GSUc" /> per <format-currency currency="MKR" />
+                    <format-currency :value="unitPrice" currency="GSUc" /> per <format-currency currency="GSUp" />
                 </template>
                 <span v-else class="opacity-50">Unknown</span>
             </div>
@@ -67,7 +67,7 @@
                 >
                     <span v-if="record.state === 'collected'"> See details </span>
                     <span v-else-if="record.state === 'requires-restart'"> Restart </span>
-                    <span v-else-if="record.state === 'ready-for-collection'"> Collect MKR </span>
+                    <span v-else-if="record.state === 'ready-for-collection'"> Collect GSUp </span>
                     <span v-else> Participate </span>
                 </nuxt-link>
             </div>

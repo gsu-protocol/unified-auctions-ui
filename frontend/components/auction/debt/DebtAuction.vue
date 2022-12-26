@@ -46,7 +46,7 @@
                         <tr>
                             <td>Current Compensation</td>
                             <td v-if="withBids">
-                                <format-currency :value="auction.receiveAmountMKR" currency="MKR" />
+                                <format-currency :value="auction.receiveAmountMKR" currency="GSUp" />
                             </td>
                             <td v-else>
                                 <span class="opacity-50">Unknown</span>
@@ -57,7 +57,7 @@
                             <td>
                                 <template v-if="withBids">
                                     <format-currency :value="auction.unitPrice" :decimal-places="6" currency="GSUc" />
-                                    per <format-currency currency="MKR" />
+                                    per <format-currency currency="GSUp" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
@@ -72,7 +72,7 @@
                                         currency="GSUc"
                                     />
                                     per
-                                    <format-currency currency="MKR" />
+                                    <format-currency currency="GSUp" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
@@ -117,12 +117,12 @@
                         </span>
                         <span v-else>
                             The latest bid asks for
-                            <format-currency :value="auction.receiveAmountMKR" currency="MKR" /> compensation to
+                            <format-currency :value="auction.receiveAmountMKR" currency="GSUp" /> compensation to
                             receive in return. This equals to
                             <format-currency :value="auction.unitPrice" currency="GSUc" />
-                            per <format-currency currency="MKR" />, or approximately
+                            per <format-currency currency="GSUp" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> market than if you
-                            exchange <format-currency currency="GSUc" /> to <format-currency currency="MKR" /> on an
+                            exchange <format-currency currency="GSUc" /> to <format-currency currency="GSUp" /> on an
                             exchange platform such as Uniswap.
                         </span>
                     </template>

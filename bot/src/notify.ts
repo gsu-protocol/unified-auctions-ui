@@ -22,7 +22,7 @@ const generateNotificationTextDebt = function (auction: DebtAuctionActive): stri
         auction.bidAmountDai
     )} GSUc and current compensation of ${formatToAutomaticDecimalPointsString(
         auction.receiveAmountMKR
-    )} MKR just started. Follow the link to participate: ${url}`;
+    )} GSUp just started. Follow the link to participate: ${url}`;
 };
 
 export const notifyCollateral = async function (auction: AuctionInitialInfo) {

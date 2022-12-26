@@ -4,28 +4,28 @@
 
         <TextBlock>
             <div class="flex justify-between">
-                <span>MKR amount in wallet</span>
-                <format-currency v-if="walletMKR" :value="walletMKR" currency="MKR" />
+                <span>GSUp amount in wallet</span>
+                <format-currency v-if="walletMKR" :value="walletMKR" currency="GSUp" />
                 <div v-else class="opacity-75">
                     <span>Unknown</span>
-                    <span>MKR</span>
+                    <span>GSUp</span>
                 </div>
             </div>
             <div class="flex justify-between">
                 <span>Required for bid</span>
-                <format-currency v-if="requiredMKR" :value="requiredMKR" currency="MKR" />
+                <format-currency v-if="requiredMKR" :value="requiredMKR" currency="GSUp" />
                 <div v-else class="opacity-75">
                     <span>Unknown</span>
-                    <span>MKR</span>
+                    <span>GSUp</span>
                 </div>
             </div>
         </TextBlock>
 
         <TextBlock v-if="isExplanationsShown" class="mt-5">
-            If you do not have enough MKR funds in your wallet, you can obtain it for example by purchasing it on a
+            If you do not have enough GSUp funds in your wallet, you can obtain it for example by purchasing it on a
             decentralized exchange like
             <a href="https://uniswap.org/" target="_blank">uniswap.org</a>
-            (correct MKR token address used on the “{{ network }}” network is
+            (correct GSUp token address used on the “{{ network }}” network is
             <FormatAddress v-if="tokenAddress" :value="tokenAddress" :shorten="true" type="address" />)
         </TextBlock>
         <div class="flex justify-end mt-5">
@@ -83,18 +83,18 @@ export default Vue.extend({
             if (this.walletMKR === undefined) {
                 return {
                     name: 'inactive',
-                    title: `Please connect a wallet to check the amount MKR present`,
+                    title: `Please connect a wallet to check the amount GSUp present`,
                 };
             }
             if (this.walletMKR.isLessThan(this.requiredMKR)) {
                 return {
                     name: this.disabled ? 'inactive' : 'incorrect',
-                    title: `The amount of MKR is not present in the connected wallet`,
+                    title: `The amount of GSUp is not present in the connected wallet`,
                 };
             }
             return {
                 name: 'correct',
-                title: `Required amount of MKR is present in the connected wallet`,
+                title: `Required amount of GSUp is present in the connected wallet`,
             };
         },
     },
