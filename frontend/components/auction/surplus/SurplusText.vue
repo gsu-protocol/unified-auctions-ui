@@ -4,20 +4,15 @@
         <TextBlock v-if="isExplanationsShown" title="What are surplus auctions?" class="TextBlock">
             A
             <Explain text="surplus auction"
-                >In Maker terms, surplus auctions are called
-                <a
-                    href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation"
-                    >flap auctions</a
-                >
-                and are operated via the
-                <a href="https://github.com/makerdao/dss/blob/master/src/flap.sol">flap.sol contract</a></Explain
+                >In GSU protocol terms, surplus auctions are called In GSU Protocol terms, surplus auctions are called
+                flap auctions and are operated via the flap.sol contract</Explain
             >
             is the process of stabilizing GSUc price, where excessive GSUc tokens are auctioned off for the
             <Explain text="GSUp tokens">
-                Maker governance tokens that can be used to vote within Maker DAO and whose price algorithmically
-                depends on the stability and prosperity of the Maker ecosystem </Explain
+                GSU Protocol governance tokens that can be used to vote within GSU Protocol and whose price
+                algorithmically depends on the stability and prosperity of the GSU Protocol ecosystem </Explain
             >. The GSUp obtained by the protocol is then automatically burned, reducing overall GSUp supply and
-            increasing its price.
+            therefore increasing its price.
         </TextBlock>
         <TextBlock v-if="isExplanationsShown" title="Why would I participate?" class="TextBlock">
             Your participation can yield a profit by leveraging price differences between the auction price from the

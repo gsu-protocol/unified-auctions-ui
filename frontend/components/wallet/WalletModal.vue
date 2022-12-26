@@ -26,7 +26,7 @@
                     href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation"
                     >The VAT itself</a
                 >
-                is the set of immutable rules for managing GSUc and collaterals which constitutes the core of the Maker
+                is the set of immutable rules for managing GSUc and collaterals which constitutes the core of the GSU
                 Protocol.
             </TextBlock>
             <WalletDepositWithdrawBlock

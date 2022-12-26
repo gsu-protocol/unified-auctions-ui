@@ -18,24 +18,18 @@
             To get GSUc, people need to lock up some other cryptocurrency (e.g., ETH) in a vault. With time, if the
             price of the cryptocurrency in the vault drops below the
             <Explain text="predefined ratio">
-                <a
-                    href="https://community-development.makerdao.com/en/learn/vaults/liquidation/#:~:text=available%20for%20withdrawal.-,Liquidation%20Ratio,-The%20Liquidation%20Ratio"
-                    target="_blank"
-                >
-                    The Liquidation Ratio
-                </a>
-                is the minimum required collateralization level for each Vault type before it is considered
-                undercollateralized and subject to liquidation
+                The Liquidation Ratio is the minimum required collateralization level for each Vault type before it is
+                considered undercollateralized and subject to liquidation
             </Explain>
             (e.g. 145% for ETH-A), owners of the vault have to add more collateral or return their GSUc. If they fail
-            to do so, their vault can be liquidated by the Maker protocol and other people can buy it at a discount.
+            to do so, their vault can be liquidated by the GSU protocol and other people can buy it at a discount.
         </TextBlock>
         <template v-if="isExplanationsShown">
             <TextBlock title="Why should I participate?" class="TextBlock">
                 Your participation can yield a profit by leveraging price differences between the auction price from
-                GSU Protocol and the price on other marketplaces. Similar to a Dutch-style auction system, the
-                auction price starts above the real market price and drops by a defined ratio in defined time
-                intervals. For example, ETH-A auctions start 30% above the market price and drop by
+                GSU Protocol and the price on other marketplaces. Similar to a Dutch-style auction system, the auction
+                price starts above the real market price and drops by a defined ratio in defined time intervals. For
+                example, ETH-A auctions start 30% above the market price and drop by
                 <format-percentage :value="params.priceDropRatio" /> every
                 {{ params.secondsBetweenPriceDrops }} seconds. When the auction price drops below the exchange rate on
                 other marketplaces there is a chance to make a profit.
@@ -68,7 +62,7 @@
             />
         </div>
         <TextBlock v-if="isExplanationsShown" title="What is the catch?" class="TextBlock">
-            This situation exists in the first place, because the Maker protocol can not be executed by itself. There
+            This situation exists in the first place, because the GSU protocol can not be executed by itself. There
             need to be players who execute vital parts of the protocol and pay a
             <Explain text="transaction fee">
                 Transaction fees are paid as
@@ -82,7 +76,7 @@
             <Explain text="healthy condition" placement="topRight">
                 Overall health of the system is predominantly defined by the surplus in collateral that is backing all
                 GSUc. This system health can be monitored on
-                <a href="https://daistats.com/#/" target="_blank">daistats</a>.
+                <a href="https://gsustats.com/#/" target="_blank">gsustats</a>.
             </Explain>
             get rewarded with higher profits. Most of the auctions will be cleared by players with bots bidding very
             quickly, whenever there is a slight market opportunity. However, in some occasions like bigger market
@@ -159,7 +153,7 @@ export default Vue.extend({
         params(): MakerParams {
             return {
                 secondsBetweenPriceDrops: 90,
-                priceDropRatio: 0.01,
+                priceDropRatio: 1,
             };
         },
     },

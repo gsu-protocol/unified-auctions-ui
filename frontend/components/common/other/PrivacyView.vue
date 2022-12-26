@@ -8,7 +8,7 @@
                 <TextBlock>
                     <p>
                         At Unified Auctions UI, accessible from
-                        <a href="https://auctions.makerdao.network">auctions.makerdao.network</a>, one of our main
+                        <a href="https://auctions.gsuprotocol.io">auctions.gsuprotocol.network</a>, one of our main
                         priorities is the privacy of our visitors. This Privacy Policy document contains types of
                         information that is collected and recorded by Unified Auctions UI and how we use it.
                     </p>
@@ -91,11 +91,11 @@
                     </p>
                     <p>
                         Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web
-                        Beacons that are used in their respective advertisements and links that appear on Maker
-                        Protocol - Unified Auctions, which are sent directly to users' browser. They automatically
-                        receive your IP address when this occurs. These technologies are used to measure the
-                        effectiveness of their advertising campaigns and/or to personalize the advertising content that
-                        you see on websites that you visit.
+                        Beacons that are used in their respective advertisements and links that appear on GSU Protocol
+                        - Unified Auctions, which are sent directly to users' browser. They automatically receive your
+                        IP address when this occurs. These technologies are used to measure the effectiveness of their
+                        advertising campaigns and/or to personalize the advertising content that you see on websites
+                        that you visit.
                     </p>
                     <p>
                         Note that Unified Auctions UI has no access to or control over these cookies that are used by
