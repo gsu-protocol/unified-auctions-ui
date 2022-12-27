@@ -1,4 +1,4 @@
-import type { CalleeFunctions, CollateralConfig } from '../types';
+import type { CalleeFunctions, CollateralConfig, Pool } from '../types';
 import BigNumber from '../bignumber';
 import { NULL_BYTES } from '../constants/UNITS';
 import { fetchGSURates } from './helpers/gsu';
@@ -10,7 +10,7 @@ const getCalleeData = async function (
     profitAddress: string,
     preloadedPools?: Pool[]
 ): Promise<string> {
-    console.warn('ignore asking for Callee data', network, collateral.symbol, profitAddress);
+    console.warn('ignore asking for Callee data', network, marketId, collateral.symbol, profitAddress, preloadedPools);
     return NULL_BYTES;
 };
 
@@ -20,6 +20,8 @@ const getMarketPrice = async function (
     _marketId: string,
     collateralAmount: BigNumber
 ): Promise<BigNumber> {
+    // eslint-disable-next-line no-console
+    console.debug('ignoring market price params', network, _marketId, collateralAmount);
     // convert collateral into DAI aka GSUc
     const daiPrice = await fetchGSURates(_collateral.symbol);
 
