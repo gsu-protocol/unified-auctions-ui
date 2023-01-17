@@ -3,11 +3,11 @@
         <WhatIsMakerProtocol v-if="isExplanationsShown" class="TextBlock"></WhatIsMakerProtocol>
         <template v-if="isExplanationsShown">
             <TextBlock title="What are vaults?" class="TextBlock">
-                A vault is a main source of GSUc in the MakerDAO protocol: anyone is able to deposit supported
-                collateral into the system to get stablecoin in return and has to pay stability fees associated with
-                the collateral type. The place where the collateral is deposited is called the vault and is solely
-                managed by the person who deposited it, unless the deposited collateral amount no longer covers the
-                withdrawn GSUc.</TextBlock
+                A vault is a main source of GSUc in the GSU Protocol: anyone is able to deposit supported into the
+                system to get stablecoin in return and has to pay stability fees associated with the collateral type.
+                The place where the collateral is deposited is called the vault and is solely managed by the person who
+                deposited it, unless the deposited collateral amount no longer covers the withdrawn withdrawn
+                GSUc.</TextBlock
             >
             <TextBlock title="When are vaults at risk?" class="TextBlock">
                 Vaults become at risk when true value of the collateral in the vault is getting too close to the value
