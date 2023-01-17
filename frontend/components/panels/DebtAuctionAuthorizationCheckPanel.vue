@@ -5,7 +5,7 @@
             You need to authorize the
             <Explain text="debt auction contract">
                 The particular smart contract is called Flopper and its technical specification can be found
-                <a href="https://github.com/makerdao/dss/blob/master/src/flop.sol" target="_blank">here</a>
+                <a href="https://github.com/gsu-protocol/dss/blob/master/src/flop.sol" target="_blank">here</a>
             </Explain>
             to modify your GSUc stored in VAT, this operation should only be done once.
         </TextBlock>

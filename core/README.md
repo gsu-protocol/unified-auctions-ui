@@ -48,7 +48,7 @@ The process of adding new collaterals depends on the token type used. This is du
 
 ### Onboarding not yet deployed collateral
 
-When a completely new collateral type support is being prepared, we need to ensure that it will work even before the GSU Protocol is changed via a [`spell`](https://docs.makerdao.com/smart-contract-modules/governance-module/spell-detailed-documentation). Usually a new spell is prepared in the [spells-mainnet](https://github.com/makerdao/spells-mainnet/pulls) repository. When it is there we need to fork the repository, compile the spell and deploy it into the hardhat fork. Currently the setup is as follows:
+When a completely new collateral type support is being prepared, we need to ensure that it will work even before the GSU Protocol is changed via a [`spell`](https://docs.gsucoin.app/smart-contract-modules/governance-module/spell-detailed-documentation). Usually a new spell is prepared in the [spells-mainnet](https://github.com/makerdao/spells-mainnet/pulls) repository. When it is there we need to fork the repository, compile the spell and deploy it into the hardhat fork. Currently the setup is as follows:
 
 1. `rsync` or clone the repo to the desired x86 machine (tested with Docker 19.03.12 on Ubuntu 20.04)
 2. `cd` into the `core/simulations/docker` and run `docker-compose up` to start the hardhat fork in one container and another container with installed [`dapp-tools`](https://github.com/dapphub/dapptools)

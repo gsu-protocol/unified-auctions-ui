@@ -32,7 +32,7 @@
                     The relative incentive parameter represents a reward in GSUc paid to the user who liquidates the
                     vault. It is relative to vault size. In maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
                         target="_blank"
                         >clip.chip</a
                     >.
@@ -52,7 +52,7 @@
                     The constant incentive parameter represents a reward in GSUc paid to the user who liquidates the
                     vault. It is constant for all liquidations of the same collateral type. In maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
                         target="_blank"
                     >
                         clip.tip</a

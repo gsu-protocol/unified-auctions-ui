@@ -15,7 +15,7 @@
                     The maximum allowed amount of GSUc needed to cover the debt and liquidation incentives of all
                     active auctions. In maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-hole-rad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-hole-rad"
                         target="_blank"
                         >dog.Hole</a
                     >
@@ -25,7 +25,7 @@
                     The amount of GSUc needed to cover the debt and liquidation incentives of all active auctions. In
                     maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
                         target="_blank"
                         >dog.Dirt</a
                     >
@@ -44,7 +44,7 @@
                     The amount of GSUc needed to cover the debt and liquidation incentives of active
                     {{ vaultTransaction.collateralType }} auctions. In maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-ilk.hole-rad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-ilk.hole-rad"
                         target="_blank"
                         >ilk.hole</a
                     >
@@ -54,7 +54,7 @@
                     The amount of GSUc needed to cover the debt and liquidation incentives of active
                     {{ vaultTransaction.collateralType }} auctions. In maker terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
                         target="_blank"
                         >ilk.dirt</a
                     >

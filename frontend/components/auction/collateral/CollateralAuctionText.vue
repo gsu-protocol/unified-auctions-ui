@@ -7,7 +7,7 @@
                 <Explain text="collateral auctions">
                     A
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation"
                         target="_blank"
                         >collateral auction</a
                     >
