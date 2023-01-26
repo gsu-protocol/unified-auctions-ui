@@ -9,7 +9,7 @@
         players. People who help to keep GSUc stable, benefit from their actions by acquiring cryptocurrency at a
         discount. The main promise of the protocol is to provide a decentralized
         <Explain text="stable currency">
-            <a href="https://gsucoin.app/en/whitepaper#the-dai-stablecoin" target="_blank">The GSUc Stablecoin</a>
+            <a href="https://docs.gsucoin.app/en/whitepaper#the-dai-stablecoin" target="_blank">The GSUc Stablecoin</a>
             is a decentralized, unbiased, collateral-backed cryptocurrency soft-pegged to the US Dollar </Explain
         >, which can be used to borrow money over a longer period without being affected by unpredictable exchange
         rates.

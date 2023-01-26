@@ -31,7 +31,7 @@
                 >
             </li>
             <li>
-                <a class="FooterLink" href=""> Roadmap </a>
+                <a class="FooterLink" href="https://docs.gsucoin.app/roadmap"> Roadmap </a>
             </li>
             <li>
                 <NuxtLink class="FooterLink" :to="`/dashboard?network=${pageNetwork}`">Dashboard</NuxtLink>
