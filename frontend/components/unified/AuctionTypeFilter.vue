@@ -39,7 +39,7 @@
                 If the GSU Protocol is successfully governed, surplus GSUc is accrued. Once this surplus hit a certain
                 threshold the Protocol will discharge it by buying and burning
                 <Explain text="GSU prtocol tokens (GSUp)">
-                    GSUp is a token on the Ethereum blockchain that has governance rights over the Maker smart
+                    GSUp is a token on the Ethereum blockchain that has governance rights over the GSU Protocol smart
                     contracts
                 </Explain>
                 . This process is facilitated by surplus auctions.
