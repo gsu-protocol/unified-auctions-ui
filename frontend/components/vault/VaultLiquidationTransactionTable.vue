@@ -30,7 +30,7 @@
             <div>
                 <Explain text="Liquidation incentive relative">
                     The relative incentive parameter represents a reward in GSUc paid to the user who liquidates the
-                    vault. It is relative to vault size. In maker terms it is called
+                    vault. It is relative to vault size. In GSU Protocol terms it is called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
                         target="_blank"
@@ -50,7 +50,8 @@
             <div>
                 <Explain text="Liquidation incentive constant">
                     The constant incentive parameter represents a reward in GSUc paid to the user who liquidates the
-                    vault. It is constant for all liquidations of the same collateral type. In maker terms it is called
+                    vault. It is constant for all liquidations of the same collateral type. In GSU Protocol terms it is
+                    called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
                         target="_blank"

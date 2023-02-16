@@ -45,7 +45,7 @@
                     <TextBlock>
                         Please provide a specific vault id to see its state. To find vaults that are currently at risk
                         and can be liquidated, please follow to the
-                        <a href="https://maker.blockanalitica.com/vaults-at-risk/" target="_blank">blockanalitica</a>
+                        <a href="https://docs.gsucoin.app/vaults-at-risk/" target="_blank">blockanalitica</a>
                         page.
                     </TextBlock>
                 </template>

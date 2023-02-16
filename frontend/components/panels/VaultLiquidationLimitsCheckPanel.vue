@@ -13,7 +13,7 @@
             <span v-if="!isGlobalLimitMissing">
                 <Explain :text="format(vaultTransaction.maximumProtocolDebtDai)">
                     The maximum allowed amount of GSUc needed to cover the debt and liquidation incentives of all
-                    active auctions. In maker terms it is called
+                    active auctions. In GSU Protocol terms it is called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-hole-rad"
                         target="_blank"
@@ -23,7 +23,7 @@
                 -
                 <Explain :text="format(vaultTransaction.currentProtocolDebtDai)">
                     The amount of GSUc needed to cover the debt and liquidation incentives of all active auctions. In
-                    maker terms it is called
+                    GSU Protocol terms it is called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
                         target="_blank"
@@ -42,7 +42,7 @@
             <span v-if="!isCollateralLimitMissing">
                 <Explain :text="format(vaultTransaction.maximumCollateralDebtDai)">
                     The amount of GSUc needed to cover the debt and liquidation incentives of active
-                    {{ vaultTransaction.collateralType }} auctions. In maker terms it is called
+                    {{ vaultTransaction.collateralType }} auctions. In GSU Protocol terms it is called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#dog-ilk.hole-rad"
                         target="_blank"
@@ -52,7 +52,7 @@
                 -
                 <Explain :text="format(vaultTransaction.currentCollateralDebtDai)">
                     The amount of GSUc needed to cover the debt and liquidation incentives of active
-                    {{ vaultTransaction.collateralType }} auctions. In maker terms it is called
+                    {{ vaultTransaction.collateralType }} auctions. In GSU Protocol terms it is called
                     <a
                         href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#limits-on-dai-needed-to-cover-debt-and-fees-of-active-auctions"
                         target="_blank"
