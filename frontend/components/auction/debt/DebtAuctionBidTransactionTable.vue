@@ -3,7 +3,7 @@
         <div class="flex justify-between">
             <div>Auction State</div>
             <div>
-                <time-till :date="auction.auctionEndDate" />
+                <TimeTill :date="auction.auctionEndDate" />
             </div>
         </div>
         <div class="flex justify-between">
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="flex justify-between">
-            <div>Price on Uniswap</div>
+            <div>Market Price</div>
             <div>
                 <span v-if="isActive && auction.marketUnitPrice">
                     <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per GSUp

@@ -31,7 +31,7 @@ const features: FeatureList[] = [
                                 text: `Estimated time till profitability`,
                             },
                             {
-                                text: `Current price on Uniswap per collateral in GSUc`,
+                                text: `Current price per collateral in GSUc`,
                                 // items: [
                                 //     {
                                 //         text: `The price on Uniswap per collateral is determined via the Uniswap v2 SDK / Uniswap v3 SDK`,

@@ -1,49 +1,29 @@
-import type { CalleeFunctions, CollateralConfig } from '../types';
-import fetch from 'node-fetch';
+import type { CalleeFunctions, CollateralConfig, Pool } from '../types';
 import BigNumber from '../bignumber';
-import { WAD, NULL_BYTES } from '../constants/UNITS';
-
-const GSU_RATES = process.env.GSU_RATES || 'https://goerli.gsu.io/Umbraco/Api/Rates/GSU/';
-type RatesAPIResponse = {
-    price: string;
-};
-
-const fetchDaiRates = async function (symbol: string): Promise<BigNumber> {
-    let rate = new BigNumber(1);
-    try {
-        const response = await fetch(GSU_RATES + '?symbol=' + symbol, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        });
-        if (!response.ok) {
-            throw new Error(`Error! status: ${response.status}`);
-        }
-        const result = (await response.json()) as RatesAPIResponse;
-        rate = new BigNumber(result.price).dividedBy(WAD);
-    } catch (error) {
-        console.error('fetchDaiRates error message: ', error);
-    } finally {
-        return rate;
-    }
-};
+import { NULL_BYTES } from '../constants/UNITS';
+import { fetchGSURates } from './helpers/gsu';
 
 const getCalleeData = async function (
     network: string,
     collateral: CollateralConfig,
-    profitAddress: string
+    marketId: string,
+    profitAddress: string,
+    preloadedPools?: Pool[]
 ): Promise<string> {
-    console.warn('ignore asking for Callee data', network, collateral.symbol, profitAddress);
+    console.warn('ignore asking for Callee data', network, marketId, collateral.symbol, profitAddress, preloadedPools);
     return NULL_BYTES;
 };
 
 const getMarketPrice = async function (
     network: string,
-    collateral: CollateralConfig,
+    _collateral: CollateralConfig,
+    _marketId: string,
     collateralAmount: BigNumber
 ): Promise<BigNumber> {
-    console.warn('ignoring all parameters but collateral', network, collateralAmount);
-    // convert collateral into DAI
-    const daiPrice = await fetchDaiRates(collateral.symbol);
+    // eslint-disable-next-line no-console
+    console.debug('ignoring market price params', network, _marketId, collateralAmount);
+    // convert collateral into DAI aka GSUc
+    const daiPrice = await fetchGSURates(_collateral.symbol);
 
     // return price per unit
     return daiPrice;

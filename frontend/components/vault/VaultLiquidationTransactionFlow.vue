@@ -1,12 +1,14 @@
 <template>
     <div>
         <TextBlock title="Vault Liquidation transaction" />
-        <Alert v-if="wasLiquidated" show-icon type="warning">
+        <Alert v-if="wasLiquidated" show-icon type="info">
             <div slot="message">
                 <p>This vault has been liquidated into a collateral auction</p>
                 <div class="flex justify-end mt-2">
                     <nuxt-link :to="auctionLink">
-                        <Button> View collateral auction {{ vaultTransaction.auctionId }} </Button>
+                        <Button type="primary">
+                            View collateral auction {{ vaultTransaction.pastLiquidations[0].auctionId }}
+                        </Button>
                     </nuxt-link>
                 </div>
             </div>
@@ -14,8 +16,23 @@
         <VaultLiquidationTransactionTable v-if="!wasLiquidated" class="my-4" :vault-transaction="vaultTransaction" />
         <TextBlock class="mt-4">
             <template v-if="wasLiquidated">
-                This vault was liquidated <TimeTill :date="vaultTransaction.liqudiationDate" /> in the transaction
-                <FormatAddress :value="vaultTransaction.transactionHash" />.
+                This vault was last liquidated
+                <TimeTill :date="vaultTransaction.pastLiquidations[0].liquidationDate" /> in the transaction
+                <FormatAddress :value="vaultTransaction.pastLiquidations[0].transactionHash" />.
+                <div v-if="walletAddress" class="mt-4">
+                    <WithdrawDAIPanel
+                        :wallet-address="walletAddress"
+                        :dai-vat-balance="daiVatBalance"
+                        :is-authorizing="isAuthorizing"
+                        :is-wallet-authorized="isWalletAuthorized"
+                        :is-withdrawing="isWithdrawing"
+                        :is-explanations-shown="isExplanationsShown"
+                        :state="vaultTransaction.state"
+                        @manageVat="$emit('manageVat')"
+                        @authorizeWallet="$emit('authorizeWallet')"
+                        @withdrawAllDaiFromVat="$emit('withdrawAllDaiFromVat')"
+                    />
+                </div>
             </template>
             <template v-else>
                 Please note, the
@@ -42,14 +59,10 @@
                 @disconnectWallet="$emit('disconnectWallet')"
             />
             <VaultLiquidationLimitsCheckPanel
-                :liquidation-limits="liquidationLimits"
-                :collateral-type="vaultTransaction.collateralType"
-                :debt-dai="vaultTransaction.debtDai"
-                :incentive-relative-dai="vaultTransaction.incentiveRelativeDai"
-                :incentive-constant-dai="vaultTransaction.incentiveConstantDai"
+                :vault-transaction="vaultTransaction"
                 :is-refreshing="isRefreshingLimits"
                 :is-explanations-shown="isExplanationsShown"
-                :is-correct.sync="areLimitsNotReached"
+                :is-correct.sync="isAnyLiquidationPossible"
                 @refreshLimits="$emit('refreshLimits')"
             />
             <VaultLiquidationPanel
@@ -57,7 +70,7 @@
                 :network="vaultTransaction.network"
                 :vault-state="vaultTransaction.state"
                 :wallet-address="walletAddress"
-                :disabled="!isWalletConnected || !areLimitsNotReached"
+                :disabled="!isWalletConnected || !isAnyLiquidationPossible"
                 :is-liquidating="isLiquidating"
                 :is-explanations-shown="isExplanationsShown"
                 @liquidate="$emit('liquidate', $event)"
@@ -68,6 +81,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import BigNumber from 'bignumber.js';
 import { Alert, Button } from 'ant-design-vue';
 import { LiquidationLimits, VaultTransaction } from 'auctions-core/dist/src/types';
 import TransactionFeesTable from '../auction/TransactionFeesTable.vue';
@@ -78,6 +92,7 @@ import VaultLiquidationLimitsCheckPanel from '../panels/VaultLiquidationLimitsCh
 import VaultLiquidationPanel from '../panels/VaultLiquidationPanel.vue';
 import VaultLiquidationTransactionTable from './VaultLiquidationTransactionTable.vue';
 import WalletConnectionCheckPanel from '~/components/panels/WalletConnectionCheckPanel.vue';
+import WithdrawDAIPanel from '~/components/panels/WithdrawDAIPanel.vue';
 import TextBlock from '~/components/common/other/TextBlock.vue';
 import Explain from '~/components/common/other/Explain.vue';
 
@@ -93,6 +108,7 @@ export default Vue.extend({
         Alert,
         Button,
         WalletConnectionCheckPanel,
+        WithdrawDAIPanel,
         Explain,
     },
     props: {
@@ -100,15 +116,27 @@ export default Vue.extend({
             type: Object as Vue.PropType<VaultTransaction>,
             required: true,
         },
-        liquidationLimits: {
-            type: Object as Vue.PropType<LiquidationLimits>,
-            required: true,
-        },
         walletAddress: {
             type: String,
             default: null,
         },
         isConnectingWallet: {
+            type: Boolean,
+            default: false,
+        },
+        daiVatBalance: {
+            type: Object as Vue.PropType<BigNumber>,
+            default: undefined,
+        },
+        isAuthorizing: {
+            type: Boolean,
+            default: false,
+        },
+        isWalletAuthorized: {
+            type: Boolean,
+            default: false,
+        },
+        isWithdrawing: {
             type: Boolean,
             default: false,
         },
@@ -128,19 +156,33 @@ export default Vue.extend({
     data() {
         return {
             isWalletConnected: false,
-            areLimitsNotReached: false,
+            isAnyLiquidationPossible: false,
         };
     },
     computed: {
         auctionLink(): string | undefined {
-            if (!this.vaultTransaction || !this.vaultTransaction.auctionId) {
+            if (
+                !this.vaultTransaction ||
+                this.vaultTransaction.state !== 'liquidated' ||
+                !this.vaultTransaction.pastLiquidations
+            ) {
                 return undefined;
             }
             const link = generateLink(this.vaultTransaction.network, 'collateral');
-            return `${link}&auction=${encodeURIComponent(this.vaultTransaction.auctionId)}`;
+            return `${link}&auction=${encodeURIComponent(this.vaultTransaction.pastLiquidations[0].auctionId)}`;
         },
         wasLiquidated(): boolean {
             return this.vaultTransaction.state === 'liquidated';
+        },
+        liquidationLimits(): LiquidationLimits {
+            return {
+                maximumProtocolDebtDai: this.vaultTransaction.maximumProtocolDebtDai,
+                currentProtocolDebtDai: this.vaultTransaction.currentProtocolDebtDai,
+                currentCollateralDebtDai: this.vaultTransaction.currentCollateralDebtDai,
+                maximumCollateralDebtDai: this.vaultTransaction.maximumCollateralDebtDai,
+                liquidationPenaltyRatio: this.vaultTransaction.liquidationPenaltyRatio,
+                minimalAuctionedDai: this.vaultTransaction.minimalAuctionedDai,
+            };
         },
     },
 });

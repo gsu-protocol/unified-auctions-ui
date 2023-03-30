@@ -1,22 +1,22 @@
 import { storiesOf } from '@storybook/vue';
 import faker from 'faker';
 import BigNumber from 'bignumber.js';
-import { getAllCollateralTypes } from 'auctions-core/src/constants/COLLATERALS.ts';
 import VaultLiquidationLimitsCheckPanel from './VaultLiquidationLimitsCheckPanel';
-import { generateFakeLiquidationLimits } from '~/helpers/generateFakeVault';
+import { generateFakeVaultNotLiquidatedTransaction } from '~/helpers/generateFakeVault';
 
-const COLLATERALS = getAllCollateralTypes();
-const liquidationLimits = generateFakeLiquidationLimits();
+const vaultTransaction = {
+    ...generateFakeVaultNotLiquidatedTransaction(),
+    maximumProtocolDebtDai: new BigNumber(faker.datatype.number({ min: 10000, max: 50000 })),
+    currentProtocolDebtDai: new BigNumber(0),
+    maximumCollateralDebtDai: new BigNumber(faker.datatype.number({ min: 10000, max: 50000 })),
+    currentCollateralDebtDai: new BigNumber(0),
+};
 
 const common = {
     components: { VaultLiquidationLimitsCheckPanel },
     data() {
         return {
-            collateralType: faker.helpers.randomize(COLLATERALS),
-            debtDai: new BigNumber(0),
-            incentiveRelativeDai: new BigNumber(0),
-            incentiveConstantDai: new BigNumber(0),
-            liquidationLimits,
+            vaultTransaction,
             isExplanationsShown: true,
             isRefreshing: false,
         };
@@ -45,29 +45,33 @@ storiesOf('Panels/VaultLiquidationLimitsCheckPanel', module)
             };
         },
     }))
-    .add('Global Limits Reached', () => ({
+    .add('Partial Liquidation Possible', () => ({
         ...common,
         data() {
             return {
                 ...common.data(),
-                debtDai: new BigNumber(faker.datatype.float({ min: 1000 })),
-                incentiveRelativeDai: new BigNumber(faker.finance.amount()),
-                incentiveConstantDai: new BigNumber(faker.finance.amount()),
+                vaultTransaction: {
+                    ...vaultTransaction,
+                    state: 'liquidatable',
+                    debtDai: new BigNumber(faker.datatype.float({ min: 50000 })),
+                },
             };
         },
     }))
-    .add('Collateral Limits Reached', () => ({
+    .add('No Liquidation Possible', () => ({
         ...common,
         data() {
             return {
                 ...common.data(),
-                liquidationLimits: {
-                    ...liquidationLimits,
-                    maximumProtocolDebtDai: new BigNumber(faker.datatype.float({ min: 5000 })),
+                vaultTransaction: {
+                    ...vaultTransaction,
+                    state: 'not-liquidatable',
+                    debtDai: new BigNumber(10000),
+                    maximumProtocolDebtDai: new BigNumber(5000),
+                    currentProtocolDebtDai: new BigNumber(5000),
+                    maximumCollateralDebtDai: new BigNumber(5000),
+                    currentCollateralDebtDai: new BigNumber(5000),
                 },
-                debtDai: new BigNumber(faker.datatype.float({ min: 1000, max: 2000 })),
-                incentiveRelativeDai: new BigNumber(faker.finance.amount()),
-                incentiveConstantDai: new BigNumber(faker.finance.amount()),
             };
         },
     }))
@@ -76,7 +80,7 @@ storiesOf('Panels/VaultLiquidationLimitsCheckPanel', module)
         data() {
             return {
                 ...common.data(),
-                liquidationLimits: {},
+                vaultTransaction: {},
             };
         },
     }))

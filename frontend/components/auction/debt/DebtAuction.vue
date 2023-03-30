@@ -31,7 +31,7 @@
                                 <span v-else-if="requiresRestart">Requires restart</span>
                                 <span v-else-if="auction.state === 'ready-for-collection'">Ended </span>
                                 <span v-else>Collected </span>
-                                <time-till
+                                <TimeTill
                                     v-if="auction.earliestEndDate && !requiresRestart"
                                     :date="auction.earliestEndDate"
                                 />
@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.marketUnitPrice">
                                     <format-currency
@@ -100,7 +100,7 @@
                                     />
                                     <span>Updating...</span>
                                 </div>
-                                <time-till v-else :date="auction.fetchedAt" />
+                                <TimeTill v-else :date="auction.fetchedAt" />
                             </td>
                         </tr>
                     </tbody>

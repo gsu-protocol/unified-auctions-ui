@@ -1,6 +1,5 @@
-import { HARDHAT_PUBLIC_KEY } from '../../helpers/constants';
-import BigNumber from '../../src/bignumber';
-import { resetNetworkAndSetupWallet, warpTime, addDaiToBalance, addMkrToBalance } from '../../helpers/hardhat';
+import { addDaiToBalance, addMkrToBalance } from '../../helpers/hardhat/balance';
+import { resetNetworkAndSetupWallet, warpTime } from '../../helpers/hardhat/network';
 import { causeDebt } from '../../helpers/auctionSimulators';
 import { Simulation } from '../types';
 
@@ -22,13 +21,16 @@ const simulation: Simulation = {
         {
             title: 'Add GSUc and GSUp to the wallet',
             entry: async () => {
-                await addDaiToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);
-                await addMkrToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);
+                await addDaiToBalance();
+                await addMkrToBalance();
             },
         },
         {
             title: 'Skip time',
-            entry: async () => await warpTime(),
+            entry: async () => {
+                await warpTime();
+                return;
+            },
         },
     ],
 };
