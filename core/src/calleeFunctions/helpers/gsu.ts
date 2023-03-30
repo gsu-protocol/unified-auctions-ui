@@ -1,8 +1,7 @@
 import fetch from 'node-fetch';
 import BigNumber from '../../bignumber';
-import { WAD } from '../../constants/UNITS';
 
-const GSU_RATES = process.env.GSU_RATES || 'https://goerli.gsu.io/Umbraco/Api/Rates/GSU/';
+const GSU_RATES = process.env.GSU_RATES || 'https://api.gsucoin.app/Products/GSULive/';
 
 type RatesAPIResponse = {
     price: string;
@@ -23,8 +22,6 @@ export const fetchGSURates = async function (symbol: string): Promise<BigNumber>
         if (rate.isZero()) {
             rate = new BigNumber(1);
             console.warn('sending bad GSU rate', rate.toString());
-        } else {
-            rate = rate.dividedBy(WAD);
         }
     } catch (error) {
         console.error('fetchGSURates error message: ', error);

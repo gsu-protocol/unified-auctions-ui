@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.isActive && auction.marketUnitPrice">
                                     <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per

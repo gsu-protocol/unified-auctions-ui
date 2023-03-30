@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.marketUnitPrice">
                                     <format-currency

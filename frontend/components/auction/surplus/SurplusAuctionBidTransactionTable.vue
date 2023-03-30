@@ -50,12 +50,16 @@
         <div class="flex justify-between">
             <div>Combined Transaction Fees</div>
             <div>
-                <FormatCurrency v-if="auction.combinedBidFeesDai" :value="auction.combinedBidFeesDai" currency="GSUc" />
+                <FormatCurrency
+                    v-if="auction.combinedBidFeesDai"
+                    :value="auction.combinedBidFeesDai"
+                    currency="GSUc"
+                />
                 <span v-else class="opacity-50">Unknown</span>
             </div>
         </div>
         <div class="flex justify-between">
-            <div>Price on Uniswap</div>
+            <div>Market Price</div>
             <div>
                 <FormatCurrency
                     v-if="auction.marketUnitPrice && isActive"
