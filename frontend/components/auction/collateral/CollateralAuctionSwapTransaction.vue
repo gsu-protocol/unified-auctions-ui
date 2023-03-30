@@ -7,7 +7,13 @@
             type="error"
         />
         <Alert v-if="auctionTransaction.isFinished" message="This auction is finished" type="error" />
-        <CollateralAuctionSwapTransactionTable :auction-transaction="auctionTransaction" class="mt-4" />
+        <CollateralAuctionSwapTransactionTable
+            :auction-transaction="auctionTransaction"
+            :market-id.sync="currentMarketId"
+            :is-autorouting-enabled="isAutoroutingEnabled"
+            class="mt-4"
+            @update:toggleAutoRouterLoad="$emit('toggleAutoRouterLoad', $event)"
+        />
         <TextBlock class="TextBlock mt-4 mb-8">
             Please note, the transaction fee is a suggested value based on the current gas prices on the market; the
             Transaction Net Profit is also approximate, since it is extrapolated from the exchange rates and may change
@@ -16,7 +22,7 @@
             <Explain text="more chances to win">
                 For transactions that need to get preferentially executed ahead of other transactions
                 <a
-                    href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#front-running"
+                    href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#front-running"
                     target="_blank"
                     >in the same block</a
                 >, a
@@ -61,8 +67,8 @@
             />
             <ProfitCheckPanel
                 :is-correct.sync="isProfitCheckPassed"
-                :gross-profit="auctionTransaction.transactionGrossProfit"
-                :net-profit="auctionTransaction.transactionNetProfit"
+                :gross-profit="transactionGrossProfit"
+                :net-profit="transactionNetProfit"
                 :is-explanations-shown="isExplanationsShown"
             />
         </div>
@@ -83,14 +89,20 @@
             :is-wallet-authed="isWalletAuthorized"
             :is-collateral-authed="isWalletCollateralAuthorizationCheckPassed"
             :fees="fees"
-            :transaction-gross-profit="auctionTransaction.transactionGrossProfit"
-            @execute="$emit('execute', { id: auctionTransaction.id, alternativeDestinationAddress: $event })"
+            @execute="
+                $emit('execute', {
+                    id: auctionTransaction.id,
+                    marketId: marketSuggestionOrSelection,
+                    alternativeDestinationAddress: $event,
+                })
+            "
         />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import BigNumber from 'bignumber.js';
 import { Alert } from 'ant-design-vue';
 import WalletConnectionCheckPanel from '~/components/panels/WalletConnectionCheckPanel.vue';
 import WalletAuthorizationCheckPanel from '~/components/panels/WalletAuthorizationCheckPanel.vue';
@@ -148,9 +160,14 @@ export default Vue.extend({
             type: Boolean,
             default: true,
         },
+        isAutoroutingEnabled: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
+            currentMarketId: '',
             isWalletConnectedCheck: false,
             isWalletDAIAuthorizationCheckPassed: false,
             isWalletCollateralAuthorizationCheckPassed: false,
@@ -176,6 +193,21 @@ export default Vue.extend({
                 fees['Collateral Authorization Fee'] = this.auctionTransaction.authTransactionFeeETH;
             }
             return fees;
+        },
+        marketSuggestionOrSelection(): string | undefined {
+            return this.currentMarketId || this.auctionTransaction.suggestedMarketId;
+        },
+        transactionGrossProfit(): BigNumber | undefined {
+            if (!this.auctionTransaction.marketDataRecords) {
+                return undefined;
+            }
+            return this.auctionTransaction.marketDataRecords[this.marketSuggestionOrSelection]?.transactionGrossProfit;
+        },
+        transactionNetProfit(): BigNumber | undefined {
+            if (!this.auctionTransaction.marketDataRecords) {
+                return undefined;
+            }
+            return this.auctionTransaction.marketDataRecords[this.marketSuggestionOrSelection]?.transactionNetProfit;
         },
     },
 });

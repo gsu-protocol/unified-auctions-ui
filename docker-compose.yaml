@@ -26,7 +26,7 @@ services:
                 - CONTACT_EMAIL
                 - HEAPIO_ID
         network_mode: host
-        command: sh -c "npm run generate && npm run start"
+
     reverse-proxy:
         image: nginx:stable-alpine
         ports:

@@ -23,7 +23,7 @@
                 The VAT balance is the balance of GSUc tokens owned by your wallet inside the GSU Protocol.
                 <a
                     target="_blank"
-                    href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation"
+                    href="https://docs.gsucoin.app/smart-contract-modules/core-module/vat-detailed-documentation"
                     >The VAT itself</a
                 >
                 is the set of immutable rules for managing GSUc and collaterals which constitutes the core of the GSU

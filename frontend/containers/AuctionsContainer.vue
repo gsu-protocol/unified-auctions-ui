@@ -22,6 +22,7 @@
             :collateral-vat-balance-store="collateralVatBalanceStore"
             :is-fetching-collateral-vat-balance="isFetchingCollateralVatBalance"
             :last-updated="lastUpdated"
+            :autorouting-states="autoroutingStates"
             @fetchCollateralVatBalance="fetchCollateralVatBalance"
             @withdrawAllCollateralFromVat="withdrawAllCollateralFromVat"
             @manageVat="openWalletModal"
@@ -33,14 +34,17 @@
             @execute="bidWithCallee"
             @bidWithDai="bidWithDai"
             @fetchTakeEventsFromAuction="fetchTakeEventsByAuctionId"
+            @toggleAutoRouterLoad="toggleAutoRouterLoad"
         />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import BigNumber from 'bignumber.js';
 import { mapGetters, mapActions } from 'vuex';
-import CollateralAuctionFlow from '~/components/auction/collateral/CollateralAuctionFlow';
+import { Auction } from 'auctions-core/src/types';
+import CollateralAuctionFlow from '~/components/auction/collateral/CollateralAuctionFlow.vue';
 
 export default Vue.extend({
     components: {
@@ -57,6 +61,7 @@ export default Vue.extend({
             auctionsError: 'getError',
             auctionErrors: 'getAuctionErrors',
             lastUpdated: 'getLastUpdated',
+            autoroutingStates: 'getAuctionAutoRouterStates',
         }),
         ...mapGetters('wallet', {
             isWalletLoading: 'isLoading',
@@ -116,6 +121,7 @@ export default Vue.extend({
         fetchedSelectedAuctionId: {
             immediate: true,
             handler(): void {
+                this.updateAllAuctions();
                 this.fetchRelatedData();
             },
         },
@@ -160,6 +166,11 @@ export default Vue.extend({
             }
             this.$store.dispatch('wallet/setup');
             this.$store.dispatch('authorizations/setup');
+        },
+        toggleAutoRouterLoad(id: string): void {
+            const previousValue = this.$store.getters['auctions/getAuctionAutoRouterStates'][id];
+            this.$store.commit('auctions/setAuctionAutoRouterState', { id, useAutoRouter: !previousValue });
+            this.$store.dispatch('auctions/updateAuctionsPrices');
         },
     },
 });

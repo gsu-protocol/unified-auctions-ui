@@ -10,12 +10,7 @@
                 <Explain text="cold wallet">
                     Cold wallet is the wallet primarily used to store money, not execute the transactions. More info
                     about the wallet types can be found
-                    <a
-                        href="https://blog.makerdao.com/a-guide-to-crypto-wallet-types/#:~:text=Making%20Sense%20of%20Crypto%20Wallet%20Types*"
-                        target="_blank"
-                    >
-                        here</a
-                    >.</Explain
+                    <a href="#" target="_blank"> here</a>.</Explain
                 >. The transaction fee, however, will always be charged from the wallet that executes the transaction
                 and is connected to this UI.
 

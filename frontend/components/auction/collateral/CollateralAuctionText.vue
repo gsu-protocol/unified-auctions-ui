@@ -7,7 +7,7 @@
                 <Explain text="collateral auctions">
                     A
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation"
                         target="_blank"
                         >collateral auction</a
                     >
@@ -15,7 +15,7 @@
                     protocol.</Explain
                 >?
             </template>
-            To get GSUc, people need to lock up some other cryptocurrency (e.g., ETH) in a vault. With time, if the
+            To get GSUc, people need to lock up some other cryptocurrency (e.g. ETH) in a vault. With time, if the
             price of the cryptocurrency in the vault drops below the
             <Explain text="predefined ratio">
                 The Liquidation Ratio is the minimum required collateralization level for each Vault type before it is

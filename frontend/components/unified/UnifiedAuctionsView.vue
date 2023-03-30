@@ -109,25 +109,25 @@ export default Vue.extend({
                 //     title: 'Liquidations platform',
                 //     description: 'Web tool that support participation in collateral auctions by bidding with own Dai',
                 //     links: {
-                //         source: 'https://github.com/makerdao/liquidations-portal',
+                //         source: 'https://github.com/gsu-protocol/liquidations-portal',
                 //     },
                 //     filters: ['collateral'],
                 // },
                 // {
                 //     title: 'Maker Auction (surplus)',
                 //     description:
-                //         'Web tool that supports participation in surplus auctions by bidding on Dai with own GSUp',
+                //         'Web tool that supports participation in surplus auctions by bidding on Dai with own MKR',
                 //     links: {
-                //         source: 'https://github.com/makerdao/auctions-ui',
+                //         source: 'https://github.com/gsu-protocol/auctions-ui',
                 //     },
                 //     filters: ['surplus'],
                 // },
                 // {
                 //     title: 'Maker Auction (debt)',
                 //     description:
-                //         'Web tool that supports participation in debt auctions by bidding on GSUp with own Dai',
+                //         'Web tool that supports participation in debt auctions by bidding on MKR with own Dai',
                 //     links: {
-                //         source: 'https://github.com/makerdao/auctions-ui',
+                //         source: 'https://github.com/gsu-protocol/auctions-ui',
                 //     },
                 //     filters: ['debt'],
                 // },
@@ -137,7 +137,7 @@ export default Vue.extend({
                 //     Node.js-based reference implementation for a keeper that
                 //     participates in collateral auctions via swap transactions`,
                 //     links: {
-                //         source: 'https://github.com/makerdao/auction-demo-keeper',
+                //         source: 'https://github.com/gsu-protocol/auction-demo-keeper',
                 //     },
                 //     filters: ['collateral'],
                 // },
@@ -148,7 +148,7 @@ export default Vue.extend({
                 //     all different auction types (collateral auction, surplus auctions, debt auctions)
                 //     as well as as a bot to start auctions based on undercollateralized vaults`,
                 //     links: {
-                //         source: 'https://github.com/makerdao/auction-keeper',
+                //         source: 'https://github.com/gsu-protocol/auction-keeper',
                 //     },
                 //     filters: ['collateral', 'surplus', 'debt'],
                 // },

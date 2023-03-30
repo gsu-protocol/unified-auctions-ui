@@ -7,7 +7,7 @@ import {
     bidWithDai,
     bidWithCallee,
     restartAuction,
-    enrichAuctionWithPriceDropAndMarketValue,
+    enrichAuctionWithPriceDropAndMarketDataRecords,
     fetchTakeEvents,
     fetchSingleAuctionById,
 } from 'auctions-core/src/auctions';
@@ -34,12 +34,13 @@ interface State {
     auctionErrors: Record<string, string | undefined>;
     restartingAuctionsIds: string[];
     lastUpdated: Date | undefined;
+    auctionAutoRouterStates: Record<string, boolean>;
 }
 
 const getInitialState = (): State => ({
     auctionStorage: {},
     takeEventStorage: {},
-    areAuctionsFetching: false,
+    areAuctionsFetching: true,
     isSelectedAuctionFetching: false,
     areTakeEventsFetching: false,
     isBidding: false,
@@ -47,16 +48,15 @@ const getInitialState = (): State => ({
     auctionErrors: {},
     restartingAuctionsIds: [],
     lastUpdated: undefined,
+    auctionAutoRouterStates: {},
 });
 
 export const state = (): State => getInitialState();
 
 export const getters = {
-    listAuctions(state: State): AuctionTransaction[] {
-        return Object.values(state.auctionStorage);
-    },
-    listAuctionTransactions(state: State, getters: any, _rootState: any): AuctionTransaction[] {
-        const auctions = Object.values(state.auctionStorage);
+    listAuctionTransactions(state: State, getters: any, _rootState: any, rootGetters: any): AuctionTransaction[] {
+        const network = rootGetters['network/getMakerNetwork'];
+        const auctions = Object.values(state.auctionStorage).filter(auction => auction.network === network);
         return auctions.map(auction => {
             const isRestarting = getters.isAuctionRestarting(auction.id);
             return {
@@ -97,6 +97,9 @@ export const getters = {
     },
     isAuctionRestarting: (state: State) => (id: string) => {
         return state.restartingAuctionsIds.includes(id);
+    },
+    getAuctionAutoRouterStates: (state: State) => {
+        return state.auctionAutoRouterStates;
     },
 };
 
@@ -163,6 +166,9 @@ export const mutations = {
     setErrorByAuctionId(state: State, { auctionId, error }: { auctionId: string; error: string }) {
         Vue.set(state.auctionErrors, auctionId, error);
     },
+    setAuctionAutoRouterState(state: State, { id, useAutoRouter }: { id: string; useAutoRouter: boolean }) {
+        Vue.set(state.auctionAutoRouterStates, id, useAutoRouter);
+    },
     reset(state: State) {
         Object.assign(state, getInitialState());
     },
@@ -208,6 +214,7 @@ export const actions = {
             return;
         }
         commit('setIsSelectedAuctionFetching', true);
+        commit('setAreAuctionsFetching', false);
         try {
             const auction = await fetchSingleAuctionById(network, auctionId);
             commit('setAuction', auction);
@@ -229,11 +236,18 @@ export const actions = {
             clearInterval(updateAuctionsPricesIntervalId);
         }
         refetchIntervalId = setInterval(() => dispatch('update'), REFETCH_INTERVAL);
-        updateAuctionsPricesIntervalId = setInterval(() => dispatch('updateAuctionsPrices'), TIMER_INTERVAL);
+        updateAuctionsPricesIntervalId = setInterval(
+            async () => await dispatch('updateAuctionsPrices'),
+            TIMER_INTERVAL
+        );
     },
     async bidWithCallee(
         { getters, commit, rootGetters }: ActionContext<State, State>,
-        { id, alternativeDestinationAddress }: { id: string; alternativeDestinationAddress: string | undefined }
+        {
+            id,
+            marketId,
+            alternativeDestinationAddress,
+        }: { id: string; marketId: string; alternativeDestinationAddress: string | undefined }
     ) {
         const auction = getters.getAuctionById(id);
         if (!auction) {
@@ -251,6 +265,7 @@ export const actions = {
             const transactionAddress = await bidWithCallee(
                 network,
                 auction,
+                marketId,
                 alternativeDestinationAddress || walletAddress,
                 notifier
             );
@@ -319,18 +334,28 @@ export const actions = {
             console.error(`Auction redo error: ${error.message}`);
         }
     },
-    updateAuctionsPrices({ getters, dispatch }: ActionContext<State, State>) {
-        const auctions = getters.listAuctions;
+    async updateAuctionsPrices({ getters, dispatch }: ActionContext<State, State>) {
+        const auctions = getters.listAuctionTransactions;
+        if (!auctions) {
+            return;
+        }
 
-        auctions.forEach((auction: Auction) => {
-            dispatch('updateAuctionPrice', auction.id);
+        const promises = auctions.map((auction: Auction) => {
+            return dispatch('updateAuctionPrice', auction.id);
         });
+
+        await Promise.all(promises);
     },
     async updateAuctionPrice({ getters, commit, rootGetters }: ActionContext<State, State>, id: string) {
         const network = rootGetters['network/getMakerNetwork'];
         const auction = getters.getAuctionById(id);
         try {
-            const updatedAuction = await enrichAuctionWithPriceDropAndMarketValue(auction, network);
+            const useAutoRouter = getters.getAuctionAutoRouterStates[id];
+            const updatedAuction = await enrichAuctionWithPriceDropAndMarketDataRecords(
+                auction,
+                network,
+                useAutoRouter
+            );
             commit('setAuction', updatedAuction);
         } catch (error: any) {
             console.warn(

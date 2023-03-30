@@ -1,6 +1,5 @@
-import { HARDHAT_PUBLIC_KEY } from '../../helpers/constants';
-import BigNumber from '../../src/bignumber';
-import { warpTime, resetNetworkAndSetupWallet, addDaiToBalance, addMkrToBalance } from '../../helpers/hardhat';
+import { resetNetworkAndSetupWallet, warpTime } from '../../helpers/hardhat/network';
+import { addDaiToBalance, addMkrToBalance } from '../../helpers/hardhat/balance';
 import { Simulation } from '../types';
 
 const HARDHAT_FORK_BLOCK_NUMBER = 14078339;
@@ -18,13 +17,16 @@ const simulation: Simulation = {
         {
             title: 'Add GSUc and GSUp to the wallet',
             entry: async () => {
-                await addDaiToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);
-                await addMkrToBalance(new BigNumber(100000), HARDHAT_PUBLIC_KEY);
+                await addDaiToBalance();
+                await addMkrToBalance();
             },
         },
         {
             title: 'Skip time',
-            entry: async () => await warpTime(),
+            entry: async () => {
+                await warpTime();
+                return;
+            },
         },
     ],
 };

@@ -1,20 +1,46 @@
 # see https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
 ARG NODE_VERSION=node:16.9.1
 
-FROM $NODE_VERSION
+FROM $NODE_VERSION AS dependency-base
 
 # create destination directory
 RUN mkdir -p /core
 RUN mkdir -p /frontend
 
-COPY ./core/ /core
+# copy the core, note .dockerignore
+WORKDIR /core
+COPY ./core/package.json .
+COPY ./core/package-lock.json .
 
-COPY ./frontend/ /frontend
+# copy the app, note .dockerignore
+WORKDIR /frontend
+COPY ./frontend/package.json .
+COPY ./frontend/package-lock.json .
+
+WORKDIR /core
+COPY ./core /core
 
 WORKDIR /frontend
+RUN npm ci
+
+COPY ./frontend /frontend
+
+FROM $NODE_VERSION AS development
+
+COPY --from=dependency-base /core /core
+COPY --from=dependency-base /frontend /frontend
+
+WORKDIR /frontend
+RUN NODE_ENV=production npm install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
+
+
+FROM dependency-base AS production-base
 
 EXPOSE 9080
-
 # bake env variables
 ARG RPC_URL
 ENV RPC_URL=${RPC_URL}
@@ -28,8 +54,8 @@ ARG HEAPIO_ID
 ENV HEAPIO_ID=${HEAPIO_ID}
 ARG FRONTEND_ORIGIN
 ENV FRONTEND_ORIGIN=${FRONTEND_ORIGIN}
-ARG CHAINLOG_ADDRESS
-ENV CHAINLOG_ADDRESS=${CHAINLOG_ADDRESS}
 
-RUN npm install 
+WORKDIR /frontend
+RUN npm run generate 
+CMD [ "npm", "run", "start"]
 

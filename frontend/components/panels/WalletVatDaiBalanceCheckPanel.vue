@@ -30,7 +30,7 @@
         <TextBlock v-if="isExplanationsShown && currentStateAndTitle.name === 'incorrect'" class="mt-2">
             The amount of <format-currency :value="transactionBidAmount" currency="GSUc" /> is not present in the VAT
             and at least <format-currency :value="minimumDepositDai" currency="GSUc" /> needs to be deposited before
-            transaction can happen.
+            the transaction can happen.
         </TextBlock>
         <div class="flex justify-end mt-2">
             <BaseButton

@@ -5,14 +5,16 @@
             You need to authorize a certain
             <Explain text="smart contract">
                 The particular smart contract is called DaiJoin and its technical specification can be found
-                <a href="https://github.com/makerdao/dss/blob/master/src/join.sol#L106-L142" target="_blank">here</a>
+                <a href="https://github.com/gsu-protocol/dss/blob/master/src/join.sol#L106-L142" target="_blank"
+                    >here</a
+                >
             </Explain>
             to modify your internal GSUc
             <Explain text="balance">
                 The core vault engine of the GSU Protocol is called VAT and manages the central accounting invariants
                 of GSUc. More information on the VAT can be found
                 <a
-                    href="https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation#2-contract-details"
+                    href="https://docs.gsucoin.app/smart-contract-modules/core-module/vat-detailed-documentation#2-contract-details"
                     target="_blank"
                     >here</a
                 > </Explain

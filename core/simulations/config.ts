@@ -1,12 +1,18 @@
+import { Simulation } from './types';
 import debtAuctionSimulation from './configs/createDebtAuctionSimulation';
 import surplusAuctionBlockchain from './configs/surplusAuctionSimulation';
-import wstethAuctionSimulation from './configs/wstethAuctionSimulation';
+import specificBlockFork from './configs/specificBlockFork';
 import surplusAuctionSimulation from './configs/createSurplusAcutionSimulation';
-import { Simulation } from './types';
+import blockWithVaultsInAllStates from './configs/blocksWithVaultsInAllStates';
+import vaultLiquidation from './configs/vaultLiquidation';
+import onboardNewCollateral from './configs/onboardNewCollateral';
 
 export const SIMULATIONS: Simulation[] = [
+    vaultLiquidation,
     debtAuctionSimulation,
-    surplusAuctionBlockchain,
     surplusAuctionSimulation,
-    wstethAuctionSimulation,
+    surplusAuctionBlockchain,
+    specificBlockFork,
+    blockWithVaultsInAllStates,
+    onboardNewCollateral,
 ];

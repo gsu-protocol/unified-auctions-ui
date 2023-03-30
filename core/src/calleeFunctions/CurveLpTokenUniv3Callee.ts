@@ -1,21 +1,27 @@
-import type { CalleeFunctions, CollateralConfig } from '../types';
+import type { CalleeFunctions, CollateralConfig, Pool } from '../types';
 import { ethers } from 'ethers';
 import BigNumber from '../bignumber';
 import { getContractAddressByName, getJoinNameByCollateralType } from '../contracts';
 import { convertCrvethToEth, CURVE_COIN_INDEX, CURVE_POOL_ADDRESS } from './helpers/curve';
-import { encodeRoute, convertCollateralToDai } from './helpers/uniswapV3';
+import { convertCollateralToDai, encodePools } from './helpers/uniswapV3';
 
 export const CHARTER_MANAGER_ADDRESS = '0x8377CD01a5834a6EaD3b7efb482f678f2092b77e';
 
 const getCalleeData = async function (
     network: string,
     collateral: CollateralConfig,
-    profitAddress: string
+    marketId: string,
+    profitAddress: string,
+    preloadedPools?: Pool[]
 ): Promise<string> {
-    if (collateral.exchange.callee !== 'CurveLpTokenUniv3Callee') {
+    const marketData = collateral.exchanges[marketId];
+    if (marketData?.callee !== 'CurveLpTokenUniv3Callee') {
         throw new Error(`Can not encode route for the "${collateral.ilk}"`);
     }
-    const route = await encodeRoute(network, collateral.exchange.route);
+    if (!preloadedPools) {
+        throw new Error(`Can not encode route for the "${collateral.ilk}" without preloaded pools`);
+    }
+    const route = await encodePools(network, preloadedPools);
     const curveData = [CURVE_POOL_ADDRESS, CURVE_COIN_INDEX];
     const joinAdapterAddress = await getContractAddressByName(network, getJoinNameByCollateralType(collateral.ilk));
     const minProfit = 1;
@@ -33,6 +39,7 @@ const getCalleeData = async function (
 const getMarketPrice = async function (
     network: string,
     _collateral: CollateralConfig,
+    _marketId: string,
     collateralAmount: BigNumber
 ): Promise<BigNumber> {
     // convert stETH into ETH
@@ -45,9 +52,9 @@ const getMarketPrice = async function (
     return daiAmount.dividedBy(collateralAmount);
 };
 
-const UniswapV2CalleeDai: CalleeFunctions = {
+const CurveLpTokenUniv3Callee: CalleeFunctions = {
     getCalleeData,
     getMarketPrice,
 };
 
-export default UniswapV2CalleeDai;
+export default CurveLpTokenUniv3Callee;

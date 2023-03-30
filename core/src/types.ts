@@ -20,6 +20,8 @@ export declare interface AuctionInitialInfo {
     isActive: boolean;
     isFinished: boolean;
     isRestarting: boolean;
+    suggestedMarketId?: string;
+    marketDataRecords?: Record<string, MarketData>;
     marketUnitPrice?: BigNumber;
     marketUnitPriceToUnitPriceRatio?: BigNumber;
     transactionGrossProfit?: BigNumber;
@@ -63,6 +65,9 @@ export declare interface CollateralRow extends CollateralConfig, Partial<MakerPa
     marketUnitPrice?: BigNumber | string;
     tokenAddress?: string;
     tokenAddressError?: string;
+    autoRouteQuote?: BigNumber;
+    autoRouteExchanges?: string[];
+    autoRouteError?: string;
 }
 
 export declare interface AuctionTransaction extends Auction, TransactionFees {
@@ -79,8 +84,14 @@ export declare interface RegularCalleeConfig {
         | 'WstETHCurveUniv3Callee'
         | 'CurveLpTokenUniv3Callee'
         | 'UniswapV3Callee'
+        | 'rETHCurveUniv3Callee'
         | 'GSURatesCallee';
     route: string[];
+}
+
+export declare interface AutoRouterCalleeConfig {
+    callee: 'UniswapV3Callee';
+    automaticRouter: true;
 }
 
 export declare interface UniswapV2LpTokenCalleeConfig {
@@ -89,13 +100,68 @@ export declare interface UniswapV2LpTokenCalleeConfig {
     token1: string;
 }
 
+export declare interface ExchangeFees {
+    exchangeFeeETH: BigNumber;
+    exchangeFeeDAI: BigNumber;
+}
+
+declare interface MarketDataBase extends Partial<ExchangeFees> {
+    marketUnitPrice: BigNumber;
+    marketUnitPriceToUnitPriceRatio?: BigNumber;
+    transactionGrossProfit?: BigNumber;
+    transactionGrossProfitDate?: Date;
+    transactionNetProfit?: BigNumber;
+    errorMessage?: any;
+}
+
+export declare interface Pool {
+    addresses: string[];
+    fee: number;
+    routes: string[];
+}
+
+export declare interface MarketDataRegular extends MarketDataBase {
+    pools: Pool[];
+}
+
+export declare interface MarketDataUniswapV2LpToken
+    extends MarketDataBase,
+        Omit<UniswapV2LpTokenCalleeConfig, 'callee'> {}
+
+export type MarketData = MarketDataRegular | MarketDataUniswapV2LpToken;
+
+export declare interface ValueSlotAddressAndOffset {
+    slot: string;
+    offset: number;
+}
+
+export type CalleeConfig = RegularCalleeConfig | AutoRouterCalleeConfig | UniswapV2LpTokenCalleeConfig;
 export declare interface CollateralConfig {
     title: string;
     ilk: string;
     symbol: string;
     decimals: number;
-    exchange: RegularCalleeConfig | UniswapV2LpTokenCalleeConfig;
+    exchanges: Record<string, CalleeConfig>;
+    oracle: CollateralPriceSourceConfig;
 }
+
+interface OracleConfigBase {
+    hasDelay: boolean;
+    slotPriceValueBeginsAtPosition: number;
+    currentPriceSlotAddress: string;
+}
+
+export declare interface OracleCurrentAndNextPrices extends OracleConfigBase {
+    type: 'CurrentAndNextPrice';
+    nextPriceSlotAddress: string;
+}
+
+export declare interface OracleCurrentPriceOnly extends OracleConfigBase {
+    type: 'CurrentPriceOnly';
+    currentPriceValiditySlotAndOffset: ValueSlotAddressAndOffset;
+}
+
+export type CollateralPriceSourceConfig = OracleCurrentAndNextPrices | OracleCurrentPriceOnly;
 
 export declare interface NetworkConfig {
     chainId: string;
@@ -113,14 +179,26 @@ export declare interface CalleeAddresses {
     WstETHCurveUniv3Callee?: string;
     CurveLpTokenUniv3Callee?: string;
     UniswapV3Callee?: string;
-    GSURatesCallee?: string;
+    rETHCurveUniv3Callee?: string;
+    GSURatesCallee: string;
 }
 
 export type CalleeNames = keyof CalleeAddresses;
 
 export declare interface CalleeFunctions {
-    getCalleeData: (network: string, collateral: CollateralConfig, profitAddress: string) => Promise<string>;
-    getMarketPrice: (network: string, collateral: CollateralConfig, amount: BigNumber) => Promise<BigNumber>;
+    getCalleeData: (
+        network: string,
+        collateral: CollateralConfig,
+        marketId: string,
+        profitAddress: string,
+        pools?: Pool[]
+    ) => Promise<string>;
+    getMarketPrice: (
+        network: string,
+        collateral: CollateralConfig,
+        marketId: string,
+        amount: BigNumber
+    ) => Promise<BigNumber>;
 }
 
 export declare interface MakerParams {
@@ -273,13 +351,16 @@ export declare interface DebtAuctionEnriched extends DebtAuctionActive {
 
 export declare interface DebtAuctionTransaction extends DebtAuctionEnriched, CompensationAuctionTransactionFees {}
 
-type CollateralType = CollateralConfig['title'];
+export type CollateralType = CollateralConfig['ilk'];
+export type CollateralSymbol = CollateralConfig['symbol'];
 
 export declare interface LiquidationLimits {
     maximumProtocolDebtDai: BigNumber;
     currentProtocolDebtDai: BigNumber;
     currentCollateralDebtDai: BigNumber;
     maximumCollateralDebtDai: BigNumber;
+    liquidationPenaltyRatio: BigNumber;
+    minimalAuctionedDai: BigNumber;
 }
 
 export declare interface VaultCollateralParameters {
@@ -292,7 +373,6 @@ export declare interface VaultBase {
     address: string;
     collateralType: CollateralType;
     network: string;
-    lastSyncedAt: Date;
 }
 
 export declare interface VaultAmount {
@@ -305,24 +385,30 @@ export declare interface VaultTransactionFees {
     transactionFeeLiquidationDai: BigNumber;
 }
 
-export declare interface Vault extends VaultBase, VaultAmount, LiquidationLimits {}
+export declare interface Vault extends VaultBase, VaultAmount, VaultCollateralParameters, LiquidationLimits {
+    lastSyncedAt: Date;
+}
+
 export declare interface OraclePrices {
     currentUnitPrice: BigNumber;
     nextUnitPrice: BigNumber;
     nextPriceChange: Date;
 }
 
-export declare interface VaultTransactionLiquidated extends VaultBase {
-    state: 'liquidated';
-    liqudiationDate: Date;
+export declare interface LiquidationEvent {
+    liquidationDate: Date;
     transactionHash: string;
     auctionId: string;
 }
+export declare interface VaultTransactionLiquidated extends VaultBase {
+    state: 'liquidated';
+    pastLiquidations: LiquidationEvent[];
+}
 
 export declare interface VaultTransactionBase extends Vault, VaultTransactionFees, OraclePrices {
-    liquidationRatio: number;
-    collateralizationRatio: number;
-    proximityToLiquidation: number;
+    liquidationRatio: BigNumber;
+    collateralizationRatio: BigNumber;
+    proximityToLiquidation: BigNumber;
     incentiveRelativeDai: BigNumber;
     incentiveConstantDai: BigNumber;
     incentiveCombinedDai: BigNumber;

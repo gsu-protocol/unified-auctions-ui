@@ -9,6 +9,7 @@ const CALLEES: Record<string, CalleeAddresses | undefined> = {
         WstETHCurveUniv3Callee: '0xC2D837173592194131827775a6Cd88322a98C825',
         CurveLpTokenUniv3Callee: '0x71f2198849F3B1372EA90c079BD634928583f2d2',
         UniswapV3Callee: '0xdB9C76109d102d2A1E645dCa3a7E671EBfd8e11A',
+        rETHCurveUniv3Callee: '0x7cdAb0fE16efb1EFE89e53B141347D7F299d6610',
         GSURatesCallee: '',
     },
     '0x5': {
@@ -21,6 +22,7 @@ const CALLEES: Record<string, CalleeAddresses | undefined> = {
         UniswapV2CalleeDai: '0x5A40F810754f725DA93e2362775a0600468f7a83',
         UniswapV2LpTokenCalleeDai: '0xDeC8b9c2829583A89f7F182DEeD7C12112dfAeD0',
         UniswapV3Callee: '0xd028e722c00434182c9558d84802bb5706219d26',
+        GSURatesCallee: '',
     },
 };
 
@@ -34,12 +36,16 @@ export const getCalleesByNetworkType = function (network: string): CalleeAddress
     return networkCallees;
 };
 
-export const getCalleeAddressByCollateralType = function (network: string, collateralType: string): string {
+export const getCalleeAddressByCollateralType = function (
+    network: string,
+    collateralType: string,
+    marketId: string
+): string | undefined {
     const networkCallees = getCalleesByNetworkType(network);
     const collateral = getCollateralConfigByType(collateralType);
-    const calleeAddress = networkCallees[collateral.exchange.callee];
-    if (!calleeAddress) {
+    const marketData = collateral.exchanges[marketId];
+    if (!marketData || !networkCallees[marketData.callee]) {
         throw new Error(`No callee address found for the "${collateralType}" collateral on "${network}" network`);
     }
-    return calleeAddress;
+    return networkCallees[marketData.callee];
 };

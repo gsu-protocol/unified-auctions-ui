@@ -21,7 +21,7 @@
                         <tr>
                             <td>Auction Ends</td>
                             <td>
-                                <time-till :date="auction.endDate" />
+                                <TimeTill :date="auction.endDate" />
                             </td>
                         </tr>
                         <tr>
@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.isActive && auction.marketUnitPrice">
                                     <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per
@@ -77,7 +77,7 @@
                         <tr>
                             <td>Estimated Profitability Time</td>
                             <td>
-                                <time-till-profitable :auction="auction" />
+                                <TimeTillProfitable :auction="auction" />
                             </td>
                         </tr>
                         <tr>
@@ -89,7 +89,7 @@
                                     />
                                     <span>Updating...</span>
                                 </div>
-                                <time-till v-else :date="auction.fetchedAt" />
+                                <TimeTill v-else :date="auction.fetchedAt" />
                             </td>
                         </tr>
                         <template v-if="isTableExpanded">
@@ -188,7 +188,7 @@
                         <format-currency :value="auction.approximateUnitPrice" currency="GSUc" /> (meaning
                         <format-currency :value="auction.approximateUnitPrice" currency="GSUc" />
                         per <format-currency :currency="auction.collateralSymbol" /> on average) after
-                        <time-till :date="auction.endDate" />.
+                        <TimeTill :date="auction.endDate" />.
                     </template>
                 </TextBlock>
 
@@ -271,7 +271,7 @@ import FormatCurrency from '~/components/common/formatters/FormatCurrency.vue';
 import Loading from '~/components/common/other/Loading.vue';
 import Explain from '~/components/common/other/Explain.vue';
 import TimeTillProfitable from '~/components/auction/collateral/TimeTillProfitable.vue';
-import CollateralAuctionEventsBlock from '~/components/auction/collateral/CollateralAuctionEventsBlock';
+import CollateralAuctionEventsBlock from '~/components/auction/collateral/CollateralAuctionEventsBlock.vue';
 import AuctionRestartPanel from '~/components/panels/AuctionRestartPanel.vue';
 import LoadingIcon from '~/assets/icons/loading.svg';
 
