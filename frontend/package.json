@@ -10,7 +10,7 @@
     "preinstall": "cd ../core && npm i && npm run build",
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start --port 9080",
+    "start": "nuxt start --port 9080 --hostname 0.0.0.0",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue,.ts\" --ignore-path .gitignore . --max-warnings=0",
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
