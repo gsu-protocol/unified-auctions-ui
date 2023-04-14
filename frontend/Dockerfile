@@ -31,10 +31,16 @@ COPY --from=dependency-base /core /core
 COPY --from=dependency-base /frontend /frontend
 
 WORKDIR /frontend
-CMD ["npm", "run", "dev"]
+RUN NODE_ENV=production npm install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
+
 
 FROM dependency-base AS production-base
 
+EXPOSE 9080
 # bake env variables
 ARG RPC_URL
 ENV RPC_URL=${RPC_URL}
@@ -52,12 +58,6 @@ ARG FRONTEND_ORIGIN
 ENV FRONTEND_ORIGIN=${FRONTEND_ORIGIN}
 
 WORKDIR /frontend
-RUN npm run generate
+RUN npm run generate 
+CMD [ "npm", "run", "start"]
 
-FROM nginx:stable-alpine AS production
-
-COPY --from=production-base /frontend/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]

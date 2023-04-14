@@ -22,7 +22,7 @@
             <Explain text="more chances to win">
                 For transactions that need to get preferentially executed ahead of other transactions
                 <a
-                    href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#front-running"
+                    href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#front-running"
                     target="_blank"
                     >in the same block</a
                 >, a

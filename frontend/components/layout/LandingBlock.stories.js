@@ -18,7 +18,7 @@ storiesOf('Layout/LandingBlock', module)
         components: { LandingBlock },
         template: `<div class="h-screen">
                         <div class="h-1/2">
-                            <LandingBlock>Maker Protocol <br /> Unified Auctions</LandingBlock>
+                            <LandingBlock>GSU Protocol <br /> Unified Auctions</LandingBlock>
                         </div>
                     </div>`,
     }));

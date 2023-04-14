@@ -11,7 +11,7 @@
                         <span v-else class="font-semibold"> N/A </span>
                     </p>
                     <p>
-                        <FormatCurrency :value="nextPrice.toNumber()" currency="DAI" /> per
+                        <FormatCurrency :value="nextPrice.toNumber()" currency="GSUc" /> per
                         <FormatCurrency :currency="auction.collateralSymbol" />
                     </p>
                 </div>

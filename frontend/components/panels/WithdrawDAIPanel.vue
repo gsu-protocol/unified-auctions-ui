@@ -3,7 +3,7 @@
         <template #title>{{ currentStateAndTitle.title }}</template>
         <TextBlock v-if="isExplanationsShown">
             The received profit ended up in the VAT account, not yet in your wallet. One more transaction is required
-            to move that DAI to your wallet.
+            to move that GSUc to your wallet.
         </TextBlock>
         <div class="my-4">
             <WalletAuthorizationCheckPanel
@@ -16,7 +16,7 @@
             />
         </div>
         <div class="flex justify-end mt-2 gap-5">
-            <BaseButton :disabled="isWithdrawing" @click="$emit('manageVat')"> Manage DAI in VAT </BaseButton>
+            <BaseButton :disabled="isWithdrawing" @click="$emit('manageVat')"> Manage GSUc in VAT </BaseButton>
             <BaseButton
                 type="primary"
                 :disabled="!isWalletConnected || !isWalletAuthorized || !hasDaiToWithdraw || disabled"
@@ -24,7 +24,7 @@
                 @click="$emit('withdrawAllDaiFromVat')"
             >
                 <span v-if="hasDaiToWithdraw">
-                    Withdraw <FormatCurrency :value="daiVatBalance" currency="DAI" /> from VAT
+                    Withdraw <FormatCurrency :value="daiVatBalance" currency="GSUc" /> from VAT
                 </span>
                 <span v-else> Nothing to withdraw yet </span>
             </BaseButton>
@@ -92,18 +92,18 @@ export default Vue.extend({
             if (!this.hasDaiToWithdraw) {
                 return {
                     name: 'inactive',
-                    title: `No DAI to withdraw yet`,
+                    title: `No GSUc to withdraw yet`,
                 };
             }
             if (this.hasDaiToWithdraw && this.state !== 'collected' && this.state !== 'liquidated') {
                 return {
                     name: 'correct',
-                    title: `There is DAI to collect from VAT`,
+                    title: `There is GSUc to collect from VAT`,
                 };
             }
             return {
                 name: 'notice',
-                title: `Withdraw DAI from VAT`,
+                title: `Withdraw GSUc from VAT`,
             };
         },
         isWalletConnected(): boolean {

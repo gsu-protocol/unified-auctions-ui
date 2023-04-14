@@ -25,29 +25,29 @@
         </div>
         <div v-show="isExplanationsShown && selectedType" class="max-w-screen-sm mt-4 md:mt-8">
             <TextBlock v-show="selectedType == 'collateral'" title="Collateral auctions">
-                The Maker Protocol allows users to borrow
-                <Explain text="DAI">
-                    <a href="https://makerdao.com/en/whitepaper#the-dai-stablecoin">The DAI Stablecoin</a> is a
-                    decentralized, unbiased, collateral-backed cryptocurrency soft-pegged to the US Dollar
+                The GSU Protocol allows users to borrow
+                <Explain text="GSUc">
+                    The GSUc Stablecoin is a decentralized, unbiased, collateral-backed cryptocurrency soft-pegged to
+                    the GSU exchange rate
                 </Explain>
-                through locking up crypto assets as collateral in a vault. If the value of this collateral (in USD)
+                through locking up crypto assets as collateral in a vault. If the value of this collateral (in GSU)
                 falls too low the vault is liquidated and. In this process the collateral along with the vault’s debt
                 is transferred to the Protocol. Part of the collateral is then auctioned off to cover the outstanding
                 debt and a penalty fee.
             </TextBlock>
             <TextBlock v-show="selectedType == 'surplus'" title="System surplus auctions">
-                If the Maker Protocol is successfully governed, surplus DAI is accrued. Once this surplus hits a
-                certain threshold the Protocol will discharge it by buying and burning
-                <Explain text="Maker tokens (MKR)">
-                    <a href="https://makerdao.com/en/whitepaper/#the-maker-protocol">MKR</a> is a token on the Ethereum
-                    blockchain that has governance rights over the Maker smart contracts
+                If the GSU Protocol is successfully governed, surplus GSUc is accrued. Once this surplus hit a certain
+                threshold the Protocol will discharge it by buying and burning
+                <Explain text="GSU prtocol tokens (GSUp)">
+                    GSUp is a token on the Ethereum blockchain that has governance rights over the GSU Protocol smart
+                    contracts
                 </Explain>
                 . This process is facilitated by surplus auctions.
             </TextBlock>
             <TextBlock v-show="selectedType == 'debt'" title="System debt auctions">
-                If liquidations are not adequate in order to maintain Maker Protocol’s solvency meaning that overall
-                debt hits a certain threshold and cannot be covered by accrued surplus, the Protocol will reduce its
-                debt position by minting and selling MKR for DAI. This process is facilitated by debt auctions.
+                If liquidations are not adequate in order to maintain GSU Protocol’s solvency meaning that overall debt
+                hits a certain threshold and cannot be covered by accrued surplus, the Protocol will reduce its debt
+                position by minting and selling GSUp for GSUc. This process is facilitated by debt auctions.
             </TextBlock>
         </div>
     </div>

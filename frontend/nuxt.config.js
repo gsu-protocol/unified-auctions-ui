@@ -3,11 +3,8 @@ import pkg from './package.json';
 
 const PREVIEW_IMAGE = (process.env.FRONTEND_ORIGIN || '') + '/preview.jpeg';
 const SITE_TITLE = 'Unified Auctions';
-const SITE_DESCRIPTION = `The "${SITE_TITLE}" is the portal to all Maker Auctions related services. Easily interact with the Maker Protocol through streamlined interfaces, inform yourself about how the protocol works and receive updates on current auctions.`;
-const TWITTER_HANDLE = '@MakerDAO_SAS';
-const ENABLE_FILE_PROTOCOL = process.env.ENABLE_FILE_PROTOCOL?.toLocaleLowerCase() === 'true';
-const ROUTER_HISTORY_MODE = ENABLE_FILE_PROTOCOL ? 'hash' : 'history';
-const ROUTER_BASE = ENABLE_FILE_PROTOCOL ? '.' : '';
+const SITE_DESCRIPTION = `The "${SITE_TITLE}" is the portal to all GSU protocol Auctions related services. Easily interact with the GSU Protocol through streamlined interfaces, inform yourself about how the protocol works and receive updates on current auctions.`;
+const TWITTER_HANDLE = '@GSUcoin';
 
 export default {
     // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -15,7 +12,6 @@ export default {
 
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-
     env: {
         SITE_TITLE,
         RPC_URL: process.env.RPC_URL,
@@ -27,8 +23,8 @@ export default {
         PRODUCTION_BANNER_URL: process.env.PRODUCTION_BANNER_URL || undefined,
         HEAPIO_ID: process.env.HEAPIO_ID || undefined,
         APPLICATION_VERSION: uuidv4(), // hardcoded this during build
+        CHAINLOG_ADDRESS: process.env.CHAINLOG_ADDRESS,
     },
-
     publicRuntimeConfig: {
         TERMS_AND_CONDITIONS_URL: 'https://unified-auctions.makerdao.com/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
     },
@@ -47,7 +43,7 @@ export default {
             { property: 'og:type', content: 'website' },
             { property: 'og:description', content: SITE_DESCRIPTION },
             { property: 'og:image', content: PREVIEW_IMAGE },
-            { name: 'theme-color', content: '#1aab9b' },
+            { name: 'theme-color', content: '#d42f5d' },
             { name: 'twitter:card', content: 'app' },
             { name: 'twitter:site', content: TWITTER_HANDLE },
             { name: 'twitter:title', content: SITE_TITLE },

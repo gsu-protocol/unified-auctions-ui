@@ -34,7 +34,7 @@
             class="Element"
             :class="{ Loading: isLoading(record) }"
         >
-            <FormatCurrency v-if="isValidBigNumber(marketUnitPrice)" :value="marketUnitPrice" currency="DAI" />
+            <FormatCurrency v-if="isValidBigNumber(marketUnitPrice)" :value="marketUnitPrice" currency="GSUc" />
             <div v-else>
                 <Popover placement="topLeft" :content="marketUnitPrice" trigger="hover">
                     <p class="inline-block w-48 text-red-500 truncate">
@@ -49,7 +49,7 @@
             class="Element"
             :class="{ Loading: isLoading(record) }"
         >
-            <FormatCurrency v-if="!record.autoRouteError && autoRouteQuote" :value="autoRouteQuote" currency="DAI" />
+            <FormatCurrency v-if="!record.autoRouteError && autoRouteQuote" :value="autoRouteQuote" currency="GSUc" />
             <div v-else-if="record.autoRouteError">
                 <Popover placement="topLeft" :content="record.autoRouteError" trigger="hover">
                     <p class="inline-block w-48 text-red-500 truncate">

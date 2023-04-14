@@ -84,7 +84,7 @@
                                     <FormatCurrency
                                         v-if="vaultTransaction.initialDebtDai"
                                         :value="vaultTransaction.initialDebtDai"
-                                        currency="DAI"
+                                        currency="GSUc"
                                     />
                                     <span v-else class="opacity-50">Unknown</span>
                                 </td>
@@ -127,7 +127,7 @@
                             :value="vaultTransaction.collateralAmount"
                             :currency="vaultTransaction.collateralType"
                         />. The initial debt taken by the vault is
-                        <format-currency :value="vaultTransaction.initialDebtDai" currency="DAI" />. The current
+                        <format-currency :value="vaultTransaction.initialDebtDai" currency="GSUc" />. The current
                         proximity to liquidation is
                         <FormatPercentage :value="vaultTransaction.proximityToLiquidation" />. The next price update
                         will happen in <TimeTill :date="vaultTransaction.nextPriceChange" />.

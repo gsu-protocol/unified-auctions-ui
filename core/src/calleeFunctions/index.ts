@@ -17,6 +17,7 @@ import CurveLpTokenUniv3Callee from './CurveLpTokenUniv3Callee';
 import UniswapV3Callee from './UniswapV3Callee';
 import OneInchCallee from './OneInchCallee';
 import rETHCurveUniv3Callee from './rETHCurveUniv3Callee';
+import GSURatesCallee from './GSURatesCallee';
 import { getCollateralConfigByType, getCollateralConfigBySymbol } from '../constants/COLLATERALS';
 import { routeToPool } from './helpers/pools';
 import { getOneInchMarketData } from './helpers/oneInch';
@@ -30,7 +31,8 @@ const allCalleeFunctions: Record<CalleeNames, CalleeFunctions> = {
     CurveLpTokenUniv3Callee,
     UniswapV3Callee,
     rETHCurveUniv3Callee,
-    OneInchCallee,
+    // OneInchCallee,
+    GSURatesCallee,
 };
 
 export const getCalleeData = async function (

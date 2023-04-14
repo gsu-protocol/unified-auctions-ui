@@ -37,7 +37,7 @@
                             <td>Auction Price</td>
                             <td>
                                 <template v-if="auction.isActive">
-                                    <format-currency :value="auction.approximateUnitPrice" currency="DAI" />
+                                    <format-currency :value="auction.approximateUnitPrice" currency="GSUc" />
                                     per
                                     <format-currency :currency="auction.collateralSymbol" />
                                     <PriceDropAnimation :auction="auction" />
@@ -46,10 +46,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.isActive && auction.marketUnitPrice">
-                                    <format-currency :value="auction.marketUnitPrice" currency="DAI" /> per
+                                    <format-currency :value="auction.marketUnitPrice" currency="GSUc" /> per
                                     <format-currency :currency="auction.collateralSymbol" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
@@ -102,7 +102,7 @@
                             <tr class="bg-gray-100 dark:bg-gray-800">
                                 <td>Auction Debt</td>
                                 <td>
-                                    <format-currency :value="auction.debtDAI" currency="DAI" />
+                                    <format-currency :value="auction.debtDAI" currency="GSUc" />
                                 </td>
                             </tr>
                             <tr class="bg-gray-100 dark:bg-gray-800">
@@ -172,8 +172,8 @@
                         <format-address type="address" :value="auction.vaultAddress" shorten disable /> contains
                         <format-currency :value="auction.collateralAmount" :currency="auction.collateralSymbol" />.
                         <span v-if="auction.isActive || auction.isFinished">
-                            Currently, it is sold for <format-currency :value="auction.totalPrice" currency="DAI" />.
-                            This equals <format-currency :value="auction.approximateUnitPrice" currency="DAI" /> per
+                            Currently, it is sold for <format-currency :value="auction.totalPrice" currency="GSUc" />.
+                            This equals <format-currency :value="auction.approximateUnitPrice" currency="GSUc" /> per
                             <format-currency :currency="auction.collateralSymbol" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> than if you buy
                             <format-currency :currency="auction.collateralSymbol" /> on another exchange platform such
@@ -185,8 +185,8 @@
                     </template>
                     <template v-else>
                         This auction was finished at {{ auction.endDate.toUTCString() }} at a closing auction price of
-                        <format-currency :value="auction.approximateUnitPrice" currency="DAI" /> (meaning
-                        <format-currency :value="auction.approximateUnitPrice" currency="DAI" />
+                        <format-currency :value="auction.approximateUnitPrice" currency="GSUc" /> (meaning
+                        <format-currency :value="auction.approximateUnitPrice" currency="GSUc" />
                         per <format-currency :currency="auction.collateralSymbol" /> on average) after
                         <TimeTill :date="auction.endDate" />.
                     </template>
@@ -196,7 +196,7 @@
                     There are two ways to participate in an auction:
                     <ul class="list-disc list-outside pl-5">
                         <li>
-                            Bid with DAI: This allows the participant to manually bid DAI on the auctioned collateral
+                            Bid with GSUc: This allows the participant to manually bid GSUc on the auctioned collateral
                             and redeem the auctioned collateral. (In case you want to participate in this auction via
                             the old liquidation UI, you can use the
                             <a href="https://legacyliquidations.vercel.app/" target="_blank" class="inline-block">
@@ -205,18 +205,13 @@
                         </li>
                         <li>
                             Directly swap into profit: The auctioned collateral is bought and sold on an available
-                            marketplace in exchange for DAI in a single transaction. You will receive the resulting
-                            profit. In the Maker community this is known as a
+                            marketplace in exchange for GSUc in a single transaction. You will receive the resulting
+                            profit. In the GSU protocol community this is known as a
                             <Explain text="flash loan">
-                                <a
-                                    href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#flash-lending-of-collateral"
-                                    target="_blank"
-                                >
-                                    Flash lending of collateral
-                                </a>
-                                enables even a participant with zero DAI (and nothing to trade for DAI) to purchase
+                                <a href="/" target="_blank"> Flash lending of collateral </a>
+                                enables even a participant with zero GSUc (and nothing to trade for GSUc) to purchase
                                 from an auction by directing the sale of the auction's collateral into other protocols
-                                in exchange for DAI. </Explain
+                                in exchange for GSUc. </Explain
                             >.
                         </li>
                     </ul>
@@ -232,18 +227,13 @@
                                 class="w-60 mb-4"
                                 @click="$emit('purchase')"
                             >
-                                Bid with DAI
+                                Bid with GSUc
                             </Button>
                         </div>
                     </Tooltip>
                     <Tooltip :title="swapTransactionError" placement="bottom">
                         <div>
-                            <Button
-                                :disabled="!!swapTransactionError"
-                                type="primary"
-                                class="w-60 ml-4"
-                                @click="$emit('swap')"
-                            >
+                            <Button :disabled="true" type="primary" class="w-60 ml-4" @click="$emit('swap')">
                                 Directly swap into profit
                             </Button>
                         </div>

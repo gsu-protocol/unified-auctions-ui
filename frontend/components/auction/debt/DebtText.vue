@@ -4,28 +4,23 @@
         <TextBlock v-if="isExplanationsShown" title="What are debt auctions?" class="TextBlock">
             A
             <Explain text="debt auction"
-                >In Maker terms, debt auctions are called
-                <a
-                    href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flop-detailed-documentation"
-                    >flop auctions</a
-                >
-                and are operated via the
-                <a href="https://github.com/makerdao/dss/blob/master/src/flop.sol">flop.sol contract</a></Explain
+                >In GSU Protocol terms, debt auctions are called flop auctions and are operated via the flop.sol
+                contract.</Explain
             >
-            is the process of stabilizing DAI price, where
-            <Explain text="MKR tokens"
-                >Maker governance tokens that can be used to vote within Maker DAO and whose price algorithmically
-                depends on the stability and prosperity of the Maker ecosystem</Explain
+            is the process of stabilizing GSUc price, where
+            <Explain text="GSUp tokens"
+                >GSU protocol governance tokens that can be used to vote within GSU protocol and whose price
+                algorithmically depends on the stability and prosperity of the GSU protocol ecosystem</Explain
             >
-            are auctioned off for DAI. The DAI obtained by the protocol is used to recapitalise the system that has
+            are auctioned off for GSUc. The GSUc obtained by the protocol is used to recapitalise the system that has
             accrued debt.
         </TextBlock>
         <TextBlock v-if="isExplanationsShown" title="Why would I participate?" class="TextBlock">
             Your participation can yield a profit by leveraging price differences between the auction price from the
-            Maker Protocol and the price on other marketplaces. In a reverse auction system, bidders compete by
-            specifying how little MKR they are willing to receive for a fixed amount of DAI they have to pay. Once the
-            auction has ended, the MKR auctioned off can be collected by the bidder with the lowest accepted
-            compensation. As long as the auction price for MKR is below the exchange rate on other marketplaces there
+            GSU Protocol and the price on other marketplaces. In a reverse auction system, bidders compete by
+            specifying how little GSUp they are willing to receive for a fixed amount of GSUc they have to pay. Once
+            the auction has ended, the GSUp auctioned off can be collected by the bidder with the lowest accepted
+            compensation. As long as the auction price for GSUp is below the exchange rate on other marketplaces there
             is a chance to make a profit.
         </TextBlock>
         <div

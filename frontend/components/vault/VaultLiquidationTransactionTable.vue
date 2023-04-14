@@ -23,16 +23,16 @@
         <div class="flex justify-between">
             <div>Debt</div>
             <div>
-                <FormatCurrency :value="vaultTransaction.debtDai" currency="DAI" />
+                <FormatCurrency :value="vaultTransaction.debtDai" currency="GSUc" />
             </div>
         </div>
         <div class="flex justify-between">
             <div>
                 <Explain text="Liquidation incentive relative">
-                    The relative incentive parameter represents a reward in DAI paid to the user who liquidates the
-                    vault. It is relative to vault size. In maker terms it is called
+                    The relative incentive parameter represents a reward in GSUc paid to the user who liquidates the
+                    vault. It is relative to vault size. In GSU Protocol terms it is called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-chip-wad"
                         target="_blank"
                         >clip.chip</a
                     >.
@@ -43,16 +43,17 @@
                 >
             </div>
             <div>
-                <FormatCurrency :value="vaultTransaction.incentiveRelativeDai" currency="DAI" />
+                <FormatCurrency :value="vaultTransaction.incentiveRelativeDai" currency="GSUc" />
             </div>
         </div>
         <div class="flex justify-between">
             <div>
                 <Explain text="Liquidation incentive constant">
-                    The constant incentive parameter represents a reward in DAI paid to the user who liquidates the
-                    vault. It is constant for all liquidations of the same collateral type. In maker terms it is called
+                    The constant incentive parameter represents a reward in GSUc paid to the user who liquidates the
+                    vault. It is constant for all liquidations of the same collateral type. In GSU Protocol terms it is
+                    called
                     <a
-                        href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
+                        href="https://docs.gsucoin.app/smart-contract-modules/dog-and-clipper-detailed-documentation#clipper-tip-rad"
                         target="_blank"
                     >
                         clip.tip</a
@@ -60,12 +61,12 @@
                 </Explain>
             </div>
             <div>
-                <FormatCurrency :value="vaultTransaction.incentiveConstantDai" currency="DAI" />
+                <FormatCurrency :value="vaultTransaction.incentiveConstantDai" currency="GSUc" />
             </div>
         </div>
         <div class="flex justify-between">
             <div>Potential gross profit</div>
-            <div>+<FormatCurrency :value="vaultTransaction.grossProfitDai" currency="DAI" /></div>
+            <div>+<FormatCurrency :value="vaultTransaction.grossProfitDai" currency="GSUc" /></div>
         </div>
         <div class="flex justify-between">
             <div>
@@ -74,12 +75,12 @@
                     (~ <FormatCurrency :value="vaultTransaction.transactionFeeLiquidationEth" currency="ETH" />)
                 </span>
             </div>
-            <div>-<FormatCurrency :value="vaultTransaction.transactionFeeLiquidationDai" currency="DAI" /></div>
+            <div>-<FormatCurrency :value="vaultTransaction.transactionFeeLiquidationDai" currency="GSUc" /></div>
         </div>
         <div class="flex justify-between font-bold">
             <div>Potential net profit</div>
             <div>
-                <FormatCurrency :value="vaultTransaction.netProfitDai" currency="DAI" />
+                <FormatCurrency :value="vaultTransaction.netProfitDai" currency="GSUc" />
             </div>
         </div>
     </div>

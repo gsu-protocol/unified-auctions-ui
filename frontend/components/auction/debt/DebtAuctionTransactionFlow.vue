@@ -40,7 +40,7 @@
                 :is-correct.sync="isWalletDAICheckPassed"
                 :is-explanations-shown="isExplanationsShown"
                 :is-loading="isRefreshingWallet || isSettingAllowance || isDepositing"
-                currency="DAI"
+                currency="GSUc"
                 :disabled="isHighestBidder"
                 @refresh="$emit('refreshWallet')"
                 @setAllowanceAmount="$emit('setAllowanceAmount', $event)"
@@ -68,7 +68,7 @@
                 :auction="auction"
                 :wallet-address="walletAddress"
                 :is-collecting="auctionActionState === 'collecting'"
-                currency="MKR"
+                currency="GSUp"
                 @collect="$emit('collect')"
             />
         </div>

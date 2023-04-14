@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen h-full flex justify-center items-center">
         <div class="relative z-10 text-center">
-            <div class="text-6xl lg:text-7xl font-bold text-gray-800">Maker liquidations</div>
+            <div class="text-6xl lg:text-7xl font-bold text-gray-800">GSU Protocol liquidations</div>
             <div class="text-4xl text-gray-600 mt-6 lg:mt-3">Coming soon!</div>
 
             <div class="mt-32">

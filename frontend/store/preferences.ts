@@ -11,8 +11,8 @@ interface State {
 
 export const state = (): State => ({
     isExplanationsShown: true,
-    isDarkMode: undefined,
     rpcUrlRecords: {},
+    isDarkMode: false,
 });
 
 export const getters = {

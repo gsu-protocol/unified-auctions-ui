@@ -40,13 +40,13 @@
                         <tr>
                             <td>Auction Fixed Bid</td>
                             <td>
-                                <format-currency :value="auction.bidAmountDai" currency="DAI" />
+                                <format-currency :value="auction.bidAmountDai" currency="GSUc" />
                             </td>
                         </tr>
                         <tr>
                             <td>Current Compensation</td>
                             <td v-if="withBids">
-                                <format-currency :value="auction.receiveAmountMKR" currency="MKR" />
+                                <format-currency :value="auction.receiveAmountMKR" currency="GSUp" />
                             </td>
                             <td v-else>
                                 <span class="opacity-50">Unknown</span>
@@ -56,23 +56,23 @@
                             <td>Auction Price</td>
                             <td>
                                 <template v-if="withBids">
-                                    <format-currency :value="auction.unitPrice" :decimal-places="6" currency="DAI" />
-                                    per <format-currency currency="MKR" />
+                                    <format-currency :value="auction.unitPrice" :decimal-places="6" currency="GSUc" />
+                                    per <format-currency currency="GSUp" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
                         </tr>
                         <tr>
-                            <td>Price On Uniswap</td>
+                            <td>Market Price</td>
                             <td>
                                 <template v-if="auction.marketUnitPrice">
                                     <format-currency
                                         :value="auction.marketUnitPrice"
                                         :decimal-places="6"
-                                        currency="DAI"
+                                        currency="GSUc"
                                     />
                                     per
-                                    <format-currency currency="MKR" />
+                                    <format-currency currency="GSUp" />
                                 </template>
                                 <span v-else class="opacity-50">Unknown</span>
                             </td>
@@ -111,18 +111,18 @@
                 <TextBlock class="mt-4">
                     <template v-if="error !== 'This auction is finished'">
                         The debt auction requires you to bid
-                        <format-currency :value="auction.bidAmountDai" currency="DAI" />.
+                        <format-currency :value="auction.bidAmountDai" currency="GSUc" />.
                         <span v-if="requiresRestart">
                             This auction requires to be restarted in order to determine its prices.
                         </span>
                         <span v-else>
                             The latest bid asks for
-                            <format-currency :value="auction.receiveAmountMKR" currency="MKR" /> compensation to
+                            <format-currency :value="auction.receiveAmountMKR" currency="GSUp" /> compensation to
                             receive in return. This equals to
-                            <format-currency :value="auction.unitPrice" currency="DAI" />
-                            per <format-currency currency="MKR" />, or approximately
+                            <format-currency :value="auction.unitPrice" currency="GSUc" />
+                            per <format-currency currency="GSUp" />, or approximately
                             <format-market-value :value="auction.marketUnitPriceToUnitPriceRatio" /> market than if you
-                            exchange <format-currency currency="DAI" /> to <format-currency currency="MKR" /> on an
+                            exchange <format-currency currency="GSUc" /> to <format-currency currency="GSUp" /> on an
                             exchange platform such as Uniswap.
                         </span>
                     </template>
@@ -134,7 +134,7 @@
                     <Tooltip :title="auctionError && auctionError.error" placement="top">
                         <div>
                             <Button :disabled="!!auctionError" type="primary" class="w-60 mb-4" @click="$emit('bid')">
-                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using DAI' }}
+                                {{ auction.state === 'ready-for-collection' ? 'Collect earnings' : 'Bid using GSUc' }}
                             </Button>
                         </div>
                     </Tooltip>

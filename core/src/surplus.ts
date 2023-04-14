@@ -22,7 +22,10 @@ import {
 } from './constants/UNITS';
 import executeTransaction from './execute';
 import { getGasPriceForUI } from './gas';
-import { convertMkrToDai, convertSymbolToDai } from './calleeFunctions/helpers/uniswapV3';
+// import { convertMkrToDai, convertSymbolToDai } from './calleeFunctions/helpers/uniswapV3';
+import { getMarketPrice } from './calleeFunctions';
+import { convertMkrToDai } from './calleeFunctions/helpers/uniswapV3';
+import { fetchGSURates } from './calleeFunctions/helpers/gsu';
 
 const getSurplusAuctionLastIndex = async (contract: Contract): Promise<number> => {
     const auctionsQuantityBinary = await contract.kicks();
@@ -203,7 +206,8 @@ const getMarketPriceMkr = async function (network: string, bidAmountMKR: BigNumb
     try {
         return new BigNumber(1).div((await convertMkrToDai(network, bidAmountMKR)).div(bidAmountMKR));
     } catch (error) {
-        return new BigNumber(NaN);
+        const rate = await fetchGSURates('GSUp');
+        return rate;
     }
 };
 
@@ -214,14 +218,19 @@ export const enrichSurplusAuction = async (
     let nextMinimumBid = await getNextMinimumBid(network, auction);
     const unitPrice = auction.bidAmountMKR.div(auction.receiveAmountDAI);
     let marketUnitPrice = await getMarketPriceMkr(network, auction.bidAmountMKR);
+    console.log('marketUnitPrice', marketUnitPrice.toString());
+    // let marketUnitPrice = new BigNumber(1);
     const marketUnitPriceToUnitPriceRatio = unitPrice.minus(marketUnitPrice).dividedBy(marketUnitPrice);
+    console.log('marketUnitPriceToUnitPriceRatio', marketUnitPriceToUnitPriceRatio.toString());
     const fees = await getSurplusTransactionFees(network);
+    console.log('fees', fees);
     if (nextMinimumBid.isZero()) {
         nextMinimumBid = new BigNumber(1000).plus(fees.combinedBidFeesDai).div(marketUnitPrice);
     }
     if (marketUnitPrice.isNaN()) {
         marketUnitPrice = await convertMkrToDai(network, new BigNumber(1));
     }
+    console.log('here tooo');
     return {
         ...auction,
         ...fees,

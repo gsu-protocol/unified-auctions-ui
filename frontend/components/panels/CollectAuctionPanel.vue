@@ -73,7 +73,7 @@ export default Vue.extend({
         },
         currency: {
             type: String,
-            default: 'DAI',
+            default: 'GSUc',
         },
     },
     computed: {

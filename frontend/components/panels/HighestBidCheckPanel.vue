@@ -3,7 +3,7 @@
         <template #title> {{ currentStateAndTitle.title }} </template>
         <TextBlock v-if="isExplanationsShown">
             In order to win the auction, participants can bid on the auction. In case someone puts a higher bid on the
-            auction, you receive your MKR back, only losing the transaction fees.
+            auction, you receive your GSUp back, only losing the transaction fees.
         </TextBlock>
 
         <div class="flex justify-between my-3">
@@ -14,7 +14,7 @@
                 /></span>
             </span>
             <span v-if="!wasThereAnyBids" class="text-gray-400"> There were no bids yet </span>
-            <FormatCurrency v-else :value="auction.bidAmountMKR" currency="MKR" />
+            <FormatCurrency v-else :value="auction.bidAmountMKR" currency="GSUp" />
         </div>
 
         <div class="flex justify-end gap-5">
@@ -28,8 +28,8 @@
                 <span v-if="isBidding"> Bidding... </span>
                 <span v-else-if="isLoading"> Loading... </span>
                 <span v-else-if="auction"
-                    >Bid <FormatCurrency :value="bidAmount" currency="MKR" /> on
-                    <FormatCurrency :value="auction.receiveAmountDAI" currency="DAI"
+                    >Bid <FormatCurrency :value="bidAmount" currency="GSUp" /> on
+                    <FormatCurrency :value="auction.receiveAmountDAI" currency="GSUc"
                 /></span>
                 <span v-else>Unknown</span>
             </BaseButton>

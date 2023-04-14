@@ -5,9 +5,9 @@
             You need to authorize the
             <Explain text="debt auction contract">
                 The particular smart contract is called Flopper and its technical specification can be found
-                <a href="https://github.com/makerdao/dss/blob/master/src/flop.sol" target="_blank">here</a>
+                <a href="https://github.com/gsu-protocol/dss/blob/master/src/flop.sol" target="_blank">here</a>
             </Explain>
-            to modify your DAI stored in VAT, this operation should only be done once.
+            to modify your GSUc stored in VAT, this operation should only be done once.
         </TextBlock>
         <div class="flex justify-end mt-2">
             <BaseButton
@@ -66,18 +66,18 @@ export default Vue.extend({
             if (!this.walletAddress) {
                 return {
                     name: 'inactive',
-                    title: 'The DAI authorization is unknown until a wallet is connected',
+                    title: 'The GSUc authorization is unknown until a wallet is connected',
                 };
             }
             if (!this.isDebtAuctionAuthorized) {
                 return {
                     name: this.disabled ? 'inactive' : 'incorrect',
-                    title: 'The wallet is not yet authorized to execute DAI transactions',
+                    title: 'The wallet is not yet authorized to execute GSUc transactions',
                 };
             }
             return {
                 name: 'correct',
-                title: 'The wallet is authorized to execute DAI transactions',
+                title: 'The wallet is authorized to execute GSUc transactions',
             };
         },
     },

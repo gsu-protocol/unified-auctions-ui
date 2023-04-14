@@ -5,9 +5,11 @@
             In order to participate, you need to authorize a certain
             <Explain text="smart contract">
                 The particular smart contract is called Clipper and its technical specification can be found
-                <a href="https://github.com/makerdao/dss/blob/master/src/clip.sol#L51-L473" target="_blank"> here </a>
+                <a href="https://github.com/gsu-protocol/dss/blob/master/src/clip.sol#L51-L473" target="_blank">
+                    here
+                </a>
             </Explain>
-            to alter your internal DAI balance. This is only done once per collateral type and can be done in advance.
+            to alter your internal GSUc balance. This is only done once per collateral type and can be done in advance.
             Approximate fee:
             <format-currency :value="authTransactionFeeETH" currency="eth" />
         </TextBlock>
