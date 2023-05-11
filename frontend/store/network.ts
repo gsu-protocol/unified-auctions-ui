@@ -136,7 +136,11 @@ export const actions = {
                 rpcUrl,
                 window.$nuxt.context.isDev
             );
-            commit('setListOfNetworks', networks);
+
+            commit(
+                'setListOfNetworks',
+                networks.filter(ele => ele.title != 'Localhost:8545')
+            );
             commit('setDefaultChainId', defaultChainId);
             commit('setDefaultNetwork', defaultNetwork);
         } catch (error: any) {

@@ -47,8 +47,15 @@ export default Vue.extend({
     computed: {
         options() {
             return [
-                ...this.networks.map(eachNetwork => ({ label: eachNetwork.title, value: eachNetwork.type })),
-                { label: 'Change RPC URL', value: 'changeRpcUrl' },
+                ...this.networks.map(eachNetwork => {
+                    console.log(eachNetwork,"eachNetwork");
+                    // if(eachNetwork.title!="Localhost:8545"){
+
+                        return({ label: eachNetwork.title, value: eachNetwork.type })
+                    // }
+                    
+                })
+                // { label: 'Change RPC URL', value: 'changeRpcUrl' },
             ];
         },
     },
