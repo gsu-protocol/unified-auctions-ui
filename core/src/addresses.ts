@@ -5,13 +5,22 @@ import COLLATERALS, { getAllCollateralTypes } from './constants/COLLATERALS';
 import getProvider from './provider';
 import CHAINLOG from './abis/CHAINLOG.json';
 
-const CHAINLOG_ADDRESS = process.env.CHAINLOG_ADDRESS || '0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F';
+// const CHAINLOG_ADDRESS = process.env.CHAINLOG_ADDRESS || '0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F';
 const UNISWAP_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
 const CHAINLOG_CACHE = 24 * 60 * 60 * 1000;
 
 const getChainLogContract = async function (network: string): Promise<Contract> {
     const provider = await getProvider(network);
-    return await new ethers.Contract(CHAINLOG_ADDRESS, CHAINLOG, provider);
+    console.log(provider, 'provider', network, 'network');
+    if (network === 'mainnet') {
+        const CHAINLOG_ADDRESS = process.env.CHAINLOG_ADDRESS_MAINNET || '0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F';
+
+        return await new ethers.Contract(CHAINLOG_ADDRESS, CHAINLOG, provider);
+    } else if (network === 'goerli') {
+        const CHAINLOG_ADDRESS = process.env.CHAINLOG_ADDRESS_GOERLI || '0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F';
+
+        return await new ethers.Contract(CHAINLOG_ADDRESS, CHAINLOG, provider);
+    }
 };
 
 export const fetchContractsNamesByNetwork = async function (network: string): Promise<string[]> {
