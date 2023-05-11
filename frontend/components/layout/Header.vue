@@ -56,9 +56,10 @@ import { NetworkConfig } from 'auctions-core/src/types';
 import StagingBanner from './StagingBanner.vue';
 // import ProductionBannerElectron from './ProductionBannerElectron.vue';
 import HeaderLogo from './HeaderLogo.vue';
-import BaseSwitch from '~/components/common/inputs/BaseSwitch.vue';
-import NetworkSelector from '~/components/layout/NetworkSelector.vue';
-import WalletSelector from '~/components/layout/WalletSelector.vue';
+// import BaseSwitch from '~/components/common/inputs/BaseSwitch.vue';
+import BaseSwitch from '../../components/common/inputs/BaseSwitch.vue';
+import NetworkSelector from './NetworkSelector.vue';
+import WalletSelector from './WalletSelector.vue';
 // import ThemeSwitcher from '~/components/layout/ThemeSwitcher.vue';
 
 export default Vue.extend({

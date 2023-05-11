@@ -137,7 +137,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
             },
             // '1inch': {
             //     callee: 'OneInchCallee',
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },
@@ -162,14 +162,11 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: [],
             },
-<<<<<<< HEAD
-            '1inch': {
-                callee: 'OneInchCallee',
-=======
-            'GSU': {
+            // '1inch': {
+            //     callee: 'OneInchCallee',
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
->>>>>>> main
             },
         },
         oracle: CONFIG_WITH_NEXT_PRICE,
@@ -192,59 +189,9 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: [],
             },
-<<<<<<< HEAD
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'GUSD-A': {
-        title: 'Gemini Dollar',
-        ilk: 'GUSD-A',
-        symbol: 'GUSD',
-        decimals: 2,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITHOUT_NEXT_PRICE,
-    },
-    'KNC-A': {
-        title: 'Kyber Network Crystal',
-        ilk: 'KNC-A',
-        symbol: 'KNC',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-=======
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
->>>>>>> main
             },
             '1inch': {
                 callee: 'OneInchCallee',
@@ -252,249 +199,6 @@ const COLLATERALS: Record<string, CollateralConfig> = {
         },
         oracle: CONFIG_WITH_NEXT_PRICE,
     },
-<<<<<<< HEAD
-    'LINK-A': {
-        title: 'Chainlink',
-        ilk: 'LINK-A',
-        symbol: 'LINK',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'LRC-A': {
-        title: 'Loopring',
-        ilk: 'LRC-A',
-        symbol: 'LRC',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'MANA-A': {
-        title: 'Decentraland',
-        ilk: 'MANA-A',
-        symbol: 'MANA',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'PAXUSD-A': {
-        title: 'Paxos Standard',
-        ilk: 'PAXUSD-A',
-        symbol: 'PAXUSD',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-
-        oracle: CONFIG_WITHOUT_NEXT_PRICE,
-    },
-    'RENBTC-A': {
-        title: 'renBTC',
-        ilk: 'RENBTC-A',
-        symbol: 'RENBTC',
-        decimals: 8,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'TUSD-A': {
-        title: 'True USD',
-        ilk: 'TUSD-A',
-        symbol: 'TUSD',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITHOUT_NEXT_PRICE,
-    },
-    'UNI-A': {
-        title: 'Uniswap',
-        ilk: 'UNI-A',
-        symbol: 'UNI',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'USDC-A': {
-        title: 'USD Coin',
-        ilk: 'USDC-A',
-        symbol: 'USDC',
-        decimals: 6,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITHOUT_NEXT_PRICE,
-    },
-    'USDC-B': {
-        title: 'USD Coin',
-        ilk: 'USDC-B',
-        symbol: 'USDC',
-        decimals: 6,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITHOUT_NEXT_PRICE,
-    },
-    'USDT-A': {
-        title: 'Tether USD',
-        ilk: 'USDT-A',
-        symbol: 'USDT',
-        decimals: 6,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-=======
     // 'GUSD-A': {
     //     title: 'Gemini Dollar',
     //     ilk: 'GUSD-A',
@@ -748,7 +452,6 @@ const COLLATERALS: Record<string, CollateralConfig> = {
     //     },
     //     oracle: CONFIG_WITH_NEXT_PRICE,
     // },
->>>>>>> main
     'WBTC-A': {
         title: 'Wrapped Bitcoin',
         ilk: 'WBTC-A',
@@ -767,14 +470,9 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-<<<<<<< HEAD
-            '1inch': {
-                callee: 'OneInchCallee',
-=======
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
->>>>>>> main
             },
         },
         oracle: CONFIG_WITH_NEXT_PRICE,
@@ -797,14 +495,9 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-<<<<<<< HEAD
-            '1inch': {
-                callee: 'OneInchCallee',
-=======
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
->>>>>>> main
             },
         },
         oracle: CONFIG_WITH_NEXT_PRICE,
@@ -827,97 +520,8 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-<<<<<<< HEAD
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'YFI-A': {
-        title: 'yearn.finance',
-        ilk: 'YFI-A',
-        symbol: 'YFI',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'ZRX-A': {
-        title: '0x',
-        ilk: 'ZRX-A',
-        symbol: 'ZRX',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'MATIC-A': {
-        title: 'Matic',
-        ilk: 'MATIC-A',
-        symbol: 'MATIC',
-        decimals: 18,
-        exchanges: {
-            'Uniswap V3 Autorouter': {
-                callee: 'UniswapV3Callee',
-                automaticRouter: true,
-            },
-            'Uniswap V3': {
-                callee: 'UniswapV3Callee',
-                route: ['ETH'],
-            },
-            'Uniswap V2': {
-                callee: 'UniswapV2CalleeDai',
-                route: ['ETH'],
-            },
-            '1inch': {
-                callee: 'OneInchCallee',
-            },
-        },
-        oracle: CONFIG_WITH_NEXT_PRICE,
-    },
-    'WSTETH-A': {
-        title: 'Lido wstETH',
-        ilk: 'WSTETH-A',
-        symbol: 'WSTETH',
-        decimals: 18,
-        exchanges: {
-            'Curve wstETH V3': {
-                callee: 'WstETHCurveUniv3Callee',
-=======
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
->>>>>>> main
                 route: [],
             },
         },

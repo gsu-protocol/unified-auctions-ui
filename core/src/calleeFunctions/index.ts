@@ -15,7 +15,7 @@ import UniswapV2LpTokenCalleeDai from './UniswapV2LpTokenCalleeDai';
 import WstETHCurveUniv3Callee from './WstETHCurveUniv3Callee';
 import CurveLpTokenUniv3Callee from './CurveLpTokenUniv3Callee';
 import UniswapV3Callee from './UniswapV3Callee';
-import OneInchCallee from './OneInchCallee';
+// import OneInchCallee from './OneInchCallee';
 import rETHCurveUniv3Callee from './rETHCurveUniv3Callee';
 import GSURatesCallee from './GSURatesCallee';
 import { getCollateralConfigByType, getCollateralConfigBySymbol } from '../constants/COLLATERALS';
