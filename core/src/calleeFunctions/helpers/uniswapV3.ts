@@ -62,8 +62,16 @@ const _convertSymbolToDai = async function (
     amount: BigNumber,
     decimals: number
 ): Promise<BigNumber> {
+    console.log('inside _convertSymbolToDai');
+
     const integerAmount = amount.shiftedBy(decimals).toFixed(0);
+    console.log('integerAmount');
+    console.log(integerAmount, 'integerAmount');
+
     const uniswapV3quoterContract = await getUniswapV3quoterContract(network);
+    console.log('uniswapV3quoterContract');
+    console.log(uniswapV3quoterContract, 'uniswapV3quoterContract');
+
     const daiIntegerAmount = await uniswapV3quoterContract.callStatic.quoteExactInputSingle(
         await getTokenAddressByNetworkAndSymbol(network, symbol),
         await getTokenAddressByNetworkAndSymbol(network, 'MCD_DAI'),
@@ -71,6 +79,9 @@ const _convertSymbolToDai = async function (
         integerAmount,
         0
     );
+    console.log('daiIntegerAmount');
+    console.log(daiIntegerAmount, '');
+
     const daiAmount = new BigNumber(daiIntegerAmount._hex).shiftedBy(-DAI_NUMBER_OF_DIGITS);
     return daiAmount;
 };

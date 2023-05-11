@@ -81,6 +81,8 @@ const NETWORK_TITLES: Record<string, string | undefined> = {
 };
 
 export const getNetworkConfigByType = function (networkType: string | undefined): NetworkConfig {
+    console.log(networkType, networks, 'networkType getNetworkConfigByType');
+
     if (!networkType || !networks[networkType]) {
         throw new Error(`No network found with name "${networkType}"`);
     }

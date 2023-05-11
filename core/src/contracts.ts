@@ -94,7 +94,11 @@ export const getContractInterfaceByName = async function (contractName: string):
 };
 
 const _getContract = async function (network: string, contractName: string, useSigner = false): Promise<Contract> {
+    console.log(network, contractName, '_getContract');
+
     const contractAddress = await getContractAddressByName(network, contractName);
+    console.log(contractAddress, '_getContract');
+
     const contractInterface = await getContractInterfaceByName(contractName);
     const signerOrProvider = useSigner ? await getSigner(network) : await getProvider(network);
     const contract = await new ethers.Contract(contractAddress, contractInterface, signerOrProvider);
@@ -111,6 +115,8 @@ const getContract = memoizee(_getContract, {
     promise: true,
     length: 3,
 });
+
+// const getContract = _getContract;
 
 export const getContractValue = async function (
     network: string,

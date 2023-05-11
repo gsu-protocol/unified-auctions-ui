@@ -198,7 +198,7 @@ export declare interface CalleeAddresses {
     CurveLpTokenUniv3Callee?: string;
     UniswapV3Callee?: string;
     rETHCurveUniv3Callee?: string;
-    // OneInchCallee?: string;
+    OneInchCallee?: string;
     GSURatesCallee: string;
 }
 

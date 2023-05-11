@@ -1,6 +1,7 @@
 import { Vault, VaultTransaction } from 'auctions-core/src/types';
 import Vue from 'vue';
 import { getVaultTransaction, fetchVault, liquidateVault } from 'auctions-core/src/vaults';
+// import { fetchVault, getVaultTransaction, liquidateVault } from '../../core/src/vaults';
 import { ActionContext } from 'vuex';
 import notifier from '~/lib/notifier';
 
@@ -94,7 +95,12 @@ export const actions = {
         commit('setAreVaultsLoading', true);
         try {
             const vault = await fetchVault(network, vaultId);
+            console.log('fetch valut done');
+            console.log(vault, 'fetch valut done');
+
             const vaultTransaction = await getVaultTransaction(network, vault);
+            console.log('vault transaction done');
+
             commit('setVault', vaultTransaction);
         } catch (e) {
             console.error(`Failed to fetch vault ${vaultId}: ${e}`);

@@ -23,7 +23,6 @@ import {
 import executeTransaction from './execute';
 import { getGasPriceForUI } from './gas';
 import { convertMkrToDai, convertSymbolToDai } from './calleeFunctions/helpers/uniswapV3';
-import { getMarketPrice } from './calleeFunctions';
 // import { convertMkrToDai } from './calleeFunctions/helpers/uniswapV3';
 import { fetchGSURates } from './calleeFunctions/helpers/gsu';
 

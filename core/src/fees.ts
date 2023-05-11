@@ -3,8 +3,9 @@ import BigNumber from './bignumber';
 import { getGasPriceForUI } from './gas';
 import getSigner from './signer';
 import { getCollateralAuthorizationStatus, getWalletAuthorizationStatus } from './authorizations';
-import { convertSymbolToDai } from './calleeFunctions/helpers/uniswapV3';
-import { ETH_NUMBER_OF_DIGITS } from './constants/UNITS';
+// import { convertSymbolToDai } from './calleeFunctions/helpers/uniswapV3';
+// import { ETH_NUMBER_OF_DIGITS } from './constants/UNITS';
+import { getMarketPrice } from './calleeFunctions';
 
 export const BID_TRANSACTION_GAS_LIMIT = 145438;
 export const SWAP_TRANSACTION_GAS_LIMIT = 722651;
@@ -13,7 +14,15 @@ export const RESTART_TRANSACTION_GAS_LIMIT = 209182;
 export const LIQUIDATION_TRANSACTION_GAS_LIMIT = 446658;
 
 export const convertETHtoDAI = async function (network: string, eth: BigNumber): Promise<BigNumber> {
-    const exchangeRate = await convertSymbolToDai(network, 'ETH', new BigNumber(1), ETH_NUMBER_OF_DIGITS);
+    console.log('inside convertETHtoDAI');
+
+    // const exchangeRate = await convertSymbolToDai(network, 'ETH', new BigNumber(1), ETH_NUMBER_OF_DIGITS);
+    // const exchangeRate = new BigNumber(1);
+    const exchangeRate = await getMarketPrice(network, 'ETH');
+    console.log('TODO: Need to fix rate calculation', network);
+    console.log('exchangeRate convertETHtoDAI');
+    console.log(exchangeRate, 'exchangeRate convertETHtoDAI');
+
     return eth.multipliedBy(exchangeRate);
 };
 
@@ -49,8 +58,16 @@ export const getDefaultMarketFee = async function (network: string): Promise<Exc
 };
 
 export const getApproximateLiquidationFees = async function (network: string): Promise<VaultTransactionFees> {
+    console.log('inside getApproximateLiquidationFees');
+
     const gasPrice = await getGasPriceForUI(network);
+    console.log('getGasPriceForUI');
+    console.log(gasPrice, 'getGasPriceForUI');
+
     const transactionFeeLiquidationEth = gasPrice.multipliedBy(LIQUIDATION_TRANSACTION_GAS_LIMIT);
+    console.log('gasPrice.multipliedBy');
+    console.log(transactionFeeLiquidationEth, 'gasPrice.multipliedBy');
+
     return {
         transactionFeeLiquidationEth,
         transactionFeeLiquidationDai: await convertETHtoDAI(network, transactionFeeLiquidationEth),

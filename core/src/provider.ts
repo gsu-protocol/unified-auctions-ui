@@ -15,6 +15,8 @@ export const setProvider = function (network: string, provider: Promise<ethers.p
 };
 
 const getProvider = function (network: string): Promise<ethers.providers.JsonRpcProvider> {
+    console.log(providers, 'getProvider');
+
     if (!providers[network]) {
         setProvider(network, createProvider(network));
     }

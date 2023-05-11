@@ -56,8 +56,12 @@ const fetchVaultProxyAddress = memoizee(_fetchVaultProxyAddress, {
 });
 
 const _fetchVaultAddress = async (network: string, id: number) => {
+    console.log(network, id, '_fetchvalutAddress');
+
     const cdpManager = await getContract(network, 'CDP_MANAGER');
     const cdpRegistry = await getContract(network, 'CDP_REGISTRY');
+    console.log(cdpManager, 'cdpManager', cdpRegistry, 'cdpRegistry');
+
     const address = await cdpManager.urns(id);
     if (address === '0x0000000000000000000000000000000000000000') {
         throw new Error('Vault does not exist');
@@ -75,7 +79,11 @@ const fetchVaultAddress = memoizee(_fetchVaultAddress, {
     length: 2,
 });
 
+// const fetchVaultAddress = _fetchVaultAddress;
+
 const _fetchVaultBase = async (network: string, id: number): Promise<VaultBase> => {
+    console.log(network, id, 'network id _fetchVaultBase');
+
     const cdpManager = await getContract(network, 'CDP_MANAGER');
     const address = await fetchVaultAddress(network, id);
     const collateralTypeHex = await cdpManager.ilks(id);
@@ -173,11 +181,23 @@ export const fetchCollateralLiquidationLimitsAndLiquidatorAddress = memoizee(
 
 export const fetchVault = async (network: string, index: number): Promise<Vault> => {
     const vaultBase = await fetchVaultBase(network, index);
+    console.log('vault base done');
+    console.log(vaultBase, 'vault base done');
+
     const vaultCollateralParameters = await fetchVaultCollateralParameters(network, vaultBase.collateralType);
+    console.log('vaultcollateralpara done');
+
     const vaultAmount = await fetchVaultAmount(network, vaultBase.collateralType, vaultBase.address);
+    console.log('valult amout done');
+
     const globalLiquidationLimits = await fetchGlobalLiquidationLimits(network);
+    console.log('globalloquidationlimits');
+
     const { currentCollateralDebtDai, maximumCollateralDebtDai, liquidationPenaltyRatio, minimalAuctionedDai } =
         await fetchCollateralLiquidationLimitsAndLiquidatorAddress(network, vaultBase.collateralType);
+
+    console.log('fetchVault done');
+
     return {
         ...vaultBase,
         ...vaultCollateralParameters,
@@ -239,12 +259,25 @@ export const fetchVaultLiquidationIncentive = memoizee(_fetchVaultLiquidationInc
 
 const _fetchLiquidatedParameters = async (network: string, vault: Vault) => {
     const contract = await getContract(network, 'MCD_DOG');
+    console.log(contract, 'mcd _fetchLiquidatedParameters');
+
     const typeHex = ethers.utils.formatBytes32String(vault.collateralType);
+    console.log('typeHex');
+    console.log(typeHex, 'typeHex');
+
     if (!vault.initialDebtDai.isZero()) {
+        console.log('not vault.initialDebtDai.isZero()');
+
         return;
     }
     const eventFilter = contract.filters.Bark(typeHex, vault.address, null, null, null, null, null);
+    console.log('eventFilter');
+    console.log(eventFilter, 'eventFilter');
+
     const liquidationEvents = await contract.queryFilter(eventFilter);
+    console.log('liquidationEvents');
+    console.log(liquidationEvents, 'liquidationEvents');
+
     if (liquidationEvents.length === 0) {
         return;
     }
@@ -256,6 +289,9 @@ const _fetchLiquidatedParameters = async (network: string, vault: Vault) => {
             auctionId: `${vault.collateralType}:${new BigNumber(event.args?.id._hex).toFixed(0)}`,
         }))
     );
+    console.log('liquidations');
+    console.log(liquidations);
+
     return liquidations.reverse();
 };
 export const fetchLiquidatedParameters = memoizee(_fetchLiquidatedParameters, {
@@ -306,34 +342,64 @@ const enrichVaultWithTransactonInformation = async (
     network: string,
     vault: Vault
 ): Promise<VaultTransactionNotLiquidated> => {
+    console.log('inside enrichVaultWithTransactonInformation');
+
     const debtDai = vault.initialDebtDai.multipliedBy(vault.stabilityFeeRate);
+    console.log('debtDai');
+    console.log(debtDai, 'debtDai');
+
     const { liquidatiorContractAddress, liquidationPenaltyRatio } =
         await fetchCollateralLiquidationLimitsAndLiquidatorAddress(network, vault.collateralType);
+    console.log('fetchCollateralLiquidationLimitsAndLiquidatorAddress');
+    console.log(
+        liquidatiorContractAddress,
+        liquidationPenaltyRatio,
+        'fetchCollateralLiquidationLimitsAndLiquidatorAddress'
+    );
 
     const { liquidationRatio, oracleAddress } = await fetchLiquidationRatioAndOracleAddress(
         network,
         vault.collateralType
     );
+    console.log('fetchLiquidationRatioAndOracleAddress');
+    console.log(liquidationRatio, oracleAddress, 'fetchLiquidationRatioAndOracleAddress');
+
     const collateralizationRatio = vault.collateralAmount
         .multipliedBy(vault.minUnitPrice)
         .multipliedBy(liquidationRatio)
         .dividedBy(debtDai);
+    console.log('collateralizationRatio');
+    console.log(collateralizationRatio, 'collateralizationRatio');
+
     const proximityToLiquidation = new BigNumber(1).minus(debtDai.div(vault.collateralAmount).div(vault.minUnitPrice));
+    console.log('proximityToLiquidation');
+    console.log(proximityToLiquidation, 'proximityToLiquidation');
+
     const { transactionFeeLiquidationEth, transactionFeeLiquidationDai } = await getApproximateLiquidationFees(
         network
     );
+    console.log('getApproximateLiquidationFees');
+    console.log(transactionFeeLiquidationEth, transactionFeeLiquidationDai, 'getApproximateLiquidationFees');
+
     const { nextUnitPrice, nextPriceChange, currentUnitPrice } = await getOsmPrices(
         network,
         oracleAddress,
         vault.collateralType
     );
+    console.log('getOsmPrices');
+    console.log(nextUnitPrice, nextPriceChange, currentUnitPrice, 'getOsmPrices');
+
     const { auctionedAmountDai, state } = getAuctionedDaiAndAuctionState(proximityToLiquidation, vault);
+    console.log(auctionedAmountDai, state, 'getAuctionedDaiAndAuctionState');
+
     const { incentiveCombinedDai, incentiveConstantDai, incentiveRelativeDai } = await fetchVaultLiquidationIncentive(
         network,
         liquidatiorContractAddress,
         auctionedAmountDai,
         liquidationPenaltyRatio
     );
+    console.log('fetchVaultLiquidationIncentive');
+    console.log(incentiveCombinedDai, incentiveConstantDai, incentiveRelativeDai, 'fetchVaultLiquidationIncentive');
 
     return {
         ...vault,
@@ -357,6 +423,9 @@ const enrichVaultWithTransactonInformation = async (
 
 export const getVaultTransaction = async (network: string, vault: Vault): Promise<VaultTransaction> => {
     const liquidatedParameters = await fetchLiquidatedParameters(network, vault);
+    console.log('liquidatedParameters');
+    console.log(liquidatedParameters, 'liquidatedParameters');
+
     if (liquidatedParameters) {
         return {
             ...vault,
