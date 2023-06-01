@@ -1,9 +1,13 @@
+import { v4 as uuidv4 } from 'uuid';
 import pkg from './package.json';
 
 const PREVIEW_IMAGE = (process.env.FRONTEND_ORIGIN || '') + '/preview.jpeg';
 const SITE_TITLE = 'Unified Auctions';
 const SITE_DESCRIPTION = `The "${SITE_TITLE}" is the portal to all GSU protocol Auctions related services. Easily interact with the GSU Protocol through streamlined interfaces, inform yourself about how the protocol works and receive updates on current auctions.`;
 const TWITTER_HANDLE = '@GSUcoin';
+const ENABLE_FILE_PROTOCOL = process.env.ENABLE_FILE_PROTOCOL?.toLocaleLowerCase() === 'true';
+const ROUTER_HISTORY_MODE = ENABLE_FILE_PROTOCOL ? 'hash' : 'history';
+const ROUTER_BASE = ENABLE_FILE_PROTOCOL ? '.' : '';
 
 export default {
     // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -19,11 +23,13 @@ export default {
         CONTACT_EMAIL: process.env.CONTACT_EMAIL || undefined,
         GITHUB_URL: pkg.repository.url,
         STAGING_BANNER_URL: process.env.STAGING_BANNER_URL || undefined,
+        PRODUCTION_BANNER_URL: process.env.PRODUCTION_BANNER_URL || undefined,
         HEAPIO_ID: process.env.HEAPIO_ID || undefined,
+        APPLICATION_VERSION: uuidv4(), // hardcoded this during build
         CHAINLOG_ADDRESS: process.env.CHAINLOG_ADDRESS,
     },
     publicRuntimeConfig: {
-        TERMS_AND_CONDITIONS_URL: '/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
+        TERMS_AND_CONDITIONS_URL: 'https://unified-auctions.makerdao.com/pdf/Unified-Auction-UI_Terms.Conditions.pdf',
     },
 
     // Global page headers: https://go.nuxtjs.dev/config-head
@@ -47,8 +53,8 @@ export default {
             { name: 'twitter:description', content: SITE_DESCRIPTION },
             { name: 'twitter:image', content: PREVIEW_IMAGE },
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-        script: [{ src: '/js/HeapIO.js' }],
+        link: [{ rel: 'icon', type: 'image/x-icon', href: `${ROUTER_BASE}/favicon.ico` }],
+        script: [{ src: `${ROUTER_BASE}/js/HeapIO.js` }],
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
@@ -106,5 +112,10 @@ export default {
                 },
             },
         },
+    },
+    // router: https://nuxtjs.org/docs/configuration-glossary/configuration-router
+    router: {
+        mode: ROUTER_HISTORY_MODE,
+        base: ROUTER_BASE || '/',
     },
 };

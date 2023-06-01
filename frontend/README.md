@@ -1,14 +1,16 @@
-# Auction UI Frontend
+# Unified Auctions UI
 
-## Setup
+### Development Setup
+
+1. Install minimum `node` and `npm` version (see `package.json` `engine` section)
+2. Provide correct env variables by creating `frontend/.env` file
+3. Install dependencies via `npm install`
+4. Run the application in development mode via `npm run dev`
+5. Configure formatting and linting setup
+
+#### Other available commands
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
 # build for production and launch server
 $ npm run build
 $ npm run start
@@ -23,15 +25,6 @@ $ npm run storybook
 $ npm run test
 ```
 
-## Development Setup
-
-Please see [this centralized guide](https://github.com/sidestream-tech/guides/blob/main/frontend-development/README.md) to get started with your development setup. Namely, you should:
-
-- have a minimum `node` and `npm` version (see `package.json` `engine` section)
-- have a certain formatting and linting setup
-
-Help on both things is given in the linked resources above.
-
 ### Environment variables
 
 - `RPC_URL`: (required) Etherium RPC url used for fetching data from the blockchain
@@ -40,6 +33,8 @@ Help on both things is given in the linked resources above.
 - `PRODUCTION_DOMAIN`: (optional) Required in order to enable [plausible.io statistics](https://github.com/moritzsternemann/vue-plausible#configuration). In addition to adding it here, the domain (e.g. `auctions.makerdao.network`) should also be registered within [plausible dashboard](https://plausible.io/).
 - `CONTACT_EMAIL`: (optional) Required in order to display contact link in the footer. This email should be able to accept and manage bug reports and other contact requests.
 - `STAGING_BANNER_URL`: (optional) When set a banner will be displayed, warning the user that they are using a staging version. The text will use `STAGING_BANNER_URL` as a link to production UI.
+- `PRODUCTION_BANNER_URL`: (optional) When set a banner will be displayed, notifying the user that they can also use an electron app. The text will use `PRODUCTION_BANNER_URL` as a link the electron app.
 - `MAX_PRIORITY_FEE_PER_GAS_WEI`: (optional, default can be found in core/src/gas.ts) – [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) `max_priority_fee_per_gas` value
 - `HEAPIO_ID`: (optional) [HeapIO analytics](https://heapanalytics.com/) Project's Environment ID. Required for tracking analytics.
 - `FRONTEND_ORIGIN`: (optional, default empty) – public url of the frontend, eg `https://unified-auctions.makerdao.com`. Used to correctly specify open graph meta tags
+- `ENABLE_FILE_PROTOCOL`: (optional, default `false`) – By setting this variable to `true`, `npm run generate` will set [vue router mode](https://v3.router.vuejs.org/api/#mode) to `hash` and produce html that can be opened without http server, via `file://` protocol

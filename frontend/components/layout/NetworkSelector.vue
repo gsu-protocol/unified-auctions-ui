@@ -5,7 +5,7 @@
             :value="network"
             :options="options"
             title="Select Network"
-            @input="$emit('update:network', $event)"
+            @input="updateNetworkOrChangeUrl($event)"
         >
             <template #text-prefix>
                 <icon type="share-alt" class="pr-2 text-3xl md:text-sm" />
@@ -22,7 +22,7 @@
 import Vue, { PropType } from 'vue';
 import { Icon } from 'ant-design-vue';
 import { NetworkConfig } from 'auctions-core/src/types';
-import Select from '~/components/common/inputs/Select.vue';
+import Select from '../common/inputs/Select.vue';
 
 export default Vue.extend({
     name: 'NetworkSelector',
@@ -46,7 +46,26 @@ export default Vue.extend({
     },
     computed: {
         options() {
-            return [...this.networks.map(eachNetwork => ({ label: eachNetwork.title, value: eachNetwork.type }))];
+            return [
+                ...this.networks.map(eachNetwork => {
+                    console.log(eachNetwork,"eachNetwork");
+                    // if(eachNetwork.title!="Localhost:8545"){
+
+                        return({ label: eachNetwork.title, value: eachNetwork.type })
+                    // }
+                    
+                })
+                // { label: 'Change RPC URL', value: 'changeRpcUrl' },
+            ];
+        },
+    },
+    methods: {
+        updateNetworkOrChangeUrl(value: string): void {
+            if (value === 'changeRpcUrl') {
+                this.$emit(value);
+            } else {
+                this.$emit('update:network', value);
+            }
         },
     },
 });

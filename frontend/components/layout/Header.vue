@@ -25,6 +25,7 @@
                             :networks="networks"
                             :is-changing-network="isChangingNetwork"
                             @update:network="$emit('update:network', $event)"
+                            @changeRpcUrl="$emit('changeRpcUrl')"
                         />
 
                         <WalletSelector
@@ -53,10 +54,12 @@
 import Vue, { PropType } from 'vue';
 import { NetworkConfig } from 'auctions-core/src/types';
 import StagingBanner from './StagingBanner.vue';
+// import ProductionBannerElectron from './ProductionBannerElectron.vue';
 import HeaderLogo from './HeaderLogo.vue';
-import BaseSwitch from '~/components/common/inputs/BaseSwitch.vue';
-import NetworkSelector from '~/components/layout/NetworkSelector.vue';
-import WalletSelector from '~/components/layout/WalletSelector.vue';
+// import BaseSwitch from '~/components/common/inputs/BaseSwitch.vue';
+import BaseSwitch from '../../components/common/inputs/BaseSwitch.vue';
+import NetworkSelector from './NetworkSelector.vue';
+import WalletSelector from './WalletSelector.vue';
 // import ThemeSwitcher from '~/components/layout/ThemeSwitcher.vue';
 
 export default Vue.extend({
@@ -68,6 +71,7 @@ export default Vue.extend({
         BaseSwitch,
         NetworkSelector,
         WalletSelector,
+        // ProductionBannerElectron,
     },
     props: {
         type: {
@@ -103,6 +107,10 @@ export default Vue.extend({
             default: false,
         },
         stagingBannerUrl: {
+            type: String,
+            default: undefined,
+        },
+        productionBannerUrl: {
             type: String,
             default: undefined,
         },

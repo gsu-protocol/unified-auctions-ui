@@ -1,5 +1,6 @@
 import { setTimeout as delay } from 'timers/promises';
-import { setupRpcUrlAndGetNetworks } from 'auctions-core/src/rpc';
+// import { setupRpcUrlAndGetNetworks } from 'auctions-core/src/rpc';
+import { setupRpcUrlAndGetNetworks } from '../../core/src/rpc';
 import { RPC_URL, SETUP_DELAY_MS, REFETCH_INTERVAL_MS } from './variables';
 import { setupSupportedAuctionTypes, getSupportedAuctionTypes } from './supported';
 import { setupWhitelistedCollaterals } from './whitelist';

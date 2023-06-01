@@ -1,23 +1,24 @@
-import type { CalleeFunctions, CollateralConfig, Pool } from '../types';
+import type { CalleeFunctions, CollateralConfig, GetCalleeDataParams, Pool } from '../types';
 import { ethers } from 'ethers';
 import BigNumber from '../bignumber';
 import { getContractAddressByName, getJoinNameByCollateralType } from '../contracts';
 import { convertCollateralToDaiUsingPool, encodePools } from './helpers/uniswapV3';
 import { getPools } from '.';
 import { routeToPool } from './helpers/pools';
-import { getRouteAndGasQuote } from './helpers/uniswapV3';
+import { fetchAutoRouteInformation } from './helpers/uniswapAutoRouter';
 
 const getCalleeData = async function (
     network: string,
     collateral: CollateralConfig,
     marketId: string,
     profitAddress: string,
-    preloadedPools?: Pool[]
+    params?: GetCalleeDataParams
 ): Promise<string> {
     const marketData = collateral.exchanges[marketId];
     if (marketData?.callee !== 'UniswapV3Callee') {
         throw new Error(`getCalleeData called with invalid collateral type "${collateral.ilk}"`);
     }
+    const preloadedPools = !!params && 'pools' in params ? params.pools : undefined;
     const pools = preloadedPools || (await getPools(network, collateral, marketId));
     if (!pools) {
         throw new Error(`getCalleeData called with invalid pools`);
@@ -40,23 +41,36 @@ const getMarketPrice = async function (
     collateral: CollateralConfig,
     marketId: string,
     collateralAmount: BigNumber
-): Promise<BigNumber> {
-    // convert collateral into DAI
-    const { route, fees } = await getRouteAndGasQuote(network, collateral.symbol, collateralAmount, marketId);
-    if (!route) {
-        throw new Error(`No route found for ${collateral.symbol} to DAI`);
+): Promise<{ price: BigNumber; pools: Pool[] }> {
+    const calleeConfig = collateral.exchanges[marketId];
+    const isAutorouted = 'automaticRouter' in calleeConfig;
+    if (calleeConfig?.callee !== 'UniswapV3Callee') {
+        throw new Error(`getCalleeData called with invalid collateral type "${collateral.ilk}"`);
     }
-    const pools = await routeToPool(network, route, collateral.symbol, fees);
-    const daiAmount = await convertCollateralToDaiUsingPool(
-        network,
-        collateral.symbol,
-        marketId,
-        collateralAmount,
-        pools
-    );
+    const { route, fees, totalPriceAdjusted, pools } = isAutorouted
+        ? await fetchAutoRouteInformation(network, collateral.symbol, collateralAmount.toFixed())
+        : {
+              route: calleeConfig.route,
+              fees: undefined,
+              pools: undefined,
+              totalPriceAdjusted: undefined,
+          };
 
-    // return price per unit
-    return daiAmount.dividedBy(collateralAmount);
+    if (!pools && route) {
+        const generatedPools = await routeToPool(network, route, collateral.symbol, fees);
+        const daiAmount = await convertCollateralToDaiUsingPool(
+            network,
+            collateral.symbol,
+            marketId,
+            collateralAmount,
+            generatedPools
+        );
+        return { price: daiAmount.dividedBy(collateralAmount), pools: generatedPools };
+    }
+    if (totalPriceAdjusted && pools) {
+        return { price: totalPriceAdjusted.dividedBy(collateralAmount), pools: pools };
+    }
+    throw new Error(`Failed to compute market data due to lack of information`);
 };
 
 const UniswapV2CalleeDai: CalleeFunctions = {

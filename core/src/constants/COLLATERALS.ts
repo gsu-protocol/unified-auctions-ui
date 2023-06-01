@@ -135,7 +135,9 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: [],
             },
-            'GSU': {
+            // '1inch': {
+            //     callee: 'OneInchCallee',
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },
@@ -160,7 +162,9 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: [],
             },
-            'GSU': {
+            // '1inch': {
+            //     callee: 'OneInchCallee',
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },
@@ -185,9 +189,12 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: [],
             },
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
+            },
+            '1inch': {
+                callee: 'OneInchCallee',
             },
         },
         oracle: CONFIG_WITH_NEXT_PRICE,
@@ -463,7 +470,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },
@@ -488,7 +495,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },
@@ -513,7 +520,7 @@ const COLLATERALS: Record<string, CollateralConfig> = {
                 callee: 'UniswapV2CalleeDai',
                 route: ['ETH'],
             },
-            'GSU': {
+            GSU: {
                 callee: 'GSURatesCallee',
                 route: [],
             },

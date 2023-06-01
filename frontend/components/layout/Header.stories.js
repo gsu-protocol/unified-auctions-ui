@@ -37,7 +37,7 @@ storiesOf('Layout/Header', module)
     .add('Unified Auctions Page', () => ({
         ...common,
         template: `<Header
-        type="unified" 
+        type="unified"
         :isExplanationsShown.sync="isExplanationsShown"
         @update:isExplanationsShown="updateIsExplanationsShown"
         />`,
@@ -45,17 +45,26 @@ storiesOf('Layout/Header', module)
     .add('Minimal', () => ({
         ...common,
         template: `<Header
-        type="minimal" 
+        type="minimal"
         :isExplanationsShown.sync="isExplanationsShown"
         @update:isExplanationsShown="updateIsExplanationsShown"
         />`,
     }))
-    .add('With Staging header', () => ({
+    .add('With Staging Banner', () => ({
         ...common,
         template: `<Header
-        type="unified" 
+        type="unified"
         :isExplanationsShown.sync="isExplanationsShown"
-        :isStagingEnvironment="true"
+        stagingBannerUrl="https://example.com/"
+        @update:isExplanationsShown="updateIsExplanationsShown"
+        />`,
+    }))
+    .add('With Production header', () => ({
+        ...common,
+        template: `<Header
+        type="unified"
+        :isExplanationsShown.sync="isExplanationsShown"
+        productionBannerUrl='https://github.com'
         @update:isExplanationsShown="updateIsExplanationsShown"
         />`,
     }))

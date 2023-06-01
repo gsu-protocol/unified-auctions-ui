@@ -1,12 +1,17 @@
+import Vue from 'vue';
 import { ActionContext } from 'vuex';
+
+const appVersion = process.env.APPLICATION_VERSION ?? 'default';
 
 interface State {
     isExplanationsShown: boolean;
     isDarkMode: boolean | undefined;
+    rpcUrlRecords: Record<string, string | undefined>;
 }
 
 export const state = (): State => ({
     isExplanationsShown: true,
+    rpcUrlRecords: {},
     isDarkMode: false,
 });
 
@@ -23,6 +28,9 @@ export const getters = {
         }
         return state.isDarkMode;
     },
+    getRpcUrl(state: State) {
+        return state.rpcUrlRecords[appVersion];
+    },
 };
 
 export const mutations = {
@@ -32,6 +40,9 @@ export const mutations = {
     setIsDarkMode(state: State, isDarkMode: boolean): void {
         state.isDarkMode = isDarkMode;
     },
+    setRpcUrl(state: State, rpcUrl: string | undefined): void {
+        Vue.set(state.rpcUrlRecords, appVersion, rpcUrl);
+    },
 };
 
 export const actions = {
@@ -40,5 +51,8 @@ export const actions = {
     },
     setIsDarkMode({ commit }: ActionContext<State, State>, isDarkMode: boolean): void {
         commit('setIsDarkMode', isDarkMode);
+    },
+    setRpcUrl({ commit }: ActionContext<State, State>, rpcUrl: string | undefined): void {
+        commit('setRpcUrl', rpcUrl);
     },
 };
